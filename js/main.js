@@ -12,13 +12,16 @@ $(document).ready(function() {
         $('.dropdown-pane').show();
     });
 
-    $('.dropdown-pane .dropdown-item').click(() => {
-         $('.dropdown-pane').hide();       
+    $('.dropdown-pane .dropdown-item').click((e) => {
+        $('.dropdown-item.selected').removeClass('selected');
+        $('.dropdown-field').empty();
+        $('.dropdown-field').append($(e.currentTarget).clone());
+        $(e.currentTarget).addClass('selected');
+        $('.dropdown-pane').hide();
     });
 });
 
 // Do stuff on window resize
 $(window).resize(function() {
-
     console.log(window.isLandscape());
 });
