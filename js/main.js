@@ -8,20 +8,27 @@ window.isLandscape = function() {
 $(document).ready(function() {
     window.DB.createFakeData();
 
-    $('.dropdown-field').click(() => {
-        $('.dropdown-pane').show();
-    });
+    // Start with a login page
+    window.createLoginPage();
 
-    $('.dropdown-pane .dropdown-item').click((e) => {
-        $('.dropdown-item.selected').removeClass('selected');
-        $('.dropdown-field').empty();
-        $('.dropdown-field').append($(e.currentTarget).clone());
-        $(e.currentTarget).addClass('selected');
-        $('.dropdown-pane').hide();
-    });
+    // Fire on resize to scale the generated page
+    onResize();
 });
+
+// Creates a log in page
+window.createLoginPage = function() {
+    window.loginPage = new LoginPage();
+}
+
+// Creates a table map page
+window.createTableMapPage = function() {
+    window.tableMapPage = new TableMapPage();
+}
 
 // Do stuff on window resize
 $(window).resize(function() {
-    console.log(window.isLandscape());
+    onResize();
 });
+
+window.onResize = function() {}
+
