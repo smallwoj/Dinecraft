@@ -24,3 +24,5 @@ class TableMapPage {
 
     // Dynamic sizes yeah
     onResize() {}
+}
+
