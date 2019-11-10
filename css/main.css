@@ -1,14 +1,305 @@
 @font-face
 {
-    font-family: "OpenSans";
-    src: url("../fonts/OpenSans-Regular.ttf");
+    font-family: "Minecraft";
+    src: url("../fonts/Minecraft-Regular.otf");
 }
 
 *, body, html
 {
     padding: 0;
     margin: 0;
-    font-family: "OpenSans";
+    font-family: "Minecraft";
     font-weight: normal;
+    text-shadow: 0rem 0.2rem #2F2F2F;
+
 }
 
+body, html
+{
+    min-width: 250px;
+    min-height: 400px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 62.5%;
+}
+
+body
+{
+    background-color: gray;
+    background-repeat: repeat-x;
+    background-size: cover;
+    animation: 80s ease-in-out infinite alternate background-scroll; 
+}
+
+@keyframes background-scroll
+{
+    from { background-position: 0;}
+    to { background-position: 300vw }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /*letter-spacing: 0.1rem;*/
+    color: white;
+}
+
+h1 {
+    font-size: 4.6rem;
+}
+
+h2 {
+    font-size: 3.6rem;
+}
+
+h3 {
+    font-size: 2.8rem;
+}
+
+h4 {
+    font-size: 2.4rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+.login-page
+{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.login-page .main-container
+{
+    padding-top:2%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    min-width: 250px;
+    width: 100%;
+    max-width: 40vmax;
+    height: 100vh;
+    text-align: center;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login-page .logo-wrap, .login-page .keypad-wrap, .login-page .dropdown-wrap
+{
+    user-select: none;
+}
+
+.login-page .logo-wrap
+{
+    min-width:100%;
+    max-width: 80vmin;
+    width: 80vmax;
+}
+
+.login-page .dropdown-wrap
+{
+    min-width: 250px;
+    width: 80%;
+    margin-bottom: 5%;
+}
+
+.login-page .pin-wrap
+{
+    min-width: 200px;
+    height:5vh;
+    width: 60%;
+    margin-bottom: 5%;
+}
+
+.login-page .keypad-wrap
+{
+    min-width: 210px;
+    width: 65%;
+}
+
+.logo-wrap img
+{
+    width: 100%;
+    user-select: none;
+    height: auto;
+}
+
+.ui-style-1
+{
+    background-color: #CFC6C0;
+    border: 3px solid black;
+    vertical-align: text-bottom;
+}
+
+.ui-style-1.red
+{
+    background-color: #E57373;
+}
+
+.ui-style-1.disabled
+{
+    background-color: #959595;    
+}
+
+.ui-style-1.selected
+{
+    background-color: #228207;
+}
+
+.ui-style-1 h4
+{
+    color: #5F5F5F;
+}
+
+.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4
+{
+    color: white;
+}
+
+.dropdown-item.selected, .dropdown-item:active
+{
+    background-color: #228207;
+}
+
+.dropdown
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.dropdown-field
+{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item
+{
+    height: 100%;
+    width: 100%;
+    transition: 0.1s;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.dropdown-item-icon
+{
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-item-icon img
+{
+    width: 80%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.dropdown-item-text
+{
+    margin-left: calc(0.5em + 5%);
+    vertical-align: middle;
+    user-select: none;
+}
+
+.dropdown-pane
+{
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    display:none;
+}
+
+.dropdown-pane .dropdown-item-text
+{
+    color: white;
+}
+
+.pin-field
+{
+    width:100%;
+    height: 100%;
+    margin : auto;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pin-indicator
+{
+    width: 5%;
+    border: 2px solid black;
+}
+
+.pin-indicator.entered
+{
+    width: 10%;
+}
+
+.keypad
+{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+
+.keypad-row
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 8%;
+}
+
+.keypad-button
+{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
+    width: 25%;
+    max-width: 9vh;
+    min-width: 50px;
+    min-height: 50px;
+    transition: 0.07s;
+}
+
+.keypad-button:not(.disabled):active
+{
+    background-color: #228207;
+}
+
+.keypad-button:not(.disabled).red:active
+{
+    background-color: #B71C1C;
+}
+
+.keypad-button:not(.disabled):active h4
+{
+    color:white;
+}

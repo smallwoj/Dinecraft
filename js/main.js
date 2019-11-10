@@ -7,9 +7,28 @@ window.isLandscape = function() {
 // Once the page is loaded, do stuff. Fired only once
 $(document).ready(function() {
     window.DB.createFakeData();
+
+    // Start with a login page
+    window.createLoginPage();
+
+    // Fire on resize to scale the generated page
+    onResize();
 });
+
+// Creates a log in page
+window.createLoginPage = function() {
+    window.loginPage = new LoginPage();
+}
+
+// Creates a table map page
+window.createTableMapPage = function() {
+    window.tableMapPage = new TableMapPage();
+}
 
 // Do stuff on window resize
 $(window).resize(function() {
-    console.log(window.isLandscape());
+    onResize();
 });
+
+window.onResize = function() {}
+
