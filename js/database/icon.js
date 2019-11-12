@@ -1,19 +1,14 @@
 class Icon {
     constructor(name, source) {
-        if (!name || !source) {
-            console.error('Missing parameters');
-            return;
-        }
-
-        this._name = name;
-        this._source = source;
+        this.name = name;     // Short name of the icon
+        this.source = source; // URL of the icon, relative to index.html file
     }
 
     getSource() {
-        return this._source;
+        return this.source;
     }
 
     getName() {
-        return this._name;
+        return this.name;
     }
 }
