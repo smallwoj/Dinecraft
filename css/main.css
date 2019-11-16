@@ -6,12 +6,12 @@
 
 *, body, html
 {
+    user-select: none;
     padding: 0;
     margin: 0;
     font-family: "Minecraft";
     font-weight: normal;
     text-shadow: 0rem 0.2rem #2F2F2F;
-
 }
 
 body, html
@@ -93,11 +93,6 @@ h6 {
     align-items: center;
 }
 
-.login-page .logo-wrap, .login-page .keypad-wrap, .login-page .dropdown-wrap
-{
-    user-select: none;
-}
-
 .login-page .logo-wrap
 {
     min-width:100%;
@@ -129,7 +124,6 @@ h6 {
 .logo-wrap img
 {
     width: 100%;
-    user-select: none;
     height: auto;
 }
 
@@ -150,17 +144,17 @@ h6 {
     background-color: #959595;    
 }
 
-.ui-style-1.selected
+.ui-style-1.selected, .nav-bar .option.selected
 {
     background-color: #228207;
 }
 
-.ui-style-1 h4
+.ui-style-1 h4, .nav-bar .option h4, .account-name h4
 {
     color: #5F5F5F;
 }
 
-.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4
+.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4
 {
     color: white;
 }
@@ -187,7 +181,7 @@ h6 {
     align-items: center;
 }
 
-.dropdown-item
+.dropdown-item, .account-details
 {
     height: 100%;
     width: 100%;
@@ -198,7 +192,7 @@ h6 {
     align-items: center;
 }
 
-.dropdown-item-icon
+.dropdown-item-icon, .account-icon
 {
     flex-grow: 0;
     flex-shrink: 0;
@@ -207,19 +201,18 @@ h6 {
     justify-content: center;
 }
 
-.dropdown-item-icon img
+.dropdown-item-icon img, .account-icon img
 {
     width: 80%;
     flex-grow: 0;
     flex-shrink: 0;
-    user-select: none;
 }
 
-.dropdown-item-text
+.dropdown-item-text, .account-name
 {
+white-space: nowrap;
     margin-left: calc(0.5em + 5%);
     vertical-align: middle;
-    user-select: none;
 }
 
 .dropdown-pane
@@ -281,7 +274,6 @@ h6 {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    user-select: none;
     width: 25%;
     max-width: 9vh;
     min-width: 50px;
@@ -303,3 +295,72 @@ h6 {
 {
     color:white;
 }
+
+
+
+/*Table map things*/
+.table-map-page {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display:flex;
+    flex-direction row;
+}
+
+.nav-bar {
+    width: 20%;
+    background-color: #b3aca6;
+    min-width: 250px;
+}
+
+.account-card {
+    width:100%;
+    height: 9vh;
+    background-color: #cfc6c0;
+    min-height: 50px;
+    display:flex;
+    align-items:center;
+    /*box-shadow:inset 0px 0px 0px 3px black;*/ 
+}
+
+.nav-bar .option {
+    padding-left:10%;
+    display:flex;
+    align-items:center;
+    width:90%;
+    height: 9vh;
+    min-height: 50px;
+    box-shadow:inset 0px 0px 0px 3px black; 
+}
+
+.nav-bar .option.selected {
+    box-shadow:inset 0px 0px 0px 3px white;
+}
+
+.settings-icon {
+    width: 13%;
+    height: 100%;
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+.settings-icon img {
+    height:30%;
+    image-rendering: pixelated;
+    vertical-align:bottom;
+}
+
+.content-pane {
+    width: 80%;
+    /*background-color:blue;*/
+}
+
+
+
+
+
+
