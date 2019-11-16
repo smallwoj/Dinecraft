@@ -55,7 +55,7 @@ class LoginPage {
         window.onResize = this.onResize.bind(this);
     }
 
-    // Removes the contents on the page and resets variables in windo
+    // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
         window.loginPage = undefined;
@@ -96,7 +96,6 @@ class LoginPage {
         }
     }
 
-
     // Removes a single char from a pin
     onKeypadRemove() {
         if (this.pinField.pin.length > 0) {
@@ -104,7 +103,6 @@ class LoginPage {
             this.pinField.setEntered(this.pinField.pin.length);
         }
     }
-
 
     // Clears the entered pin
     onKeypadClear() {
