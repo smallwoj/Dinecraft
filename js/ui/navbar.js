@@ -24,18 +24,28 @@ class NavBar {
  * */
 
         this.ref = el.prependTo($(insideElem));
-        this.opts = []; 
-        console.log(opts.length);
+        this.opts = [];
+
+        // Insert all the menu options provided in the constructor
         for (var i = 0; i < opts.length; i++) {
-            var opt = $(`<div class="option"><h4>${opts[i].text}</h4></div>`);
+            var opt = $(`<div><h4>${opts[i].text}</h4></div>`);
             if (opts[i].selected) {
                 opt.addClass('selected');
             }
-           
+
+            // Do other styling for options and suboptions
+            if (opts[i].suboption) {
+                opt.addClass('suboption');
+            } else {
+                opt.addClass('option');
+            }
+
+            // If we want to do something on click of the menu option, then bind it here
             if (opts[i].onClick) {
                 opt.click(opts[i].onClick);
             }
 
+            // Also store a reference to the option DOM element
             this.opts.push(opt.appendTo(this.ref));
         }
     }

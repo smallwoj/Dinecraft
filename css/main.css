@@ -144,17 +144,17 @@ h6 {
     background-color: #959595;    
 }
 
-.ui-style-1.selected, .nav-bar .option.selected
+.ui-style-1.selected, .nav-bar .option.selected, .nav-bar .suboption.selected
 {
     background-color: #228207;
 }
 
-.ui-style-1 h4, .nav-bar .option h4, .account-name h4
+.ui-style-1 h4, .nav-bar .option h4, .nav-bar .suboption h4, .account-name h4
 {
     color: #5F5F5F;
 }
 
-.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4
+.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4
 {
     color: white;
 }
@@ -325,7 +325,7 @@ white-space: nowrap;
     /*box-shadow:inset 0px 0px 0px 3px black;*/ 
 }
 
-.nav-bar .option {
+.nav-bar .option, .nav-bar .suboption {
     padding-left:10%;
     display:flex;
     align-items:center;
@@ -335,7 +335,12 @@ white-space: nowrap;
     box-shadow:inset 0px 0px 0px 3px black; 
 }
 
-.nav-bar .option.selected {
+.nav-bar .suboption {
+    margin-left:10%;
+    width:80%;
+}
+
+.nav-bar .option.selected, .nav-bar .suboption.selected {
     box-shadow:inset 0px 0px 0px 3px white;
 }
 
