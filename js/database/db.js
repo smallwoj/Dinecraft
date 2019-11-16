@@ -30,5 +30,6 @@ window.DB.getIconByName = function(name) {
     }
 }
 
+window.DB.
 
 
