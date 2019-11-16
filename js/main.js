@@ -9,11 +9,11 @@ $(document).ready(function() {
     window.DB.createFakeData();
 
     // Start with a login page
-//    window.createLoginPage();
+    window.createLoginPage();
 
     // DEBUG: start with a table map page
-    window.auth = window.DB.accounts[0];
-    window.createTableMapPage();
+//    window.auth = window.DB.accounts[0];
+//    window.createTableMapPage();
 
     // Fire on resize to scale the generated page
     onResize();

@@ -30,6 +30,13 @@ window.DB.getIconByName = function(name) {
     }
 }
 
-window.DB.
+// Returns: Table, does a lookup on a database to return Table with the provided numner
+window.DB.getTableByNumber = function(number) {
+    for (var i = 0; i < window.DB.tables.length; i++) {
+        if (window.DB.tables[i].number === number) {
+            return window.DB.tables[i];
+        }
+    }
+}
 
 
