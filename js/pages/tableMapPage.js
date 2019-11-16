@@ -4,10 +4,15 @@ class TableMapPage {
         // Main data of the element
         var el = $(`
             <div class="table-map-page">
+                <div class="main-container">
+                    <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
+                        <div class="tables-wrap"></div>
+                    </div>
+                </div>
             </div>
         `);
 
-        // Append it to body and set the proper panorama iamge
+        // Append it to body and set the proper panorama image
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
 
@@ -15,7 +20,7 @@ class TableMapPage {
         window.onResize = this.onResize.bind(this);
     }
 
-    // Removes the contents on the page and resets variables in windo
+    // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
         window.loginPage = undefined;

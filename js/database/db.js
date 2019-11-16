@@ -17,12 +17,11 @@ window.DB.createFakeData = function() {
     window.DB.accounts.push(new Account('Mr. Krabs', '333333', window.DB.getIconByName('userAcc2')));
     window.DB.accounts.push(new Account('Pickaxe Guy', '481516', window.DB.getIconByName('userAcc3')));
     window.DB.accounts.push(new Account('Joe mama', '696969', window.DB.getIconByName('userAcc4')));
-
-    for(var i = 1; i <= 3; i++)
-    {
-        window.DB.tables.push(new Table(i, 'available'));
-    }
+ 
+    window.DB.tables.push(new Table(1, 'available', [], 1 , 1));
+    
     //TODO: maybe put an in-progress table later, once thats more fleshed out
+    //TODO: another table that is being cleaned... do that myself
 };
 
 // Returns: Icon, does a lookup on a database to return Icon with the provided name
