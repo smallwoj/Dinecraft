@@ -110,7 +110,6 @@ class LoginPage {
         this.pinField.setEntered(0);
     }
 
-
     // When all 6 digits of the pin entered
     onPinEntered() {
         var acc = this.doAuthCheck();
