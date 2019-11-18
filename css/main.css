@@ -305,7 +305,7 @@ white-space: nowrap;
     top: 0;
     left: 0;
     display:flex;
-    flex-direction row;
+    flex-direction:row;
 }
 
 .nav-bar {
@@ -387,3 +387,13 @@ white-space: nowrap;
 }
 
 
+/* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
