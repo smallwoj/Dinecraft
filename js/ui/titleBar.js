@@ -9,12 +9,35 @@ class TitleBar {
         `);
 
         this.ref = el.prependTo($(insideElem));
-
-        // If onBack is provided, then we insert back arrow and make
-        //   it do whatever (on click)
-
+        this.title=text;
+        this.onBack=onBack;
+        this.onSearch=onSearch;
+        
+        if(onBack!=undefined)
+        {
+            var titlebar=this.ref.find('title-bar');
+            var backArrow=$(`
+            <div class="back-arrow">img src="./img/owjdiefei.png"></div>
+            `);
+            backArrow.click(onBack);
+        }
+        
+        if(onSearch!=undefined)
+        {
+            var titlebar=this.ref.find('title-bar');
+            var searchIcon=$(`
+            <div class="search-icon">img src="./img/search-standard.png"></div>
+            `);
+            searchIcon.click(onSearch);
+        }
         // If onSearch is provided, then we insert the search icon and make
         //   it do whatever (on entering a character)
+        
+        
+    }
+    setText(newText)
+    {
+        this.title=newText;
     }
 }
 

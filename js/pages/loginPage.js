@@ -25,6 +25,7 @@ class LoginPage {
         // Here add all other components of the page
         //--
         // Options for a dropdown menu parsed from accounts 
+        //setting up "list"/array for the dropdown
         var options = [];
         for (var i = 0; i < window.DB.accounts.length; i++) {
             options.push({
@@ -33,7 +34,7 @@ class LoginPage {
             });
         }
 
-        // Dropdown
+        //defining the Dropdown
         this.dropdown = new Dropdown(this.ref.find('.dropdown-wrap'), this.onAccountSelect.bind(this), {
             'defText': 'Select an account',
             'options': options,

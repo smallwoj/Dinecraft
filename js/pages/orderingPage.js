@@ -1,55 +1,89 @@
-//TODO - ordering page 
-//topbar and icon FULL functionality
-//complete database (menu items except images) 
-
 // Controls the behaviour of the ordering page
 class OrderingPage {
     constructor() {
         // Main data of the element
-        //icon -> picture, title, quantity
-        //detailed icon -> picture, title, quantity, tags, calories, amount/size, price, description
         var el = $(`
             <div class="ordering-page">
                 <div class="main-container">
                     <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
-                        <div class="sidebar-wrap"></div> //Yar's job
-                        <div class="topbar-wrap"></div> //search button, category, back arrow
-                        <div class="icon-wrap"></div>
-                        <div class="detailedicon-wrap"></div>
+                        <div class="content-pane"></div> //navbar, titlebar
+                        <div class="foodcard-wrap"></div>
+                        <div class="detailedfoodcard-wrap"></div>
+                        <div class="quantity-wrap"></div>
                     </div>
                 </div>
             </div>
         `);
         
-        //"constructors" for the components
-        //sidebar
-        this.sidebar = new Sidebar(this.ref.find('sidebar-wrap');
+        //define other elements (titleBar, navBar, icons)
         
-        //topbar
-        this.topbar = new Topbar(this.ref.find('topbar-wrap'
-        {
-            //display the title, implement 'back' feature (destroys this page), display search icon/button that actually searches 
-            //(brings up keypad, finds certain items)
-        });
-        this.topbar.enabled=false; //enabled once they click on it 
+        // Append it to body and set the proper panorama image (none in this case)
+        this.ref = el.appendTo($('body'));
+        $('body').css('background-image', '');
         
-        //icon
-        this.icon = new Icon(this.ref.find('icon-wrap'
-        {
-            //display icons in rows (fit to display) with all DB components 
-            //when icon is clicked on -> go to detailed icon
-            //increase/decrease quantity when clicked (default=1)
-        });
-        //detailed icon
-        this.detailedicon = new DetailedIcon(this.ref.find('detailedicon-wrap'
-        {
-            //show the detailed icon (icon with more DB information)
-            //destroy this when tapping off the screen/sliding arrow 
-        });
+        // Bind what this page should do on resize
+        window.onResize = this.onResize.bind(this);
 
+        // Add the navbar with all the options/account info
+        this.navbar = new NavBar(this.ref, [{
+            'text' : 'Drinks',
+            'selected' : true,
+            'onClick' : onMenuSelectOption1();
+        }, 
+        {
+            'text' : 'Appetizers',
+            'onClick' : onMenuSelectOption2();
+            },
+        {
+            'text' : 'Specials',
+            'onClick' : onMenuSelectOption3();
+            },
+        {
+            'text' : 'Entrées',
+            'onClick' : onMenuSelectOption4();
+            },
+        {
+            'text' : 'Desserts',
+            'onClick' : onMenuSelectOption5();
+            }]);
+
+
+        //implement display search icon/button that actually searches 
+            //(brings up keypad, finds certain items)
+        //TITILEBAR
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onBackSelect.bind(this), this.onSearchSelect.bind(this));
+        
+        
+        var options = [];
+        for (var i = 0; i < window.DB.menuItems.length; i++) {
+            options.push({
+                'name' : window.DB.menuItems[i].name,
+                'category' : window.DB.menuItems[i].category,
+                'icon' : window.DB.menuItems[i].icon,
+                'tags' : window.DB.menuItems[i].tags,
+            });
+        }
+        
+        //Foodcards
+        //defining the foodcards
+        this.foodcards = new Foodcards(this.ref.find('.foodcards-wrap'), this.onFoodCardSelect.bind(this), {
+            'options': options,
+        });
+        
+        var options = [];
+        for (var i = 0; i < window.DB.foodCards.length; i++) {
+            options.push({
+                'icon' : window.DB.foodcards[i].icon,
+                'text' : window.DB.foodcards[i].name,
+                //plus, minus, bar in middle that displays 1 on default then reacts to onPlusSelect etc. 
+            });
+        }
+        
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //destructor
     // Removes the contents on the page and resets variables in the window
     destroy() {
@@ -58,11 +92,66 @@ class OrderingPage {
         window.onResize = undefined;
     }
     //other methods to update the state 
-    //dynamic sizing!
-    //onSearchSelect
-    //onBackSelect
-    //onIconSelect
-    //onDetailedIconDeselect
-    //onKeyPad select - search 
-    //thamks 
+    onBackSelect()
+    {
+        this.destroy();
+        window.createSingleTablePage();
+    }
+    
+    onSearchSelect()
+    {
         
+    }
+    onKeyPadSelect()
+    {
+    }
+    
+    onFoodCardSelect()
+    {
+    }
+    onPlusSelect()
+    {
+    }
+    onMinusSelect()
+    {
+    }
+    onDetailedFoodCardDeselect()
+    {
+    }
+    
+    onMenuSelectOption1()
+    {
+        this.titlebar.setText('Drinks'); 
+    }
+    onMenuSelectOption2()
+    {
+        this.titlebar.setText('Appetizers');
+    }
+    onMenuSelectOption3()
+    {
+        this.titlebar.setText('Specials');
+    }
+    onMenuSelectOption4()
+    {
+        this.titlebar.setText('Entrées');
+    }
+    onMenuSelectOption5()
+    {
+        this.titlebar.setText('Desserts');
+    }
+    
+        // Dynamic sizes yeah
+    onResize() {
+        if (window.isLandscape()) {
+            if (this.navbar.ref.is(':hidden')) {
+                this.navbar.ref.show();
+                this.ref.find('.content-pane').css('width', '80%');
+            }
+        } else {
+            if (this.navbar.ref.is(':visible')) {
+                this.navbar.ref.hide();
+                this.ref.find('.content-pane').css('width', '100%');
+            }
+        }
+    }
+}     
