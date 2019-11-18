@@ -306,7 +306,12 @@ white-space: nowrap;
     top: 0;
     left: 0;
     display:flex;
-    flex-direction row;
+    flex-direction : row;
+}
+
+.table
+{
+    
 }
 
 .nav-bar {
