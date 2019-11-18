@@ -29,6 +29,11 @@ window.createTableMapPage = function() {
     window.tableMapPage = new TableMapPage();
 }
 
+// Creates a new account page
+window.createNewAccountPage = function() {
+    window.newAccountPage = new newAccountPage();
+}
+
 // Do stuff on window resize
 $(window).resize(function() {
     onResize();

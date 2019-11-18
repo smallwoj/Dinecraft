@@ -11,7 +11,6 @@
     margin: 0;
     font-family: "Minecraft";
     font-weight: normal;
-    text-shadow: 0rem 0.2rem #2F2F2F;
 }
 
 body, html
@@ -369,8 +368,13 @@ white-space: nowrap;
     /*background-color:blue;*/
 }
 
-
-
-
-
-
+/* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
