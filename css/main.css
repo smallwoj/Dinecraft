@@ -380,6 +380,10 @@ white-space: nowrap;
 
 .content-pane {
     width: 80%;
+    background-image: url('../img/floortexture.png');
+    image-rendering: pixelated;
+    background-size: 5vmax;
+    background-repeat: repeat-x repeat-y;
 }
 
 .title-bar {
