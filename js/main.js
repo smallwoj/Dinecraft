@@ -25,6 +25,11 @@ window.createTableMapPage = function() {
     window.tableMapPage = new TableMapPage();
 }
 
+// Creates an ordering page
+window.createOrderingPage = function() {
+    window.orderingPage = new OrderingPage();
+}
+
 // Do stuff on window resize
 $(window).resize(function() {
     onResize();

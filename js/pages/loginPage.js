@@ -21,9 +21,10 @@ class LoginPage {
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', 'url("./img/panorama.jpg")');
 
-        // Here add all other components of the page
 
-        // Options for a dropdown menu parsed from accounts
+        // Here add all other components of the page
+        //--
+        // Options for a dropdown menu parsed from accounts 
         var options = [];
         for (var i = 0; i < window.DB.accounts.length; i++) {
             options.push({
@@ -55,7 +56,7 @@ class LoginPage {
         window.onResize = this.onResize.bind(this);
     }
 
-    // Removes the contents on the page and resets variables in windo
+    // Removes the contents on the page and resets variables in the window
     destroy() {
         this.ref.remove();
         window.loginPage = undefined;
