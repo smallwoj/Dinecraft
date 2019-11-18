@@ -57,6 +57,7 @@ class LoginPage {
     }
 
     // Removes the contents on the page and resets variables in the window
+
     destroy() {
         this.ref.remove();
         window.loginPage = undefined;
@@ -97,7 +98,6 @@ class LoginPage {
         }
     }
 
-
     // Removes a single char from a pin
     onKeypadRemove() {
         if (this.pinField.pin.length > 0) {
@@ -106,13 +106,11 @@ class LoginPage {
         }
     }
 
-
     // Clears the entered pin
     onKeypadClear() {
         this.pinField.pin = '';
         this.pinField.setEntered(0);
     }
-
 
     // When all 6 digits of the pin entered
     onPinEntered() {
