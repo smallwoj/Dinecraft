@@ -17,9 +17,9 @@ class LoginPage {
             </div>
         `);
 
-        // Append it to body and set the proper panorama iamge
+        // Append it to body and set the proper panorama image
         this.ref = el.appendTo($('body'));
-        $('body').css('background-image', 'url("./img/panorama.jpg")');
+        $('body').css('background-image', 'url("./img/pano3.png")');
 
         // Here add all other components of the page
 
