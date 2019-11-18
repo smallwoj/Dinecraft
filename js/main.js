@@ -11,9 +11,10 @@ $(document).ready(function() {
     // Start with a login page
     window.createLoginPage();
 
-    // DEBUG: start with a table map page
+    // DEBUG: start with a table map page haha just kidding I mean new account page
 //    window.auth = window.DB.accounts[0];
 //    window.createTableMapPage();
+    //window.createNewAccountPage();
 
     // Fire on resize to scale the generated page
     onResize();
@@ -29,9 +30,14 @@ window.createTableMapPage = function() {
     window.tableMapPage = new TableMapPage();
 }
 
+
 // Creates an ordering page
 window.createOrderingPage = function() {
     window.orderingPage = new OrderingPage();
+
+// Creates a new account page
+window.createNewAccountPage = function() {
+    window.newAccountPage = new newAccountPage();
 }
 
 // Do stuff on window resize
