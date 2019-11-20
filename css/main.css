@@ -282,7 +282,7 @@ white-space: nowrap;
 
 .keypad-button:not(.disabled):active
 {
-    transition: 0.07s;
+    transition: 0.05s;
     background-color: #218306;
     outline: 3px solid white;    
 }
@@ -300,9 +300,7 @@ white-space: nowrap;
 }
 
 
-
-/*Table map things*/
-.table-map-page {
+.table-map-page, .new-account-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -383,7 +381,7 @@ white-space: nowrap;
     background-image: url('../img/floortexture.png');
     image-rendering: pixelated;
     background-size: 5vmax;
-    background-repeat: repeat-x repeat-y;
+    background-repeat: repeat;
 }
 
 .title-bar {
@@ -398,14 +396,77 @@ white-space: nowrap;
     border-bottom: 5px solid #585659;
 }
 
-
 /* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
 input[type="date"]:before {
     content: attr(placeholder) !important;
     color: #aaa;
     margin-right: 0.5em;
-  }
-  input[type="date"]:focus:before,
-  input[type="date"]:valid:before {
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
     content: "";
-  }
+}
+
+.counter-btn {
+    height: 3.5vh;
+    min-height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+
+.item-counter {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:row;
+    width:50%;
+    margin:auto;
+}
+
+.item-count h4 {
+    color: #5F5F5F;
+}
+
+.counter-btn:not(.disabled):active
+{
+    transition: 0.05s;
+    background-color: #218306;
+    outline: 3px solid white;    
+}
+
+.counter-btn:not(.disabled):active h4
+{
+    color:white;
+    transition: 0.05s;
+}
+
+.acc-input {
+    max-width: 9vh;
+    min-height: 50px;
+    min-width:250px;
+}
+
+input {
+    padding: 2%;
+    background-color: #c6c6c6;
+    outline: 3px solid black;
+    border: none;
+    color: #5F5F5F;
+    transition: 0.05s;
+    font-size: 1.8rem;
+}
+
+input:focus {
+    outline-offset: 0;
+    background-color: #218306;
+    outline: 3px solid white;
+    color:white;
+    border: none;
+}
+
+input:focus::placeholder {
+    color:white;
+}
+
+
