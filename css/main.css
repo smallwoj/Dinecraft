@@ -11,6 +11,7 @@
     margin: 0;
     font-family: "Minecraft";
     font-weight: normal;
+    vertical-align:bottom;
 }
 
 body, html
@@ -128,9 +129,8 @@ h6 {
 
 .ui-style-1
 {
-    background-color: #CFC6C0;
-    border: 3px solid black;
-    vertical-align: text-bottom;
+    background-color: #c6c6c6;
+    outline: 3px solid black;
 }
 
 .ui-style-1.red
@@ -143,12 +143,13 @@ h6 {
     background-color: #959595;    
 }
 
-.ui-style-1.selected, .nav-bar .option.selected, .nav-bar .suboption.selected
+.ui-style-1.selected
 {
-    background-color: #228207;
+    background-color: #218306;
+    outline: 3px solid white;
 }
 
-.ui-style-1 h4, .nav-bar .option h4, .nav-bar .suboption h4, .account-name h4
+.ui-style-1 h4, .nav-bar .option h4, .nav-bar .suboption h4, .account-name h4, .page-name h4
 {
     color: #5F5F5F;
 }
@@ -160,7 +161,7 @@ h6 {
 
 .dropdown-item.selected, .dropdown-item:active
 {
-    background-color: #228207;
+    background-color: #218306;
 }
 
 .dropdown
@@ -211,7 +212,6 @@ h6 {
 {
 white-space: nowrap;
     margin-left: calc(0.5em + 5%);
-    vertical-align: middle;
 }
 
 .dropdown-pane
@@ -241,7 +241,7 @@ white-space: nowrap;
 .pin-indicator
 {
     width: 5%;
-    border: 2px solid black;
+    outline: 2px solid black;
 }
 
 .pin-indicator.entered
@@ -277,22 +277,26 @@ white-space: nowrap;
     max-width: 9vh;
     min-width: 50px;
     min-height: 50px;
-    transition: 0.07s;
+    transition: 0.05s;
 }
 
 .keypad-button:not(.disabled):active
 {
-    background-color: #228207;
+    transition: 0.07s;
+    background-color: #218306;
+    outline: 3px solid white;    
 }
 
 .keypad-button:not(.disabled).red:active
 {
     background-color: #B71C1C;
+    transition: 0.05s;
 }
 
 .keypad-button:not(.disabled):active h4
 {
     color:white;
+    transition: 0.05s;
 }
 
 
@@ -305,26 +309,33 @@ white-space: nowrap;
     top: 0;
     left: 0;
     display:flex;
-    flex-direction row;
+    flex-direction:row;
 }
 
 .nav-bar {
     width: 20%;
-    background-color: #b3aca6;
+    background-color: #c6c6c6;
+/*    background-color: #585659;*/
     min-width: 250px;
+    border-right: 3px solid #585659;
 }
+/*
+.account-name h4 {
+    color:white;
+}*/
 
 .account-card {
     width:100%;
     height: 9vh;
-    background-color: #cfc6c0;
+/*    background-color: #c6c6c6; */
     min-height: 50px;
     display:flex;
     align-items:center;
-    /*box-shadow:inset 0px 0px 0px 3px black;*/ 
 }
 
 .nav-bar .option, .nav-bar .suboption {
+    position: relative;
+    background-color: #c6c6c6;
     padding-left:10%;
     display:flex;
     align-items:center;
@@ -332,6 +343,7 @@ white-space: nowrap;
     height: 9vh;
     min-height: 50px;
     box-shadow:inset 0px 0px 0px 3px black; 
+    margin-bottom: -3px;
 }
 
 .nav-bar .suboption {
@@ -340,7 +352,16 @@ white-space: nowrap;
 }
 
 .nav-bar .option.selected, .nav-bar .suboption.selected {
+    z-index: 5;
     box-shadow:inset 0px 0px 0px 3px white;
+    background-color: #218306;
+    height: 10vh;
+    min-height: 60px;
+}
+
+.nav-bar .suboption.selected {
+    margin-left:8%;
+    width:82%;
 }
 
 .settings-icon {
@@ -355,7 +376,6 @@ white-space: nowrap;
 .settings-icon img {
     height:30%;
     image-rendering: pixelated;
-    vertical-align:bottom;
 }
 
 .content-pane {
@@ -378,6 +398,7 @@ white-space: nowrap;
     min-height: 50px;
     border-bottom: 5px solid #585659;
 }
+
 
 /* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
 input[type="date"]:before {

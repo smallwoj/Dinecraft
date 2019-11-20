@@ -49,5 +49,25 @@ class NavBar {
             this.opts.push(opt.appendTo(this.ref));
         }
     }
+
+    selectOption(i) {
+        if (!this.opts[i].hasClass('selected')) {
+            this.opts[i].addClass('selected');
+        }
+    }
+
+    unselectOption(i) {
+        if (this.opts[i].hasClass('selected')) {
+            this.opts[i].removeClass('selected');
+        }
+    }
+
+    unselectAll() {
+        for (var  i = 0; i < this.opts.length; i++) {
+            if (this.opts[i].hasClass('selected')) {
+                this.opts[i].removeClass('selected');
+            }
+        }
+    }
 }
 
