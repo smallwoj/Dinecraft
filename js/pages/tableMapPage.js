@@ -47,11 +47,11 @@ class TableMapPage {
         //for each table in the table database, create em
         for(var i = 0; i < window.DB.tables.length; i++)
         {
-            this.tables.push(new TableSelector(this.ref.find(".tables-wrap"), this.onTableSelect.bind(this), table[i]));
+            this.tables.push(new TableSelector(this.ref.find(".tables-wrap"), this.onTableSelect.bind(this), window.DB.tables[i]));
         }
 
         // Add the sample text
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text');
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Table Map');
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);

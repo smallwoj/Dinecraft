@@ -46,7 +46,7 @@ window.DB.createFakeData = function() {
     window.DB.accounts.push(new Account('Joe mama', '696969', window.DB.getIconByName('userAcc4')));
  
     // Tables
-    window.DB.tables.push(new Table(1, 'available', [], {'x': 1, 'y':1}, 1));
+    window.DB.tables.push(new Table(1, 'available', [], {'x': 0.5, 'y':0.5}, 1));
     
     //TODO: maybe put an in-progress table later, once thats more fleshed out
     //TODO: another table that is being cleaned... do that myself
