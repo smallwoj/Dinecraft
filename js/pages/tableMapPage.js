@@ -43,10 +43,6 @@ class TableMapPage {
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
-
-
-        // Testing out the item card
-//        this.card = new ItemCard(this.ref.find('.content-pane'), window.DB.menuItems[0]);
     }
 
     // Removes the contents on the page and resets variables in window
@@ -69,8 +65,6 @@ class TableMapPage {
                 this.ref.find('.content-pane').css('width', '100%');
             }
         }
-
-        this.card.resize(); 
     }
 }
 

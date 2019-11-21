@@ -9,12 +9,12 @@ $(document).ready(function() {
     window.DB.createFakeData();
 
     // Start with a login page
-//    window.createLoginPage();
+    window.createLoginPage();
 
     // DEBUG: start with a table map page haha just kidding I mean new account page
-    window.auth = window.DB.accounts[0];
+//    window.auth = window.DB.accounts[0];
 //    window.createTableMapPage();
-    window.createNewAccountPage();
+//    window.createNewAccountPage();
 
     // Fire on resize to scale the generated page
     onResize();
@@ -30,9 +30,14 @@ window.createTableMapPage = function() {
     window.tableMapPage = new TableMapPage();
 }
 
+// Creates an accounts list page
+window.createAccountsListPage = function() {
+    window.accountsListPage = new AccountsListPage();
+}
+
 // Creates a new account page
 window.createNewAccountPage = function() {
-    window.newAccountPage = new newAccountPage();
+    window.newAccountPage = new NewAccountPage();
 }
 
 // Do stuff on window resize

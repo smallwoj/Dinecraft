@@ -13,6 +13,7 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('userAcc2', './img/profile_icons/mr_krabs.png'));
     window.DB.icons.push(new Icon('userAcc3', './img/profile_icons/pickaxe_guy.png'));
     window.DB.icons.push(new Icon('userAcc4', './img/profile_icons/joe_mama.png'));
+    window.DB.icons.push(new Icon('userAcc5', './img/profile_icons/jimpeg.jpg'));
     window.DB.icons.push(new Icon('settings-n', './img/settings-standard.png'));
     window.DB.icons.push(new Icon('settings-s', './img/settings-selected.png'));
     // Food

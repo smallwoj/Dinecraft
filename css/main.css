@@ -110,7 +110,7 @@ h6 {
 .login-page .pin-wrap
 {
     min-width: 200px;
-    height:5vh;
+    height:5vmin;
     width: 60%;
     margin-bottom: 5%;
 }
@@ -143,23 +143,26 @@ h6 {
     background-color: #959595;    
 }
 
-.ui-style-1.selected
+.ui-style-1.selected, .create-btn:active, .create-acc-btn:active
 {
     background-color: #218306;
     outline: 3px solid white;
 }
 
-.ui-style-1 h4, .nav-bar .option h4, .nav-bar .suboption h4, .account-name h4, .page-name h4
+.ui-style-1 h4, .account-name h4, .page-name h4
 {
     color: #5F5F5F;
 }
+.nav-bar .option h4, .nav-bar .suboption h4 {
+    color:black;
+}
 
-.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4
+.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4, .create-btn:active h4, .create-acc-btn:active h4
 {
     color: white;
 }
 
-.dropdown-item.selected, .dropdown-item:active
+.dropdown-item.selected, .dropdown-item:active, .create-btn:active, .create-acc-btn:active
 {
     background-color: #218306;
 }
@@ -183,7 +186,9 @@ h6 {
 
 .dropdown-item, .account-details
 {
-    height: 100%;
+    height: 9vmin;
+    min-height: 50px;
+
     width: 100%;
     transition: 0.1s;
     display: flex;
@@ -211,7 +216,7 @@ h6 {
 .dropdown-item-text, .account-name
 {
 white-space: nowrap;
-    margin-left: calc(0.5em + 5%);
+    margin-left: 1.5rem;
 }
 
 .dropdown-pane
@@ -221,6 +226,7 @@ white-space: nowrap;
     left:0;
     width: 100%;
     display:none;
+    z-index:5;
 }
 
 .dropdown-pane .dropdown-item-text
@@ -274,7 +280,7 @@ white-space: nowrap;
     flex-direction: column;
     justify-content: center;
     width: 25%;
-    max-width: 9vh;
+    max-width: 9vmin;
     min-width: 50px;
     min-height: 50px;
     transition: 0.05s;
@@ -300,7 +306,7 @@ white-space: nowrap;
 }
 
 
-.table-map-page, .new-account-page {
+.table-map-page, .new-account-page, .accounts-list-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -324,7 +330,7 @@ white-space: nowrap;
 
 .account-card {
     width:100%;
-    height: 9vh;
+    height: 9vmin;
 /*    background-color: #c6c6c6; */
     min-height: 50px;
     display:flex;
@@ -338,7 +344,7 @@ white-space: nowrap;
     display:flex;
     align-items:center;
     width:90%;
-    height: 9vh;
+    height: 9vmin;
     min-height: 50px;
     box-shadow:inset 0px 0px 0px 3px black; 
     margin-bottom: -3px;
@@ -353,7 +359,7 @@ white-space: nowrap;
     z-index: 5;
     box-shadow:inset 0px 0px 0px 3px white;
     background-color: #218306;
-    height: 10vh;
+    height: 10vmin;
     min-height: 60px;
 }
 
@@ -382,6 +388,7 @@ white-space: nowrap;
     image-rendering: pixelated;
     background-size: 5vmax;
     background-repeat: repeat;
+    position:relative;
 }
 
 .title-bar {
@@ -390,9 +397,9 @@ white-space: nowrap;
     justify-content: space-around;
     flex-direction: row;
     width:100%;
-    height: 9vh;
-    background-color: #c6c6c6;
+    height: 9vmin;
     min-height: 50px;
+    background-color: #c6c6c6;
     border-bottom: 5px solid #585659;
 }
 
@@ -408,7 +415,7 @@ input[type="date"]:valid:before {
 }
 
 .counter-btn {
-    height: 3.5vh;
+    height: 3.5vmin;
     min-height:25px;
     display:flex;
     align-items:center;
@@ -441,20 +448,50 @@ input[type="date"]:valid:before {
     transition: 0.05s;
 }
 
-.acc-input {
-    max-width: 9vh;
+.acc-input, .role-select, .icon-select {
+    position:relative;
+    height: 9vmin;
     min-height: 50px;
-    min-width:250px;
+    min-width:120px;
+    width: 60%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 5%;
+    font-size: 1.8rem;
+}
+
+.create-btn {
+    height: 10vmin;
+    min-height: 60px;
+    width:calc(70% + 1.5rem);
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    justify-content: space-around;
+    color: white;
+}
+
+.create-btn h4 {
+    color:black;
+}
+
+.role-select, .icon-select {
+    width:calc(60% + 1.5rem);
+}
+
+.role-select h4, .icon-select h4 {
+    font-size: 1.8rem;
 }
 
 input {
-    padding: 2%;
+    padding-left: calc(1.5rem);
+    width:calc(100% - 1.5rem);
     background-color: #c6c6c6;
     outline: 3px solid black;
     border: none;
     color: #5F5F5F;
     transition: 0.05s;
-    font-size: 1.8rem;
 }
 
 input:focus {
@@ -469,4 +506,72 @@ input:focus::placeholder {
     color:white;
 }
 
+.account-creation-wrap {
+    position:relative;
+    margin:auto;
+    height: calc(100% - 9vmin);
+    width: 50%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+}
 
+.account-creation {
+    width: 100%;
+    text-align:center;
+}
+
+.accounts-list-wrap {
+    position:relative;
+    margin:auto;
+    height: calc(100% - 9vmin);
+    width: 35%;
+    min-width: 400px;
+    background-color: #c6c6c6;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    border-left: 3px solid #585659;
+    border-right: 3px solid #585659;
+}
+
+.accounts-list {
+    margin-top:5%;
+    width:100%;
+    max-width:340px;
+    padding-right:1rem;
+}
+.accounts-list .account-details {
+    justify-content:space-between;
+}
+
+.accounts-list .account-name {
+    text-align:left;
+    width:100%;
+}
+
+.accounts-list .account-role {
+    width: 100%;
+    text-align:right;
+}
+
+.account-role h4 {
+    color: #5F5F5F;
+}
+
+.create-acc-btn {
+    width:100%;
+    height: 9vmin;
+    min-height: 50px;
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    justify-content: space-around;
+    margin-top:10%;
+}
+
+.create-acc-btn h4 {
+    color: black;
+}
