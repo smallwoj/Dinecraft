@@ -16,20 +16,9 @@ class TableMapPage {
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
 
-        // Add the navbar with all the options/account info
-        this.navbar = new NavBar(this.ref, [{
-            'text' : 'Menu option 1',
+        var navbarOpts = [{
+            'text' : 'Table Map',
             'selected' : true,
-        }, {
-            'text' : 'Menu subopt 1',
-            'selected' : true,
-            'suboption' : true,
-        }, {
-            'text' : 'Menu subopt 2',
-            'suboption' : true,
-            'onClick' : function () {
-                alert('clicked suboption 2');
-            },
         }, {
             'text' : 'Menu option 2',
             'onClick' : function() {
@@ -40,7 +29,17 @@ class TableMapPage {
             'onClick' : function() {
                 alert('clicked 3');
             },
-        }]);
+        }];
+
+        if (window.auth.role === 'manager') {
+            navbarOpts.push({
+                'text' : 'Accounts List',
+                'onClick' : this.goToAccList.bind(this),
+            });
+        }
+
+        // Add the navbar with all the options/account info
+        this.navbar = new NavBar(this.ref, navbarOpts);
 
         this.tables = [];
 
@@ -68,16 +67,19 @@ class TableMapPage {
     onResize() {
         //navbar stuff
         if (window.isLandscape()) {
-            if (this.navbar.ref.is(':hidden')) {
-                this.navbar.ref.show();
-                this.ref.find('.content-pane').css('width', '80%');
-            }
+            this.navbar.ref.show();
+            this.ref.find('.content-pane').css('width', '80%');
+            this.titleBar.hideHamburger();
         } else {
-            if (this.navbar.ref.is(':visible')) {
-                this.navbar.ref.hide();
-                this.ref.find('.content-pane').css('width', '100%');
-            }
+            this.navbar.ref.hide();
+            this.ref.find('.content-pane').css('width', '100%');
+            this.titleBar.showHamburger();
         }
+    }
+
+    goToAccList() {
+        this.destroy();
+        window.createAccountsListPage();
     }
 
     onTableSelect(table)

@@ -16,6 +16,12 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('userAcc5', './img/profile_icons/jimpeg.jpg'));
     window.DB.icons.push(new Icon('settings-n', './img/settings-standard.png'));
     window.DB.icons.push(new Icon('settings-s', './img/settings-selected.png'));
+    window.DB.icons.push(new Icon('back-n', './img/back-standard.png'));
+    window.DB.icons.push(new Icon('back-s', './img/back-selected.png'));
+    window.DB.icons.push(new Icon('hamburger-n', './img/hamburgermenu-standard.png'));
+    window.DB.icons.push(new Icon('hamburger-s', './img/hamburgermenu-selected.png'));
+
+
     // Food
     window.DB.icons.push(new Icon('waterBottle', './img/food/Water_Bottle.png'));
     window.DB.icons.push(new Icon('potionOfPoison', './img/food/Potion_of_Poison.png'));

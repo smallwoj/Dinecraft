@@ -16,10 +16,8 @@ class AccountsListPage {
         $('body').css('background-image', '');
 
         this.navbar = new NavBar(this.ref, [{
-            'text' : 'Menu option 1',
-            'onClick' : function() {
-                alert('clicked 1');
-            },
+            'text' : 'Table Map',
+            'onClick' : this.goToTableMap.bind(this),
         }, {
             'text' : 'Menu option 2',
             'onClick' : function() {
@@ -66,16 +64,19 @@ class AccountsListPage {
 
     onResize() {
         if (window.isLandscape()) {
-            if (this.navbar.ref.is(':hidden')) {
-                this.navbar.ref.show();
-                this.ref.find('.content-pane').css('width', '80%');
-            }
+            this.navbar.ref.show();
+            this.ref.find('.content-pane').css('width', '80%');
+            this.titleBar.hideHamburger();
         } else {
-            if (this.navbar.ref.is(':visible')) {
-                this.navbar.ref.hide();
-                this.ref.find('.content-pane').css('width', '100%');
-            }
+            this.navbar.ref.hide();
+            this.ref.find('.content-pane').css('width', '100%');
+            this.titleBar.showHamburger();
         }
+    }
+
+    goToTableMap() {
+        this.destroy();
+        window.createTableMapPage();
     }
 
     onCreate() {
