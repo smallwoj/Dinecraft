@@ -394,13 +394,26 @@ white-space: nowrap;
 .title-bar {
     display:flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     width:100%;
     height: 9vmin;
     min-height: 50px;
     background-color: #c6c6c6;
     border-bottom: 5px solid #585659;
+}
+
+.tb-right {
+    margin-right:2%;
+    text-align: right;
+}
+
+.tb-left h4 {
+    color: #5F5F5F;
+}
+.tb-left {
+    margin-left: 2%;
+    text-align:left;
 }
 
 /* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
