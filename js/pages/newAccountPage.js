@@ -92,18 +92,16 @@ class NewAccountPage {
 
     onResize() {
         if (window.isLandscape()) {
-            if (this.navbar.ref.is(':hidden')) {
-                this.navbar.ref.show();
-                this.ref.find('.content-pane').css('width', '80%');
-            }
+            this.navbar.ref.show();
+            this.ref.find('.content-pane').css('width', '80%');
+            this.titleBar.hideHamburger();
         } else {
-            if (this.navbar.ref.is(':visible')) {
-                this.navbar.ref.hide();
-                this.ref.find('.content-pane').css('width', '100%');
-            }
+            this.navbar.ref.hide();
+            this.ref.find('.content-pane').css('width', '100%');
+            this.titleBar.showHamburger();
         }
     }
-
+ 
     onSubmit() {
         // Somebody please do error checking here
         this.destroy(); // we are moving from the page

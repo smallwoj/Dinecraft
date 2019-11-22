@@ -66,18 +66,16 @@ class AccountsListPage {
 
     onResize() {
         if (window.isLandscape()) {
-            if (this.navbar.ref.is(':hidden')) {
-                this.navbar.ref.show();
-                this.ref.find('.content-pane').css('width', '80%');
-            }
+            this.navbar.ref.show();
+            this.ref.find('.content-pane').css('width', '80%');
+            this.titleBar.hideHamburger();
         } else {
-            if (this.navbar.ref.is(':visible')) {
-                this.navbar.ref.hide();
-                this.ref.find('.content-pane').css('width', '100%');
-            }
+            this.navbar.ref.hide();
+            this.ref.find('.content-pane').css('width', '100%');
+            this.titleBar.showHamburger();
         }
     }
-
+ 
     onCreate() {
         this.destroy();
         window.createNewAccountPage();

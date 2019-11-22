@@ -18,6 +18,8 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('settings-s', './img/settings-selected.png'));
     window.DB.icons.push(new Icon('back-n', './img/back-standard.png'));
     window.DB.icons.push(new Icon('back-s', './img/back-selected.png'));
+    window.DB.icons.push(new Icon('hamburger-n', './img/hamburgermenu-standard.png'));
+    window.DB.icons.push(new Icon('hamburger-s', './img/hamburgermenu-selected.png'));
 
 
     // Food

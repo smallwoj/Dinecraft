@@ -32,6 +32,15 @@ body
     animation: 80s ease-in-out infinite alternate background-scroll; 
 }
 
+.dark-overlay {
+    background-color: rgba(1.0, 1.0, 1.0, 0.5);
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
+
 @keyframes background-scroll
 {
     from { background-position: 0;}
@@ -305,7 +314,6 @@ white-space: nowrap;
     transition: 0.05s;
 }
 
-
 .table-map-page, .new-account-page, .accounts-list-page {
     width: 100vw;
     height: 100vh;
@@ -317,7 +325,9 @@ white-space: nowrap;
 }
 
 .nav-bar {
+    z-index:3;
     width: 20%;
+    height:100vh;
     background-color: #c6c6c6;
 /*    background-color: #585659;*/
     min-width: 250px;
@@ -403,17 +413,44 @@ white-space: nowrap;
     border-bottom: 5px solid #585659;
 }
 
+.page-name {
+    width:60%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
 .tb-right {
-    margin-right:2%;
+    width:20%;
     text-align: right;
 }
 
-.tb-left h4 {
-    color: #5F5F5F;
-}
 .tb-left {
-    margin-left: 2%;
+    width:20%;
+    height:100%;
     text-align:left;
+}
+
+.hamburger-btn {
+    margin-left:2%;
+    width:9vmin;
+    height:100%;
+    display:flex;
+    align-items:center;
+    visibility:hidden;
+}
+
+.hamburger-btn img {
+    margin:auto;
+    height: 70%;
+    width:auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    image-rendering:pixelated;
+}
+
+.hamburger-btn:active {
+    background-color: #218306;
 }
 
 /* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
@@ -465,7 +502,7 @@ input[type="date"]:valid:before {
     position:relative;
     height: 9vmin;
     min-height: 50px;
-    min-width:120px;
+    min-width:240px;
     width: 60%;
     margin-left:auto;
     margin-right:auto;
