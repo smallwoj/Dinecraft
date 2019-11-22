@@ -42,7 +42,7 @@ class TableMapPage {
             },
         }]);
 
-        this.tables = []
+        this.tables = [];
 
         //for each table in the table database, create em
         for(var i = 0; i < window.DB.tables.length; i++)
