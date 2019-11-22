@@ -9,7 +9,7 @@ $(document).ready(function() {
     window.DB.createFakeData();
 
     // Start with a login page
-    //window.createLoginPage();
+    window.createLoginPage();
 
     // DEBUG: start with a table map page haha just kidding I mean new account page
 //    window.auth = window.DB.accounts[0];
