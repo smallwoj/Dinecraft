@@ -9,12 +9,13 @@ $(document).ready(function() {
     window.DB.createFakeData();
 
     // Start with a login page
-    window.createLoginPage();
+    //window.createLoginPage();
 
-    // DEBUG: start with a table map page haha just kidding I mean new account page
-//    window.auth = window.DB.accounts[0];
+    // DEBUG: start with a table map page haha just kidding I mean single table page
+    window.auth = window.DB.accounts[0];
 //    window.createTableMapPage();
     //window.createNewAccountPage();
+    window.createSingleTablePage();
 
     // Fire on resize to scale the generated page
     onResize();
@@ -28,6 +29,11 @@ window.createLoginPage = function() {
 // Creates a table map page
 window.createTableMapPage = function() {
     window.tableMapPage = new TableMapPage();
+}
+
+// Creates a single table page
+window.createSingleTablePage = function() {
+    window.singleTablePage = new SingleTablePage();
 }
 
 // Creates a new account page
