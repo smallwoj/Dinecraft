@@ -78,9 +78,6 @@ class TableMapPage {
                 this.ref.find('.content-pane').css('width', '100%');
             }
         }
-
-        //table map stuff
-
     }
 
     onTableSelect(table)
@@ -88,7 +85,7 @@ class TableMapPage {
         this.destroy();
         //store which table we are at and go to the next page
         window.currTable = table;
-        //TODO: The Line
+        window.createSingleTablePage();
     }
 }
 
