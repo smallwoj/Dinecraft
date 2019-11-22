@@ -347,6 +347,12 @@ white-space: nowrap;
     align-items:center;
 }
 
+.search-input {
+    width:80%;
+    margin-right:5%;
+    height: 5vmin;
+}
+
 .nav-bar .option, .nav-bar .suboption {
     position: relative;
     background-color: #c6c6c6;

@@ -39,7 +39,7 @@ class TableMapPage {
         }]);
 
         // Add the sample text
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text', function() { alert(1) });
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text', function(ret) { alert(ret) });
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
