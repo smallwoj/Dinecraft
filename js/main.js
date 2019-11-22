@@ -15,6 +15,7 @@ $(document).ready(function() {
    window.auth = window.DB.accounts[0];
    window.createTableMapPage();
 
+
     // Fire on resize to scale the generated page
     onResize();
 });
@@ -27,6 +28,11 @@ window.createLoginPage = function() {
 // Creates a table map page
 window.createTableMapPage = function() {
     window.tableMapPage = new TableMapPage();
+}
+
+// Creates a single table page
+window.createSingleTablePage = function() {
+    window.singleTablePage = new SingleTablePage();
 }
 
 // Creates a new account page

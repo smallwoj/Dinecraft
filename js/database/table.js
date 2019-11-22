@@ -5,6 +5,7 @@ class Table {
         this.guestOrders = [];              // Array of GuestOrder
         this.pos = pos;
         this.number = num;
+        this.img = ''
 
         if (this.state == 'taken') {
             this.guestOrders = guestOrders;

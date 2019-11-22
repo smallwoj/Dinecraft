@@ -5,8 +5,17 @@ class TableSelector
         TableSelector.num++;
         this.onSelect = onSelect;
         this.data = tableData;
+
+        if(Math.floor(Math.random() * 2) === 1)
+        {
+            tableData.img = './img/table.png';
+        }
+        else
+        {
+            tableData.img = './img/table2.png';
+        }
         
-        var el = $('<div class="table'+TableSelector.num+' ui-style-1 table-style"><img src="./img/table.png"></div>');
+        var el = $('<div class="table'+TableSelector.num+' ui-style-1 table-style"><img src="'+tableData.img+'"></div>');
         el.click(cbc(this, 0, function(p){p.onClick()}));
         //var tableRef = this.ref.find(`.table${TableSelector.num}`);
         if(this.data.state === 'cleaning')
