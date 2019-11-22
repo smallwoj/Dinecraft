@@ -1,12 +1,17 @@
-// Controls the behaviour of the table map page
-class TableMapPage {
+// The "single table page" is very similar to the table map page. 
+// Once the table map page is more developed, we should consider merging the two, in order to facilitate a smooth transition between them
+
+const MAX_GUESTS = 5;
+
+class SingleTablePage {
     constructor() {
         // Main data of the element
         var el = $(`
-            <div class="table-map-page">
+            <div class="single-table-page">
                 <div class="content-pane">
-                    <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
-                        <div class="tables-wrap"></div>
+                    <div class="cool-content-pane">
+                        <div class="table-display"></div>
+                        
                     </div>
                 </div>
             </div>
@@ -18,40 +23,41 @@ class TableMapPage {
 
         // Add the navbar with all the options/account info
         this.navbar = new NavBar(this.ref, [{
-            'text' : 'Menu option 1',
+            'text' : 'Make these options the tables',
             'selected' : true,
         }, {
-            'text' : 'Menu subopt 1',
+            'text' : 'and maybe these the people',
             'selected' : true,
             'suboption' : true,
         }, {
-            'text' : 'Menu subopt 2',
+            'text' : '😂',
             'suboption' : true,
             'onClick' : function () {
                 alert('clicked suboption 2');
             },
         }, {
-            'text' : 'Menu option 2',
+            'text' : 'once we have a table database',
             'onClick' : function() {
                 alert('clicked 2');
             },
         }, {
-            'text' : 'Menu option 3',
+            'text' : '😎',
             'onClick' : function() {
                 alert('clicked 3');
             },
         }]);
 
-        this.tables = [];
-
-        //for each table in the table database, create em
-        for(var i = 0; i < window.DB.tables.length; i++)
-        {
-            this.tables.push(new TableSelector(this.ref.find(".tables-wrap"), this.onTableSelect.bind(this), window.DB.tables[i]));
-        }
-
         // Add the sample text
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Table Map');
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text');
+
+        // Add the table (you get one)
+        //this.table = new // Imma let Josh do his thing with the table overview first
+
+        // Add the guests
+        this.guests = [];
+
+        // Add the table order card
+        this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), this.guests);
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
@@ -60,13 +66,22 @@ class TableMapPage {
     // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
-        window.loginPage = undefined;
+        window.singleTablePage = undefined;
         window.onResize = undefined;
+    }
+
+    // Adds a guest to the table 
+    addGuest() {
+
+    }
+
+    // Removes a guest from the table 
+    removeGuest() {
+        // If the guest has an (non-empty) order, ask for confirmation before removing them
     }
 
     // Dynamic sizes yeah
     onResize() {
-        //navbar stuff
         if (window.isLandscape()) {
             if (this.navbar.ref.is(':hidden')) {
                 this.navbar.ref.show();
@@ -79,13 +94,4 @@ class TableMapPage {
             }
         }
     }
-
-    onTableSelect(table)
-    {
-        this.destroy();
-        //store which table we are at and go to the next page
-        window.currTable = table;
-        window.createSingleTablePage();
-    }
 }
-
