@@ -41,10 +41,10 @@ window.DB.createFakeData = function() {
     // Wow look at that zigzag in the whitespace ^
 
     // Accounts
-    window.DB.accounts.push(new Account('Mega Karen', '420420', window.DB.getIconByName('userAcc1')));
-    window.DB.accounts.push(new Account('Mr. Krabs', '333333', window.DB.getIconByName('userAcc2')));
-    window.DB.accounts.push(new Account('Pickaxe Guy', '481516', window.DB.getIconByName('userAcc3')));
-    window.DB.accounts.push(new Account('Joe mama', '696969', window.DB.getIconByName('userAcc4')));
+    window.DB.accounts.push(new Account('Mega Karen', '420420', 'server', window.DB.getIconByName('userAcc1')));
+    window.DB.accounts.push(new Account('Mr. Krabs', '333333', 'manager', window.DB.getIconByName('userAcc2')));
+    window.DB.accounts.push(new Account('Pickaxe Guy', '481516', 'server', window.DB.getIconByName('userAcc3')));
+    window.DB.accounts.push(new Account('Joe mama', '696969', 'server', window.DB.getIconByName('userAcc4')));
  
     // Tables
     window.DB.tables.push(new Table(1, 'available', [], {'x': -0.5, 'y':-0.5}, 1));
