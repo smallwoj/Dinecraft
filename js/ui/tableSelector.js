@@ -35,16 +35,9 @@ class TableSelector //class for a button that selects a table to go to the next 
         }
         //insert the html elemnt
         this.ref = el.appendTo($(insideElem));
-        if(window.isLandscape())
-        {
-            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 20, 100)}%`);
-            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
-        }
-        else
-        {
-            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 1, 100)}%`);
-            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
-        }
+
+        //call the resize method to correctly position the table
+        this.onResize();
     }
     
     /**
@@ -60,15 +53,9 @@ class TableSelector //class for a button that selects a table to go to the next 
      */
     onResize()
     {
-        if(window.isLandscape())
-        {
-            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 20, 100)}%`);
-            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
-        }
-        else
-        {
-            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 1, 100)}%`);
-            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
-        }
+        $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 0, 100)}%`);
+        $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 0, 100)}%`);    
+        $(`.table${this.tableData.number}`).css('margin-left', `-24px`);    
+        $(`.table${this.tableData.number}`).css('margin-top', `-24px`);    
     }
 }
