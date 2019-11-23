@@ -53,6 +53,7 @@ class AccountsListPage {
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
+        this.onResize();
     }
 
     // Removes the contents on the page and resets variables in window
