@@ -10,7 +10,8 @@ class SingleTablePage {
             <div class="single-table-page">
                 <div class="content-pane">
                     <div class="cool-content-pane">
-                        <div class="table-display"></div>
+                        <div class="table-display">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,6 +49,10 @@ class SingleTablePage {
 
         // Add the table text
         this.titleBar = new TitleBar(this.ref.find('.content-pane'), "Table " + window.currTable.number);
+
+        // Add the table image
+        $('.table-display').css('background', 'url(' + window.currTable.img + ') no-repeat center center');
+        $('.table-display').css('background-size', '30%');
 
         // Add the guests
         this.guests = [];

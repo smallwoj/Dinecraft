@@ -13,8 +13,15 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('userAcc2', './img/profile_icons/mr_krabs.png'));
     window.DB.icons.push(new Icon('userAcc3', './img/profile_icons/pickaxe_guy.png'));
     window.DB.icons.push(new Icon('userAcc4', './img/profile_icons/joe_mama.png'));
+    window.DB.icons.push(new Icon('userAcc5', './img/profile_icons/jimpeg.jpg'));
     window.DB.icons.push(new Icon('settings-n', './img/settings-standard.png'));
     window.DB.icons.push(new Icon('settings-s', './img/settings-selected.png'));
+    window.DB.icons.push(new Icon('back-n', './img/back-standard.png'));
+    window.DB.icons.push(new Icon('back-s', './img/back-selected.png'));
+    window.DB.icons.push(new Icon('hamburger-n', './img/hamburgermenu-standard.png'));
+    window.DB.icons.push(new Icon('hamburger-s', './img/hamburgermenu-selected.png'));
+
+
     // Food
     window.DB.icons.push(new Icon('waterBottle', './img/food/Water_Bottle.png'));
     window.DB.icons.push(new Icon('potionOfPoison', './img/food/Potion_of_Poison.png'));
@@ -40,26 +47,26 @@ window.DB.createFakeData = function() {
     // Wow look at that zigzag in the whitespace ^
 
     // Accounts
-    window.DB.accounts.push(new Account('Mega Karen', '420420', window.DB.getIconByName('userAcc1')));
-    window.DB.accounts.push(new Account('Mr. Krabs', '333333', window.DB.getIconByName('userAcc2')));
-    window.DB.accounts.push(new Account('Pickaxe Guy', '481516', window.DB.getIconByName('userAcc3')));
-    window.DB.accounts.push(new Account('Joe mama', '696969', window.DB.getIconByName('userAcc4')));
+    window.DB.accounts.push(new Account('Mega Karen', '420420', 'server', window.DB.getIconByName('userAcc1')));
+    window.DB.accounts.push(new Account('Mr. Krabs', '333333', 'manager', window.DB.getIconByName('userAcc2')));
+    window.DB.accounts.push(new Account('Pickaxe Guy', '481516', 'server', window.DB.getIconByName('userAcc3')));
+    window.DB.accounts.push(new Account('Joe mama', '696969', 'server', window.DB.getIconByName('userAcc4')));
  
     // Tables
     window.DB.tables.push(new Table(1, 'available', [], {'x': -0.5, 'y':-0.5}));
     window.DB.tables.push(new Table(2, 'available', [], {'x': 0.5, 'y':-0.5}));
-    window.DB.tables.push(new Table(4, 'available', [], {'x': 0.5, 'y':0.5}));
-    window.DB.tables.push(new Table(3, 'cleaning', [], {'x': -0.5, 'y':0.5}));
+    window.DB.tables.push(new Table(3, 'available', [], {'x': 0.5, 'y':0.5}));
+    window.DB.tables.push(new Table(4, 'cleaning', [], {'x': -0.5, 'y':0.5}));
     
     // Menu items
     // Drinks
     window.DB.menuItems.push(new MenuItem('Water Bottle', 'Drinks', 'waterBottle', 'A cool refreshing glass of water melted from the most exquisite blue ice', [], 0, 0));
     window.DB.menuItems.push(new MenuItem('Awkward Potion', 'Drinks', 'waterBottle', 'Contains: awkwardness, please do not give to those who are allergic to social interaction', ['Potion'], 0, 2));
-    window.DB.menuItems.push(new MenuItem('Mundane Potion', 'Drinks', 'waterBottle', 'Drink this if you\'re on a date you want to end quickly…', ['Potion'], 0, 2));
+    window.DB.menuItems.push(new MenuItem('Mundane Potion', 'Drinks', 'waterBottle', 'Drink this if you\'re on a date you want to end quickly...', ['Potion'], 0, 2));
     window.DB.menuItems.push(new MenuItem('Thick Potion', 'Drinks', 'waterBottle', 'We wanted to spell \'thick\' with three c\'s but that tripped up the autocorrect', ['Potion'], 9999, 2));
     window.DB.menuItems.push(new MenuItem('Potion of Water Breathing', 'Drinks', 'waterBottle', 'If you drink this you can inhale our famous \'Water Bottle\'', ['Potion'], 1, 2));
     window.DB.menuItems.push(new MenuItem('Potion of Poison', 'Drinks', 'potionOfPoison', 'For when you think you might be enjoying your meal too much', ['Potion'], -1, 2));
-    window.DB.menuItems.push(new MenuItem('Potion of Slowness', 'Drinks', 'potionOfSlowness', 'We\'re still... thinking of… a description for this one...', ['Potion'], 1, 2));
+    window.DB.menuItems.push(new MenuItem('Potion of Slowness', 'Drinks', 'potionOfSlowness', 'We\'re still... thinking of... a description for this one...', ['Potion'], 1, 2));
     window.DB.menuItems.push(new MenuItem('Potion of Fire Resistance', 'Drinks', 'potionOfFireResistance', 'No guarantees that this will make you resistant to spicy food', ['Potion'], 1, 2));
     window.DB.menuItems.push(new MenuItem('Potion of Weakness', 'Drinks', 'waterBottle', '"What\'s your weakness?"', ['Potion'], 1, 2));
     // Appetizers
@@ -75,9 +82,9 @@ window.DB.createFakeData = function() {
     window.DB.menuItems.push(new MenuItem('Cooked Mutton', 'Entrées', 'meat', 'Only a REAL man can eat this', ['Meat'], 294, 22));
     window.DB.menuItems.push(new MenuItem('Cooked Salmon', 'Entrées', 'meat', 'Swam upstream right onto your plate', ['Meat'], 178, 22));
     window.DB.menuItems.push(new MenuItem('Cooked Chicken', 'Entrées', 'chicken', 'Tastes like chicken...', ['Meat'], 239, 18));
-    window.DB.menuItems.push(new MenuItem('Baked Potato', 'Entrées', 'potato', 'Vegetarians in minecraft be like…', ['Vegetarian', 'Vegan', 'Gluten free'], 70, 5));
+    window.DB.menuItems.push(new MenuItem('Baked Potato', 'Entrées', 'potato', 'Vegetarians in minecraft be like...', ['Vegetarian', 'Vegan', 'Gluten free'], 70, 5));
     // Deserts
-    window.DB.menuItems.push(new MenuItem('Pumpkin Pie', 'Desserts', 'pie', 'Pumpkin pie just like mom used to make… an award winning dessert', ['Vegetarian'], 243, 5));
+    window.DB.menuItems.push(new MenuItem('Pumpkin Pie', 'Desserts', 'pie', 'Pumpkin pie just like mom used to make... an award winning dessert', ['Vegetarian'], 243, 5));
     window.DB.menuItems.push(new MenuItem('Sweet Berries', 'Desserts', 'sweetBerries', 'Verified non-poisonous by our expert team of taste-testers', ['Vegetarian', 'Vegan', 'Gluten free'], 74, 5));
     window.DB.menuItems.push(new MenuItem('Honey Bottle', 'Desserts', 'honeyBottle', 'Please for the love of everything save the bees', ['Vegetarian', 'Gluten free'], 304, 8));
     window.DB.menuItems.push(new MenuItem('Cookie', 'Desserts', 'cookie', 'A classic cookie! You\'ll want to wipe the pixelated crumbs off your shirt before you get up', ['Vegetarian'], 40, 3));

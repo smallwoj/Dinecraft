@@ -2,15 +2,19 @@ class NavBar {
     constructor(insideElem, opts) {
         var el = $(`
             <div class="nav-bar">
-                <div class="account-card">
-                    <div class="account-details">
-                        <div class="account-icon">
-                            <img src="${window.auth.icon.getSource()}">
-                        </div>
-                        <div class="account-name">
-                            <h4>${window.auth.name}</h4>
+                <div class="nav-bar-top">
+                    <div class="account-card">
+                        <div class="account-details">
+                            <div class="account-icon">
+                                <img src="${window.auth.icon.getSource()}">
+                            </div>
+                            <div class="account-name">
+                                <h4>${window.auth.name}</h4>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="nav-bar-bottom">
                 </div>
             </div>
         `);
@@ -46,8 +50,19 @@ class NavBar {
             }
 
             // Also store a reference to the option DOM element
-            this.opts.push(opt.appendTo(this.ref));
+            this.opts.push(opt.appendTo(this.ref.find('.nav-bar-top')));
         }
+
+        this.ref.find('.nav-bar-bottom').append(`<div class="logout-btn"><h4>Log Out</h4></div>`);
+        this.ref.find('.logout-btn').click(cbc(this, null, function(p) {
+            window.makePopup('Do you want to log out?', p.logout.bind(p));
+        }));
+    }
+
+    logout() {
+        window.appPage.destroy();
+        window.auth = undefined;
+        window.createLoginPage();
     }
 
     selectOption(i) {
