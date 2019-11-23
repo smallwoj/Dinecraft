@@ -8,8 +8,6 @@ class TableSelector //class for a button that selects a table to go to the next 
      */
     constructor(insideElem, onSelect, tableData)
     {
-        //increment the current number of tables
-        TableSelector.num++;
         //load parameters
         this.onSelect = onSelect;
         this.data = tableData;
@@ -26,7 +24,7 @@ class TableSelector //class for a button that selects a table to go to the next 
         }
         
         //create the html element
-        var el = $('<div class="table'+TableSelector.num+' ui-style-1 table-style"><img src="'+this.tableData.img+'"></div>');
+        var el = $('<div class="table'+this.tableData.number+' ui-style-1 table-style"><img src="'+this.tableData.img+'"></div>');
         //set what happens when you click on the table
         el.click(cbc(this, 0, function(p){p.onClick()}));
         //if this table needs cleaning, show the icon
@@ -37,8 +35,16 @@ class TableSelector //class for a button that selects a table to go to the next 
         }
         //insert the html elemnt
         this.ref = el.appendTo($(insideElem));
-        $(`.table${TableSelector.num}`).css('left', `${map(this.data.pos.x, -1, 1, 20, 100)}%`);
-        $(`.table${TableSelector.num}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);
+        if(window.isLandscape())
+        {
+            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 20, 100)}%`);
+            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
+        }
+        else
+        {
+            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 1, 100)}%`);
+            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
+        }
     }
     
     /**
@@ -48,7 +54,21 @@ class TableSelector //class for a button that selects a table to go to the next 
     {
         this.onSelect(this.data);
     }
-}
 
-//static variable to keep track of the number of tables
-TableSelector.num = 0;
+    /**
+     * This method, when the window is resized, will reposition the table.
+     */
+    onResize()
+    {
+        if(window.isLandscape())
+        {
+            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 20, 100)}%`);
+            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
+        }
+        else
+        {
+            $(`.table${this.tableData.number}`).css('left', `${map(this.data.pos.x, -1, 1, 1, 100)}%`);
+            $(`.table${this.tableData.number}`).css('top', `${map(this.data.pos.y, -1, 1, 9, 100)}%`);    
+        }
+    }
+}

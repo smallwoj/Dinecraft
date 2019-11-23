@@ -78,6 +78,12 @@ class TableMapPage {
                 this.ref.find('.content-pane').css('width', '100%');
             }
         }
+
+        //resize each table
+        for(var i = 0; i < this.tables.length; i++)
+        {
+            this.tables[i].onResize();
+        }
     }
 
     onTableSelect(table)

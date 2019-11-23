@@ -46,10 +46,10 @@ window.DB.createFakeData = function() {
     window.DB.accounts.push(new Account('Joe mama', '696969', window.DB.getIconByName('userAcc4')));
  
     // Tables
-    window.DB.tables.push(new Table(1, 'available', [], {'x': -0.5, 'y':-0.5}, 1));
-    window.DB.tables.push(new Table(2, 'available', [], {'x': 0.5, 'y':-0.5}, 1));
-    window.DB.tables.push(new Table(3, 'available', [], {'x': 0.5, 'y':0.5}, 1));
-    window.DB.tables.push(new Table(4, 'cleaning', [], {'x': -0.5, 'y':0.5}, 1));
+    window.DB.tables.push(new Table(1, 'available', [], {'x': -0.5, 'y':-0.5}));
+    window.DB.tables.push(new Table(2, 'available', [], {'x': 0.5, 'y':-0.5}));
+    window.DB.tables.push(new Table(3, 'available', [], {'x': 0.5, 'y':0.5}));
+    window.DB.tables.push(new Table(4, 'cleaning', [], {'x': -0.5, 'y':0.5}));
     
     // Menu items
     // Drinks
