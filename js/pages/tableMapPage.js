@@ -4,7 +4,11 @@ class TableMapPage {
         // Main data of the element
         var el = $(`
             <div class="table-map-page">
-                <div class="content-pane"></div>
+                <div class="content-pane">
+                    <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
+                        <div class="tables-wrap"></div>
+                    </div>
+                </div>
             </div>
         `);
 
@@ -38,8 +42,16 @@ class TableMapPage {
             },
         }]);
 
+        this.tables = []
+
+        //for each table in the table database, create em
+        for(var i = 0; i < window.DB.tables.length; i++)
+        {
+            this.tables.push(new TableSelector(this.ref.find(".tables-wrap"), this.onTableSelect.bind(this), window.DB.tables[i]));
+        }
+
         // Add the sample text
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text');
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Table Map');
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
@@ -54,6 +66,7 @@ class TableMapPage {
 
     // Dynamic sizes yeah
     onResize() {
+        //navbar stuff
         if (window.isLandscape()) {
             if (this.navbar.ref.is(':hidden')) {
                 this.navbar.ref.show();
@@ -65,6 +78,14 @@ class TableMapPage {
                 this.ref.find('.content-pane').css('width', '100%');
             }
         }
+    }
+
+    onTableSelect(table)
+    {
+        this.destroy();
+        //store which table we are at and go to the next page
+        window.currTable = table;
+        window.createSingleTablePage();
     }
 }
 

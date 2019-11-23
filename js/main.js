@@ -11,11 +11,9 @@ $(document).ready(function() {
     // Start with a login page
     //window.createLoginPage();
 
-    // DEBUG: start with a table map page haha just kidding I mean single table page
-    window.auth = window.DB.accounts[0];
-//    window.createTableMapPage();
-    //window.createNewAccountPage();
-    window.createSingleTablePage();
+    // DEBUG: start with a table map page
+   window.auth = window.DB.accounts[0];
+   window.createTableMapPage();
 
     // Fire on resize to scale the generated page
     onResize();
@@ -32,8 +30,8 @@ window.createTableMapPage = function() {
 }
 
 // Creates a single table page
-window.createSingleTablePage = function() {
-    window.singleTablePage = new SingleTablePage();
+window.createSingleTablePage = function(tableNumber) {
+    window.singleTablePage = new SingleTablePage(tableNumber);
 }
 
 // Creates a new account page
@@ -48,3 +46,9 @@ $(window).resize(function() {
 
 window.onResize = function() {}
 
+//function to map a value from one range to another
+function map(value, start1, stop1, start2, stop2)
+{
+    var slope = 1.0 * (stop2 - start2) / (stop1 - start1);
+    return start2 + slope * (value - start1);
+}
