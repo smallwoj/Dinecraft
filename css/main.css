@@ -32,6 +32,15 @@ body
     animation: 80s ease-in-out infinite alternate background-scroll; 
 }
 
+.dark-overlay {
+    background-color: rgba(1.0, 1.0, 1.0, 0.5);
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
+
 @keyframes background-scroll
 {
     from { background-position: 0;}
@@ -110,7 +119,7 @@ h6 {
 .login-page .pin-wrap
 {
     min-width: 200px;
-    height:5vh;
+    height:5vmin;
     width: 60%;
     margin-bottom: 5%;
 }
@@ -143,23 +152,26 @@ h6 {
     background-color: #959595;    
 }
 
-.ui-style-1.selected
+.ui-style-1.selected, .create-btn:active, .create-acc-btn:active
 {
     background-color: #218306;
     outline: 3px solid white;
 }
 
-.ui-style-1 h4, .nav-bar .option h4, .nav-bar .suboption h4, .account-name h4, .page-name h4
+.ui-style-1 h4, .account-name h4, .page-name h4
 {
     color: #5F5F5F;
 }
+.nav-bar .option h4, .nav-bar .suboption h4 {
+    color:black;
+}
 
-.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4
+.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4, .create-btn:active h4, .create-acc-btn:active h4
 {
     color: white;
 }
 
-.dropdown-item.selected, .dropdown-item:active
+.dropdown-item.selected, .dropdown-item:active, .create-btn:active, .create-acc-btn:active
 {
     background-color: #218306;
 }
@@ -183,7 +195,9 @@ h6 {
 
 .dropdown-item, .account-details
 {
-    height: 100%;
+    height: 9vmin;
+    min-height: 50px;
+
     width: 100%;
     transition: 0.1s;
     display: flex;
@@ -211,7 +225,7 @@ h6 {
 .dropdown-item-text, .account-name
 {
 white-space: nowrap;
-    margin-left: calc(0.5em + 5%);
+    margin-left: 1.5rem;
 }
 
 .dropdown-pane
@@ -221,6 +235,7 @@ white-space: nowrap;
     left:0;
     width: 100%;
     display:none;
+    z-index:5;
 }
 
 .dropdown-pane .dropdown-item-text
@@ -274,7 +289,7 @@ white-space: nowrap;
     flex-direction: column;
     justify-content: center;
     width: 25%;
-    max-width: 9vh;
+    max-width: 9vmin;
     min-width: 50px;
     min-height: 50px;
     transition: 0.05s;
@@ -282,7 +297,7 @@ white-space: nowrap;
 
 .keypad-button:not(.disabled):active
 {
-    transition: 0.07s;
+    transition: 0.05s;
     background-color: #218306;
     outline: 3px solid white;    
 }
@@ -299,10 +314,8 @@ white-space: nowrap;
     transition: 0.05s;
 }
 
-
-
 /*Table map things*/
-.table-map-page, .single-table-page {
+.table-map-page, .new-account-page, .accounts-list-page, .single-table-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -333,7 +346,9 @@ white-space: nowrap;
 }
 
 .nav-bar {
-    width: 20vw;
+    z-index:3;
+    width: 20%;
+    height:100vh;
     background-color: #c6c6c6;
 /*    background-color: #585659;*/
     min-width: 250px;
@@ -346,11 +361,17 @@ white-space: nowrap;
 
 .account-card {
     width:100%;
-    height: 9vh;
+    height: 9vmin;
 /*    background-color: #c6c6c6; */
     min-height: 50px;
     display:flex;
     align-items:center;
+}
+
+.search-input {
+    width:80%;
+    margin-right:5%;
+    height: 5vmin;
 }
 
 .nav-bar .option, .nav-bar .suboption {
@@ -360,7 +381,7 @@ white-space: nowrap;
     display:flex;
     align-items:center;
     width:90%;
-    height: 9vh;
+    height: 9vmin;
     min-height: 50px;
     box-shadow:inset 0px 0px 0px 3px black; 
     margin-bottom: -3px;
@@ -375,7 +396,7 @@ white-space: nowrap;
     z-index: 5;
     box-shadow:inset 0px 0px 0px 3px white;
     background-color: #218306;
-    height: 10vh;
+    height: 10vmin;
     min-height: 60px;
 }
 
@@ -400,22 +421,22 @@ white-space: nowrap;
 
 .content-pane {
     width: 80%;
-    /*background-color:blue;*/
     background-image: url('../img/floortexture3.png');
     image-rendering: pixelated;
     background-size: 5vmax;
-    background-repeat: repeat-x repeat-y;
+    background-repeat: repeat;
+    position:relative;
 }
 
 .title-bar {
     display:flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     width:100%;
-    height: 9vh;
-    background-color: #c6c6c6;
+    height: 9vmin;
     min-height: 50px;
+    background-color: #c6c6c6;
     border-bottom: 5px solid #585659;
 }
 
@@ -445,13 +466,215 @@ white-space: nowrap;
     
 }
 
+.page-name {
+    width:60%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.tb-right {
+    width:20%;
+    text-align: right;
+}
+
+.tb-left {
+    width:20%;
+    height:100%;
+    text-align:left;
+}
+
+.hamburger-btn {
+    margin-left:2%;
+    width:9vmin;
+    height:100%;
+    display:flex;
+    align-items:center;
+    visibility:hidden;
+}
+
+.hamburger-btn img {
+    margin:auto;
+    height: 70%;
+    width:auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    image-rendering:pixelated;
+}
+
+.hamburger-btn:active {
+    background-color: #218306;
+}
+
 /* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
 input[type="date"]:before {
     content: attr(placeholder) !important;
     color: #aaa;
     margin-right: 0.5em;
-  }
-  input[type="date"]:focus:before,
-  input[type="date"]:valid:before {
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
     content: "";
-  }
+}
+
+.counter-btn {
+    height: 3.5vmin;
+    min-height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+
+.item-counter {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:row;
+    width:50%;
+    margin:auto;
+}
+
+.item-count h4 {
+    color: #5F5F5F;
+}
+
+.counter-btn:not(.disabled):active
+{
+    transition: 0.05s;
+    background-color: #218306;
+    outline: 3px solid white;    
+}
+
+.counter-btn:not(.disabled):active h4
+{
+    color:white;
+    transition: 0.05s;
+}
+
+.acc-input, .role-select, .icon-select {
+    position:relative;
+    height: 9vmin;
+    min-height: 50px;
+    min-width:240px;
+    width: 60%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 5%;
+    font-size: 1.8rem;
+}
+
+.create-btn {
+    height: 10vmin;
+    min-height: 60px;
+    width:calc(70% + 1.5rem);
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    justify-content: space-around;
+    color: white;
+}
+
+.create-btn h4 {
+    color:black;
+}
+
+.role-select, .icon-select {
+    width:calc(60% + 1.5rem);
+}
+
+.role-select h4, .icon-select h4 {
+    font-size: 1.8rem;
+}
+
+input {
+    padding-left: calc(1.5rem);
+    width:calc(100% - 1.5rem);
+    background-color: #c6c6c6;
+    outline: 3px solid black;
+    border: none;
+    color: #5F5F5F;
+    transition: 0.05s;
+}
+
+input:focus {
+    outline-offset: 0;
+    background-color: #218306;
+    outline: 3px solid white;
+    color:white;
+    border: none;
+}
+
+input:focus::placeholder {
+    color:white;
+}
+
+.account-creation-wrap {
+    position:relative;
+    margin:auto;
+    height: calc(100% - 9vmin);
+    width: 50%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.account-creation {
+    width: 100%;
+    text-align:center;
+}
+
+.accounts-list-wrap {
+    position:relative;
+    margin:auto;
+    height: calc(100% - 9vmin);
+    width: 35%;
+    min-width: 400px;
+    background-color: #c6c6c6;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    border-left: 3px solid #585659;
+    border-right: 3px solid #585659;
+}
+
+.accounts-list {
+    margin-top:5%;
+    width:100%;
+    max-width:340px;
+    padding-right:1rem;
+}
+.accounts-list .account-details {
+    justify-content:space-between;
+}
+
+.accounts-list .account-name {
+    text-align:left;
+    width:100%;
+}
+
+.accounts-list .account-role {
+    width: 100%;
+    text-align:right;
+}
+
+.account-role h4 {
+    color: #5F5F5F;
+}
+
+.create-acc-btn {
+    width:100%;
+    height: 9vmin;
+    min-height: 50px;
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    justify-content: space-around;
+    margin-top:10%;
+}
+
+.create-acc-btn h4 {
+    color: black;
+}
