@@ -32,13 +32,18 @@ body
     animation: 80s ease-in-out infinite alternate background-scroll;
 }
 
-.dark-overlay {
+.dark-overlay, .popup-overlay {
+    z-index:4;
     background-color: rgba(1.0, 1.0, 1.0, 0.5);
     position: absolute;
     top:0;
     left:0;
     width:100vw;
     height:100vh;
+}
+
+.popup-overlay {
+    z-index: 10;
 }
 
 @keyframes background-scroll
@@ -138,13 +143,31 @@ h6 {
 
 .ui-style-1
 {
+    transition: 0.1s;
     background-color: #c6c6c6;
     outline: 3px solid black;
 }
 
-.ui-style-1.red
+.ui-style-1.red:not(.disabled)
+{
+    background-color: #E6E6E6;
+    outline: 3px solid #E57373;
+}
+
+.ui-style-1.red:not(.disabled) h4
+{
+    color: #E57373;
+}
+
+.ui-style-1.red:not(.disabled):active
 {
     background-color: #E57373;
+    outline: 3px solid white;
+}
+
+.ui-style-1.red:not(.disabled):active h4
+{
+    color: white;
 }
 
 .ui-style-1.disabled
@@ -195,11 +218,10 @@ h6 {
 
 .dropdown-item, .account-details
 {
+    transition: 0.1s;
     height: 9vmin;
     min-height: 50px;
-
     width: 100%;
-    transition: 0.1s;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -235,7 +257,7 @@ white-space: nowrap;
     left:0;
     width: 100%;
     display:none;
-    z-index:5;
+    z-index:3;
 }
 
 .dropdown-pane .dropdown-item-text
@@ -255,6 +277,7 @@ white-space: nowrap;
 
 .pin-indicator
 {
+    transition: none;
     width: 5%;
     outline: 2px solid black;
 }
@@ -285,6 +308,7 @@ white-space: nowrap;
 
 .keypad-button
 {
+    transition: 0.1s;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -292,7 +316,6 @@ white-space: nowrap;
     max-width: 9vmin;
     min-width: 50px;
     min-height: 50px;
-    transition: 0.05s;
 }
 
 .keypad-button:not(.disabled) h4 {
@@ -301,21 +324,13 @@ white-space: nowrap;
 
 .keypad-button:not(.disabled):active
 {
-    transition: 0.05s;
     background-color: #218306;
     outline: 3px solid white;
-}
-
-.keypad-button:not(.disabled).red:active
-{
-    background-color: #B71C1C;
-    transition: 0.05s;
 }
 
 .keypad-button:not(.disabled):active h4
 {
     color:white;
-    transition: 0.05s;
 }
 
 /*Table map things*/
@@ -350,7 +365,7 @@ white-space: nowrap;
 }
 
 .nav-bar {
-    z-index:3;
+    z-index:5;
     width: 20%;
     height:100vh;
     background-color: #c6c6c6;
@@ -378,7 +393,17 @@ white-space: nowrap;
     height: 5vmin;
 }
 
+.nav-bar-top {
+    height:calc(100% - 9vmin);
+}
+
+.nav-bar-bottom {
+    height: 9vmin;
+    min-height: 50px;
+}
+
 .nav-bar .option, .nav-bar .suboption {
+    transition: 0.1s;
     position: relative;
     background-color: #c6c6c6;
     padding-left:10%;
@@ -396,7 +421,7 @@ white-space: nowrap;
     width:80%;
 }
 
-.nav-bar .option.selected, .nav-bar .suboption.selected {
+.nav-bar .option.selected, .nav-bar .option:active, .nav-bar .suboption.selected, .nav-bar .suboption:active {
     z-index: 5;
     box-shadow:inset 0px 0px 0px 3px white;
     background-color: #218306;
@@ -404,9 +429,37 @@ white-space: nowrap;
     min-height: 60px;
 }
 
+.nav-bar .option:active h4, .nav-bar .suboption:active h4 {
+    color:white;
+}
+
 .nav-bar .suboption.selected {
     margin-left:8%;
     width:82%;
+}
+
+.logout-btn {
+    transition: 0.1s;
+    width:100%;
+    height: 100%;
+    box-shadow:inset 0px 0px 0px 3px #E57373;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    background-color: #E6E6E6;
+}
+
+.logout-btn h4 {
+    color: #E57373;
+}
+
+.logout-btn:active {
+    background-color:#E57373;
+    box-shadow:inset 0px 0px 0px 3px white;
+}
+
+.logout-btn:active h4 {
+    color:white;
 }
 
 .settings-icon {
@@ -488,6 +541,7 @@ white-space: nowrap;
 }
 
 .hamburger-btn {
+    transition: 0.1s;
     margin-left:2%;
     width:9vmin;
     height:100%;
@@ -521,6 +575,7 @@ input[type="date"]:valid:before {
 }
 
 .counter-btn {
+    transition: 0.1s;
     height: 3.5vmin;
     min-height:25px;
     display:flex;
@@ -543,7 +598,6 @@ input[type="date"]:valid:before {
 
 .counter-btn:not(.disabled):active
 {
-    transition: 0.05s;
     background-color: #218306;
     outline: 3px solid white;
 }
@@ -551,7 +605,6 @@ input[type="date"]:valid:before {
 .counter-btn:not(.disabled):active h4
 {
     color:white;
-    transition: 0.05s;
 }
 
 .acc-input, .role-select, .icon-select {
@@ -567,6 +620,7 @@ input[type="date"]:valid:before {
 }
 
 .create-btn {
+    transition: 0.1s;
     height: 10vmin;
     min-height: 60px;
     width:calc(70% + 1.5rem);
@@ -597,7 +651,6 @@ input {
     outline: 3px solid black;
     border: none;
     color: #5F5F5F;
-    transition: 0.05s;
 }
 
 input:focus {
@@ -680,4 +733,49 @@ input:focus::placeholder {
 
 .create-acc-btn h4 {
     color: black;
+}
+
+.popup {
+    z-index:12;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width:50vmin;
+    height:30vmin;
+}
+
+.popup-top {
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content: center;
+    height:23vmin;
+}
+
+.popup-bottom {
+    height:7vmin;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-yes, .popup-no {
+    transition: 0.1s;
+    width:50%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:15;
+}
+
+.popup-yes:active, .popup-no:active {
+    background-color: #218306;
+    outline: 3px solid white;
+    z-index:20;
+}
+
+.popup-yes:active h4, .popup-no:active h4 {
+    color:white;
 }

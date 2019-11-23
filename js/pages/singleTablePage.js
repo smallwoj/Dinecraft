@@ -66,7 +66,7 @@ class SingleTablePage {
     // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
-        window.singleTablePage = undefined;
+        window.appPage = undefined;
         window.onResize = undefined;
     }
 
@@ -83,15 +83,14 @@ class SingleTablePage {
     // Dynamic sizes yeah
     onResize() {
         if (window.isLandscape()) {
-            if (this.navbar.ref.is(':hidden')) {
-                this.navbar.ref.show();
-                this.ref.find('.content-pane').css('width', '80%');
-            }
+            this.navbar.ref.show();
+            this.ref.find('.content-pane').css('width', '80%');
+            this.titleBar.hideHamburger();
         } else {
-            if (this.navbar.ref.is(':visible')) {
-                this.navbar.ref.hide();
-                this.ref.find('.content-pane').css('width', '100%');
-            }
+            if (!this.titleBar.showSidebar)
+                this.titleBar.hideSidebar();
+            this.ref.find('.content-pane').css('width', '100%');
+            this.titleBar.showHamburger();
         }
     }
 }

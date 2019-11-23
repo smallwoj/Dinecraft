@@ -12,8 +12,8 @@ $(document).ready(function() {
     window.createLoginPage();
 
     // DEBUG: start with a table map page haha just kidding I mean new account page
-//    window.auth = window.DB.accounts[0];
-//    window.createTableMapPage();
+    //window.auth = window.DB.accounts[1];
+   // window.createTableMapPage();
 //    window.createNewAccountPage();
 
     // Fire on resize to scale the generated page
@@ -22,27 +22,27 @@ $(document).ready(function() {
 
 // Creates a log in page
 window.createLoginPage = function() {
-    window.loginPage = new LoginPage();
+    window.appPage = new LoginPage();
 }
 
 // Creates a table map page
 window.createTableMapPage = function() {
-    window.tableMapPage = new TableMapPage();
+    window.appPage = new TableMapPage();
 }
 
 // Creates an accounts list page
 window.createAccountsListPage = function() {
-    window.accountsListPage = new AccountsListPage();
+    window.appPage = new AccountsListPage();
 }
 
 // Creates a single table page
 window.createSingleTablePage = function() {
-    window.singleTablePage = new SingleTablePage();
+    window.appPage = new SingleTablePage();
 }
 
 // Creates a new account page
 window.createNewAccountPage = function() {
-    window.newAccountPage = new NewAccountPage();
+    window.appPage = new NewAccountPage();
 }
 
 // Do stuff on window resize

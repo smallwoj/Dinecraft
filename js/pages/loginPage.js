@@ -53,12 +53,13 @@ class LoginPage {
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
+        this.onResize();
     }
 
     // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
-        window.loginPage = undefined;
+        window.appPage = undefined;
         window.onResize = undefined;
     }
 

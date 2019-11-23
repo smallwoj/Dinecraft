@@ -60,7 +60,7 @@ class TableMapPage {
     // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
-        window.loginPage = undefined;
+        window.appPage = undefined;
         window.onResize = undefined;
     }
 
@@ -72,7 +72,8 @@ class TableMapPage {
             this.ref.find('.content-pane').css('width', '80%');
             this.titleBar.hideHamburger();
         } else {
-            this.navbar.ref.hide();
+            if (!this.titleBar.showSidebar)
+                this.titleBar.hideSidebar();
             this.ref.find('.content-pane').css('width', '100%');
             this.titleBar.showHamburger();
         }
