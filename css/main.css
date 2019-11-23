@@ -29,7 +29,7 @@ body
     background-color: gray;
     background-repeat: repeat-x;
     background-size: cover;
-    animation: 80s ease-in-out infinite alternate background-scroll; 
+    animation: 80s ease-in-out infinite alternate background-scroll;
 }
 
 .dark-overlay {
@@ -149,7 +149,7 @@ h6 {
 
 .ui-style-1.disabled
 {
-    background-color: #959595;    
+    background-color: #959595;
 }
 
 .ui-style-1.selected, .create-btn:active, .create-acc-btn:active
@@ -295,11 +295,15 @@ white-space: nowrap;
     transition: 0.05s;
 }
 
+.keypad-button:not(.disabled) h4 {
+    color:black;
+}
+
 .keypad-button:not(.disabled):active
 {
     transition: 0.05s;
     background-color: #218306;
-    outline: 3px solid white;    
+    outline: 3px solid white;
 }
 
 .keypad-button:not(.disabled).red:active
@@ -383,7 +387,7 @@ white-space: nowrap;
     width:90%;
     height: 9vmin;
     min-height: 50px;
-    box-shadow:inset 0px 0px 0px 3px black; 
+    box-shadow:inset 0px 0px 0px 3px black;
     margin-bottom: -3px;
 }
 
@@ -463,7 +467,6 @@ white-space: nowrap;
     /*min-width: 375px;
     */
     border: 3px solid #585659;
-    
 }
 
 .page-name {
@@ -542,7 +545,7 @@ input[type="date"]:valid:before {
 {
     transition: 0.05s;
     background-color: #218306;
-    outline: 3px solid white;    
+    outline: 3px solid white;
 }
 
 .counter-btn:not(.disabled):active h4
