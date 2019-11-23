@@ -11,7 +11,6 @@ class SingleTablePage {
                 <div class="content-pane">
                     <div class="cool-content-pane">
                         <div class="table-display"></div>
-                        
                     </div>
                 </div>
             </div>
@@ -47,11 +46,8 @@ class SingleTablePage {
             },
         }]);
 
-        // Add the sample text
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text');
-
-        // Add the table (you get one)
-        //this.table = new // Imma let Josh do his thing with the table overview first
+        // Add the table text
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), "Table " + window.currTable.number);
 
         // Add the guests
         this.guests = [];

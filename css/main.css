@@ -430,6 +430,8 @@ white-space: nowrap;
     justify-content: start;
     width: 60%;
     height: 100%;
+    background: url('../img/table.png') no-repeat center center;
+    background-size:30%
 }
 
 .table-order {
