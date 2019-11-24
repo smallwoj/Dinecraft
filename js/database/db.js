@@ -20,6 +20,7 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('back-s', './img/back-selected.png'));
     window.DB.icons.push(new Icon('hamburger-n', './img/hamburgermenu-standard.png'));
     window.DB.icons.push(new Icon('hamburger-s', './img/hamburgermenu-selected.png'));
+    window.DB.icons.push(new Icon('expand-this', './img/expandthis.png'));
     window.DB.icons.push(new Icon('customer0', '.img/icons/icon0.png'));
     window.DB.icons.push(new Icon('customer1', '.img/icons/icon1.png'));
     window.DB.icons.push(new Icon('customer2', '.img/icons/icon2.png'));

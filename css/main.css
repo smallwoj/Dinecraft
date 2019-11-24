@@ -511,6 +511,7 @@ white-space: nowrap;
 }
 
 .table-order {
+    display:flex;
     margin: 1%;
     justify-content: end;
     width: 40%;
@@ -525,10 +526,12 @@ white-space: nowrap;
 .food-card {
     margin: 1%;
     justify-content: center;
+    text-align: center;
     background-color: #c6c6c6;
     
-    height: 10%;
-    width: 10%;
+    height: 30%;
+    width: 30%;
+    min-height: 240px;
 
     border: 3px solid #585659;
 }

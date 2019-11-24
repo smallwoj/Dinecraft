@@ -72,7 +72,7 @@ class SingleTablePage {
         }
 
         // Add a food card, for testing purposes
-        this.foodCard = new FoodCard(this.ref.find('.table-order'), window.DB.menuItems[0]);
+        //this.foodCard = new FoodCard(this.ref.find('.table-order'), window.DB.menuItems[0]);  // whatev*r I didn't care about table-order anyway >:( ,>o<, 
         this.epicFoodCard = new FoodCard(this.ref.find('.cool-content-pane'), window.DB.menuItems[0]);
 
     }
