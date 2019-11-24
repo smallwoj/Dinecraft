@@ -29,7 +29,21 @@ body
     background-color: gray;
     background-repeat: repeat-x;
     background-size: cover;
-    animation: 80s ease-in-out infinite alternate background-scroll; 
+    animation: 80s ease-in-out infinite alternate background-scroll;
+}
+
+.dark-overlay, .popup-overlay {
+    z-index:4;
+    background-color: rgba(1.0, 1.0, 1.0, 0.5);
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
+
+.popup-overlay {
+    z-index: 10;
 }
 
 @keyframes background-scroll
@@ -110,7 +124,7 @@ h6 {
 .login-page .pin-wrap
 {
     min-width: 200px;
-    height:5vh;
+    height:5vmin;
     width: 60%;
     margin-bottom: 5%;
 }
@@ -129,37 +143,58 @@ h6 {
 
 .ui-style-1
 {
+    transition: 0.1s;
     background-color: #c6c6c6;
     outline: 3px solid black;
 }
 
-.ui-style-1.red
+.ui-style-1.red:not(.disabled)
+{
+    background-color: #E6E6E6;
+    outline: 3px solid #E57373;
+}
+
+.ui-style-1.red:not(.disabled) h4
+{
+    color: #E57373;
+}
+
+.ui-style-1.red:not(.disabled):active
 {
     background-color: #E57373;
+    outline: 3px solid white;
+}
+
+.ui-style-1.red:not(.disabled):active h4
+{
+    color: white;
 }
 
 .ui-style-1.disabled
 {
-    background-color: #959595;    
+    background-color: #959595;
 }
 
-.ui-style-1.selected
+.ui-style-1.selected, .create-btn:active, .create-acc-btn:active
 {
     background-color: #218306;
     outline: 3px solid white;
 }
 
-.ui-style-1 h4, .nav-bar .option h4, .nav-bar .suboption h4, .account-name h4, .page-name h4
+.ui-style-1 h4, .account-name h4, .page-name h4
 {
     color: #5F5F5F;
 }
+.nav-bar .option h4, .nav-bar .suboption h4 {
+    color:black;
+}
 
-.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4
+.ui-style-1.selected h4, .selected h4, .dropdown-item:active h4, .nav-bar .option.selected h4, .nav-bar .suboption.selected h4, .create-btn:active h4, .create-acc-btn:active h4
 {
     color: white;
 }
 
-.dropdown-item.selected, .dropdown-item:active
+.dropdown-item.selected, .dropdown-item:active, .create-btn:active, .create-acc-btn:active
 {
     background-color: #218306;
 }
@@ -183,9 +218,10 @@ h6 {
 
 .dropdown-item, .account-details
 {
-    height: 100%;
-    width: 100%;
     transition: 0.1s;
+    height: 9vmin;
+    min-height: 50px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -211,7 +247,7 @@ h6 {
 .dropdown-item-text, .account-name
 {
 white-space: nowrap;
-    margin-left: calc(0.5em + 5%);
+    margin-left: 1.5rem;
 }
 
 .dropdown-pane
@@ -221,6 +257,7 @@ white-space: nowrap;
     left:0;
     width: 100%;
     display:none;
+    z-index:3;
 }
 
 .dropdown-pane .dropdown-item-text
@@ -240,6 +277,7 @@ white-space: nowrap;
 
 .pin-indicator
 {
+    transition: none;
     width: 5%;
     outline: 2px solid black;
 }
@@ -270,50 +308,66 @@ white-space: nowrap;
 
 .keypad-button
 {
+    transition: 0.1s;
     display:flex;
     flex-direction: column;
     justify-content: center;
     width: 25%;
-    max-width: 9vh;
+    max-width: 9vmin;
     min-width: 50px;
     min-height: 50px;
-    transition: 0.05s;
+}
+
+.keypad-button:not(.disabled) h4 {
+    color:black;
 }
 
 .keypad-button:not(.disabled):active
 {
-    transition: 0.07s;
     background-color: #218306;
-    outline: 3px solid white;    
-}
-
-.keypad-button:not(.disabled).red:active
-{
-    background-color: #B71C1C;
-    transition: 0.05s;
+    outline: 3px solid white;
 }
 
 .keypad-button:not(.disabled):active h4
 {
     color:white;
-    transition: 0.05s;
 }
 
-
-
 /*Table map things*/
-.table-map-page {
+.table-map-page, .new-account-page, .accounts-list-page, .single-table-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     display:flex;
-    flex-direction:row;
+    flex-direction : row;
+}
+
+.table-style
+{
+    position: absolute;
+}
+
+.clean-wrap
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.clean
+{
+    position: absolute;
+    left: 60%;
+    top: 0%;
+    margin-top: -40%;
 }
 
 .nav-bar {
+    z-index:5;
     width: 20%;
+    height:100vh;
     background-color: #c6c6c6;
 /*    background-color: #585659;*/
     min-width: 250px;
@@ -326,23 +380,39 @@ white-space: nowrap;
 
 .account-card {
     width:100%;
-    height: 9vh;
+    height: 9vmin;
 /*    background-color: #c6c6c6; */
     min-height: 50px;
     display:flex;
     align-items:center;
 }
 
+.search-input {
+    width:80%;
+    margin-right:5%;
+    height: 5vmin;
+}
+
+.nav-bar-top {
+    height:calc(100% - 9vmin);
+}
+
+.nav-bar-bottom {
+    height: 9vmin;
+    min-height: 50px;
+}
+
 .nav-bar .option, .nav-bar .suboption {
+    transition: 0.1s;
     position: relative;
     background-color: #c6c6c6;
     padding-left:10%;
     display:flex;
     align-items:center;
     width:90%;
-    height: 9vh;
+    height: 9vmin;
     min-height: 50px;
-    box-shadow:inset 0px 0px 0px 3px black; 
+    box-shadow:inset 0px 0px 0px 3px black;
     margin-bottom: -3px;
 }
 
@@ -351,17 +421,45 @@ white-space: nowrap;
     width:80%;
 }
 
-.nav-bar .option.selected, .nav-bar .suboption.selected {
+.nav-bar .option.selected, .nav-bar .option:active, .nav-bar .suboption.selected, .nav-bar .suboption:active {
     z-index: 5;
     box-shadow:inset 0px 0px 0px 3px white;
     background-color: #218306;
-    height: 10vh;
+    height: 10vmin;
     min-height: 60px;
+}
+
+.nav-bar .option:active h4, .nav-bar .suboption:active h4 {
+    color:white;
 }
 
 .nav-bar .suboption.selected {
     margin-left:8%;
     width:82%;
+}
+
+.logout-btn {
+    transition: 0.1s;
+    width:100%;
+    height: 100%;
+    box-shadow:inset 0px 0px 0px 3px #E57373;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    background-color: #E6E6E6;
+}
+
+.logout-btn h4 {
+    color: #E57373;
+}
+
+.logout-btn:active {
+    background-color:#E57373;
+    box-shadow:inset 0px 0px 0px 3px white;
+}
+
+.logout-btn:active h4 {
+    color:white;
 }
 
 .settings-icon {
@@ -380,32 +478,304 @@ white-space: nowrap;
 
 .content-pane {
     width: 80%;
-    background-image: url('../img/floortexture.png');
+    background-image: url('../img/floortexture3.png');
     image-rendering: pixelated;
     background-size: 5vmax;
-    background-repeat: repeat-x repeat-y;
+    background-repeat: repeat;
+    position:relative;
 }
 
 .title-bar {
     display:flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     width:100%;
-    height: 9vh;
-    background-color: #c6c6c6;
+    height: 9vmin;
     min-height: 50px;
+    background-color: #c6c6c6;
     border-bottom: 5px solid #585659;
 }
 
+.cool-content-pane {
+    display:flex;
+    width: 100%;
+    height: 100%;
+    justify-content: end;
+}
+
+.table-display {
+    justify-content: start;
+    width: 60%;
+    height: 100%;
+}
+
+.table-order {
+    margin: 1%;
+    justify-content: end;
+    width: 40%;
+    height: 87.5%;
+    background-color: #c6c6c6;
+/*    background-color: #585659;*/
+    /*min-width: 375px;
+    */
+    border: 3px solid #585659;
+}
+
+.page-name {
+    width:60%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.tb-right {
+    width:20%;
+    text-align: right;
+}
+
+.tb-left {
+    width:20%;
+    height:100%;
+    text-align:left;
+}
+
+.hamburger-btn {
+    transition: 0.1s;
+    margin-left:2%;
+    width:9vmin;
+    height:100%;
+    display:flex;
+    align-items:center;
+    visibility:hidden;
+}
+
+.hamburger-btn img {
+    margin:auto;
+    height: 70%;
+    width:auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    image-rendering:pixelated;
+}
+
+.hamburger-btn:active {
+    background-color: #218306;
+}
 
 /* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
 input[type="date"]:before {
     content: attr(placeholder) !important;
     color: #aaa;
     margin-right: 0.5em;
-  }
-  input[type="date"]:focus:before,
-  input[type="date"]:valid:before {
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
     content: "";
-  }
+}
+
+.counter-btn {
+    transition: 0.1s;
+    height: 3.5vmin;
+    min-height:25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+
+.item-counter {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:row;
+    width:50%;
+    margin:auto;
+}
+
+.item-count h4 {
+    color: #5F5F5F;
+}
+
+.counter-btn:not(.disabled):active
+{
+    background-color: #218306;
+    outline: 3px solid white;
+}
+
+.counter-btn:not(.disabled):active h4
+{
+    color:white;
+}
+
+.acc-input, .role-select, .icon-select {
+    position:relative;
+    height: 9vmin;
+    min-height: 50px;
+    min-width:240px;
+    width: 60%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 5%;
+    font-size: 1.8rem;
+}
+
+.create-btn {
+    transition: 0.1s;
+    height: 10vmin;
+    min-height: 60px;
+    width:calc(70% + 1.5rem);
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    justify-content: space-around;
+    color: white;
+}
+
+.create-btn h4 {
+    color:black;
+}
+
+.role-select, .icon-select {
+    width:calc(60% + 1.5rem);
+}
+
+.role-select h4, .icon-select h4 {
+    font-size: 1.8rem;
+}
+
+input {
+    padding-left: calc(1.5rem);
+    width:calc(100% - 1.5rem);
+    background-color: #c6c6c6;
+    outline: 3px solid black;
+    border: none;
+    color: #5F5F5F;
+}
+
+input:focus {
+    outline-offset: 0;
+    background-color: #218306;
+    outline: 3px solid white;
+    color:white;
+    border: none;
+}
+
+input:focus::placeholder {
+    color:white;
+}
+
+.account-creation-wrap {
+    position:relative;
+    margin:auto;
+    height: calc(100% - 9vmin);
+    width: 50%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.account-creation {
+    width: 100%;
+    text-align:center;
+}
+
+.accounts-list-wrap {
+    position:relative;
+    margin:auto;
+    height: calc(100% - 9vmin);
+    width: 35%;
+    min-width: 400px;
+    background-color: #c6c6c6;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    border-left: 3px solid #585659;
+    border-right: 3px solid #585659;
+}
+
+.accounts-list {
+    margin-top:5%;
+    width:100%;
+    max-width:340px;
+    padding-right:1rem;
+}
+.accounts-list .account-details {
+    justify-content:space-between;
+}
+
+.accounts-list .account-name {
+    text-align:left;
+    width:100%;
+}
+
+.accounts-list .account-role {
+    width: 100%;
+    text-align:right;
+}
+
+.account-role h4 {
+    color: #5F5F5F;
+}
+
+.create-acc-btn {
+    width:100%;
+    height: 9vmin;
+    min-height: 50px;
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    align-items:center;
+    justify-content: space-around;
+    margin-top:10%;
+}
+
+.create-acc-btn h4 {
+    color: black;
+}
+
+.popup {
+    z-index:12;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width:50vmin;
+    height:30vmin;
+}
+
+.popup-top {
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content: center;
+    height:23vmin;
+}
+
+.popup-bottom {
+    height:7vmin;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.popup-yes, .popup-no {
+    transition: 0.1s;
+    width:50%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:15;
+}
+
+.popup-yes:active, .popup-no:active {
+    background-color: #218306;
+    outline: 3px solid white;
+    z-index:20;
+}
+
+.popup-yes:active h4, .popup-no:active h4 {
+    color:white;
+}
