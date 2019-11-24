@@ -59,6 +59,8 @@ class PaymentPage
         }
 
         //TODO: set css for bills-wrap for auto sizing & positioning based on number of guests
+
+        this.onResize();
     }
 
     // Removes the contents on the page and resets variables in window

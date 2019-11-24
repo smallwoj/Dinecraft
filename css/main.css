@@ -800,3 +800,21 @@ input:focus::placeholder {
 .popup-yes:active h4, .popup-no:active h4 {
     color:white;
 }
+
+.item
+{
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.price
+{
+    margin-left: 1%;
+    margin-right: 1%;
+    color: #218306;
+}
+
+.guest-icon
+{
+    
+}
