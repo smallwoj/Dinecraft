@@ -47,7 +47,6 @@ class TitleBar {
 
     showHamburger() {
         this.showingHamburger = true;
-        this.showSidebar = false;
         this.ref.find('.hamburger-btn').css('visibility', 'visible');
     }
 

@@ -6,7 +6,6 @@
 class NewAccountPage {
     constructor() {
         // Main data of the element
-        
         var el = $(`
             <div class="new-account-page">
                 <div class="content-pane">
@@ -38,9 +37,7 @@ class NewAccountPage {
             },
         }, {
             'text' : 'Accounts List',
-            'onClick' : function() {
-                alert('clicked 3');
-            },
+            'onClick' : this.goToAccList.bind(this),
         }]);
 
         this.roleDropdown = new Dropdown(this.ref.find('.role-select'), function() {}, {
@@ -79,12 +76,13 @@ class NewAccountPage {
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
+        this.onResize();
     }
 
     // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
-        window.newAccountPage = undefined;
+        window.appPage = undefined;
         window.onResize = undefined;
     }
 
@@ -94,15 +92,21 @@ class NewAccountPage {
             this.ref.find('.content-pane').css('width', '80%');
             this.titleBar.hideHamburger();
         } else {
-            this.navbar.ref.hide();
+            if (!this.titleBar.showSidebar)
+                this.titleBar.hideSidebar();
             this.ref.find('.content-pane').css('width', '100%');
             this.titleBar.showHamburger();
         }
     }
- 
+
     goToTableMap() {
         this.destroy();
         window.createTableMapPage();
+    }
+
+    goToAccList() {
+        this.destroy();
+        window.createAccountsListPage();
     }
 
     onSubmit() {
