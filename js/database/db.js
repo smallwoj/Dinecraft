@@ -20,7 +20,22 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('back-s', './img/back-selected.png'));
     window.DB.icons.push(new Icon('hamburger-n', './img/hamburgermenu-standard.png'));
     window.DB.icons.push(new Icon('hamburger-s', './img/hamburgermenu-selected.png'));
-
+    window.DB.icons.push(new Icon('customer0', '.img/icons/icon0'));
+    window.DB.icons.push(new Icon('customer1', '.img/icons/icon1'));
+    window.DB.icons.push(new Icon('customer2', '.img/icons/icon2'));
+    window.DB.icons.push(new Icon('customer3', '.img/icons/icon3'));
+    window.DB.icons.push(new Icon('customer4', '.img/icons/icon4'));
+    window.DB.icons.push(new Icon('customer5', '.img/icons/icon5'));
+    window.DB.icons.push(new Icon('customer6', '.img/icons/icon6'));
+    window.DB.icons.push(new Icon('customer7', '.img/icons/icon7'));
+    window.DB.icons.push(new Icon('customer8', '.img/icons/icon8'));
+    window.DB.icons.push(new Icon('customer9', '.img/icons/icon9'));
+    window.DB.icons.push(new Icon('customer10', '.img/icons/icon10'));
+    window.DB.icons.push(new Icon('customer11', '.img/icons/icon11'));
+    window.DB.icons.push(new Icon('customer12', '.img/icons/icon12'));
+    window.DB.icons.push(new Icon('customer13', '.img/icons/icon13'));
+    window.DB.icons.push(new Icon('customer14', '.img/icons/icon14'));
+    window.DB.icons.push(new Icon('customer15', '.img/icons/icon15'));
 
     // Food
     window.DB.icons.push(new Icon('waterBottle', './img/food/Water_Bottle.png'));

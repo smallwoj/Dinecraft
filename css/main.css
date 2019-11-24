@@ -509,7 +509,7 @@ white-space: nowrap;
     width: 60%;
     height: 100%;
     /*background: url('../img/table.png') no-repeat center center;*/
-    background-size:30%
+    /*background-size:30%*/
 }
 
 .table-order {
