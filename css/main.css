@@ -315,7 +315,7 @@ white-space: nowrap;
 }
 
 /*Table map things*/
-.table-map-page, .new-account-page, .accounts-list-page, .single-table-page {
+.table-map-page, .new-account-page, .accounts-list-page, .single-table-page, .payment-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -677,4 +677,11 @@ input:focus::placeholder {
 
 .create-acc-btn h4 {
     color: black;
+}
+
+.bills-wrap
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
