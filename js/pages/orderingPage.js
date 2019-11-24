@@ -122,22 +122,32 @@ class OrderingPage {
     onMenuSelectOption1()
     {
         this.titlebar.setText('Drinks'); 
+        this.navbar.unselectAll();
+        this.navbar.selectOption(1); 
     }
     onMenuSelectOption2()
     {
         this.titlebar.setText('Appetizers');
+        this.navbar.unselectAll();
+        this.navbar.selectOption(2);
     }
     onMenuSelectOption3()
     {
         this.titlebar.setText('Specials');
+        this.navbar.unselectAll();
+        this.navbar.selectOption(3);
     }
     onMenuSelectOption4()
     {
         this.titlebar.setText('Entrées');
+        this.navbar.unselectAll();
+        this.navbar.selectOption(4);
     }
     onMenuSelectOption5()
     {
         this.titlebar.setText('Desserts');
+        this.navbar.unselectAll();
+        this.navbar.selectOption(5);
     }
     
         // Dynamic sizes yeah

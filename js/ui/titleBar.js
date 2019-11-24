@@ -1,5 +1,5 @@
 class TitleBar {
-    constructor(insideElem, text, onBack, onSearch) {
+    constructor(insideElem, text, onBack, onSearch, setText) {
         var el = $(`
             <div class="title-bar">
                 <div class="page-name">
@@ -12,6 +12,7 @@ class TitleBar {
         this.title=text;
         this.onBack=onBack;
         this.onSearch=onSearch;
+        this.setText=setText;
         
         if(onBack!=undefined)
         {
