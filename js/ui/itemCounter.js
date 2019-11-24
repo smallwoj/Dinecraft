@@ -15,6 +15,7 @@ class ItemCounter {
         this.incrBtn = this.ref.find('.incr-item-btn');
         this.decrBtn = this.ref.find('.decr-item-btn');
         
+        // hey :)
         this.suffix = suffix;
     
         this.count = start;

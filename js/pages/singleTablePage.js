@@ -70,6 +70,11 @@ class SingleTablePage {
             $(`.item-counter`).css('margin-top', `130%`);
             // TODO: Draw the guests
         }
+
+        // Add a food card, for testing purposes
+        this.foodCard = new FoodCard(this.ref.find('.table-order'), window.DB.menuItems[0]);
+        this.epicFoodCard = new FoodCard(this.ref.find('.cool-content-pane'), window.DB.menuItems[0]);
+
     }
 
     // Removes the contents on the page and resets variables in window

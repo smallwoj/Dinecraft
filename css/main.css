@@ -508,8 +508,6 @@ white-space: nowrap;
     justify-content: start;
     width: 60%;
     height: 100%;
-    /*background: url('../img/table.png') no-repeat center center;*/
-    /*background-size:30%*/
 }
 
 .table-order {
@@ -521,6 +519,17 @@ white-space: nowrap;
 /*    background-color: #585659;*/
     /*min-width: 375px;
     */
+    border: 3px solid #585659;
+}
+
+.food-card {
+    margin: 1%;
+    justify-content: center;
+    background-color: #c6c6c6;
+    
+    height: 10%;
+    width: 10%;
+
     border: 3px solid #585659;
 }
 
