@@ -89,7 +89,7 @@ class SingleTablePage {
             this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
             this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
 
-            this.guestIcons[i].ref.click(cbc(this, i, function(p, i) {
+            this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
                 window.appPage.destroy();
                 window.currOrder = p.guests[i];
                 window.createorderingPage();
