@@ -110,10 +110,10 @@ class Bill
             <div class="popup ui-style-1">
                 <div class="popup-top" align="center"><h4>How will customer <img src="${this.guestOrder.icon.source}.png"> be paying?</h4></div>
                 <div class="popup-bottom">
+                    <div class="popup-cancel ui-style-1"><h4>Cancel</h4></div>
                     <div class="popup-cash ui-style-1"><h4>Cash</h4></div>
                     <div class="popup-credit ui-style-1"><h4>Credit</h4></div>
                     <div class="popup-debit ui-style-1"><h4>Debit</h4></div>
-                    <div class="popup-cancel ui-style-1"><h4>Cancel</h4></div>
                 </div>
             </div>
         `);
