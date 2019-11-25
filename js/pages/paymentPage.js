@@ -58,8 +58,6 @@ class PaymentPage
             this.bills.push(new Bill(this.ref.find('.bills-wrap'), window.currTable.guestOrders[i]));
         }
 
-        //TODO: set css for bills-wrap for auto sizing & positioning based on number of guests
-
         this.onResize();
     }
 
@@ -87,5 +85,37 @@ class PaymentPage
     goToAccList() {
         this.destroy();
         window.createAccountsListPage();
+    }
+
+    goToTableMap()
+    {
+        this.destroy();
+        window.createTableMapPage();
+    }
+
+    checkAllPaid()
+    {
+        for(var i = 0; i < this.bills.length; i++)
+        {
+            if(this.bills[i].paid == undefined)
+                return;
+        }
+        window.currTable.guestOrders = [];
+        window.currTable.state = 'cleaning';
+
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+        <div class="popup ui-style-1">
+            <div class="popup-top" align="center"><h4>Table ${window.currTable.number} finished paying!</h4>
+            </div>
+            <div class="popup-bottom">
+                <div class="popup-ok ui-style-1"><h4>Ok</h4></div>
+            </div>
+        </div>
+        `);
+        $('.popup-ok').css("width", '100%');
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-ok').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        this.goToTableMap();
     }
 }

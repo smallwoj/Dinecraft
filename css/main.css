@@ -880,7 +880,7 @@ input:focus::placeholder {
     transition: 0.1s;
 }
 
-.payment-button:active
+.payment-button:not(.disabled):active
 {
     background-color: #218306;
     outline: 3px solid white;

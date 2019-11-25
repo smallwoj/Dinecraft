@@ -43,7 +43,7 @@ class Bill
 
         top.appendTo(el);
         bottom.appendTo(el);
-        el.appendTo($(insideElem));
+        this.ref = el.appendTo($(insideElem));
     }
     
     
@@ -57,28 +57,52 @@ class Bill
                 <h4>Total is <font color="#218306">$${this.totalPrice}</font></h4><br>
             </div>
             <div class="popup-middle-third">                
-                <input class="acc-input" type="number" name="username" placeholder="$ amount of cash given" size=30 required></div>
+                <input class="acc-input" type="number" id="cash" name="username" placeholder="$ amount of cash given" size=30 required></div>
             <div class="popup-bottom-third">
                 <div class="popup-enter"><h4>Enter</h4></div>
             </div>
         </div>
         `);
-        $($("body").find('.popup').find('img')).css('width', '24px');
-        $($("body").find('.popup').find('img')).css('image-rendering', 'pixelated');
-        
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-enter').click(this.enterCash.bind(this, document.getElementById("cash").value));
+    }
+
+    enterCash(amount)
+    {
+        //error handling please
+        console.log(document.getElementById("cash"));
+        console.log(amount);
+        this.finishPayment('cash', amount - this.totalPrice);
     }
     
     onCreditOrDebit(option)
     {
-        
+        $('.popup-overlay').remove(); $('.popup').remove();
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+        <div class="popup ui-style-1">
+            <div class="popup-top" align="center"><h4>Paying with ${option}...</h4>
+            </div>
+            <div class="popup-bottom">
+                <div class="popup-ok ui-style-1"><h4>Done</h4></div>
+            </div>
+        </div>
+        `);
+        $('.popup-ok').css("width", '100%');
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-ok').click(this.finishPayment.bind(this, option));
     }
 
     askPayment()
     {
+        if($(this.ref.find('.payment-button')).hasClass('disabled')) 
+        {
+            return;
+        }
         $('body').prepend(`<div class="popup-overlay"></div>`);
         $('body').prepend(`
             <div class="popup ui-style-1">
-                <div class="popup-top"><h4>How will customer <img src="${this.guestOrder.icon.source}.png"> be paying?</h4></div>
+                <div class="popup-top" align="center"><h4>How will customer <img src="${this.guestOrder.icon.source}.png"> be paying?</h4></div>
                 <div class="popup-bottom">
                     <div class="popup-cash ui-style-1"><h4>Cash</h4></div>
                     <div class="popup-credit ui-style-1"><h4>Credit</h4></div>
@@ -89,9 +113,42 @@ class Bill
         `);
         $($("body").find('.popup').find('img')).css('width', '24px');
         $($("body").find('.popup').find('img')).css('image-rendering', 'pixelated');
-    
+
+        $($("body").find('.popup-top')).css('margin', '2%');
+
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
         $('.popup-cash').click(this.onCash.bind(this));
-        $('.popup-yes').click(function(e) { onAgree(); $('.popup-overlay').remove(); $('.popup').remove();});
+        $('.popup-credit').click(this.onCreditOrDebit.bind(this, 'credit'));
+        $('.popup-debit').click(this.onCreditOrDebit.bind(this, 'debit'));
         $('.popup-cancel').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+    }
+
+    finishPayment(option, change = undefined)
+    {
+        $('.popup-overlay').remove(); $('.popup').remove();
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+            <div class="popup ui-style-1">
+                <div class="popup-top" align="center"></div>
+                <div class="popup-bottom">
+                    <div class="popup-ok ui-style-1"><h4>Ok</h4></div>
+                </div>
+            </div>
+        `);
+        $('.popup-ok').css("width", '100%');
+        this.paid = true;
+        $(this.ref.find('.payment-button')).html('<h4><i>Paid!</i></h4>');
+        $(this.ref.find('.payment-button')).addClass('disabled');
+        if(option === 'cash')
+        {
+            console.log(option);
+            $('.popup-top').html(`<h4>The change is <font color="#218306">$${change}</font></h4>`)
+        }
+        else
+        {
+            $('.popup-top').html(`<h4>Finished paying!</h4>`)
+        }
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); window.paymentPage.checkAllPaid(); });
+        $('.popup-ok').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); window.paymentPage.checkAllPaid(); });
     }
 }
