@@ -71,17 +71,15 @@ class TitleBar {
         searchText=searchText.toUpperCase()
         switch(searchText)
         {
-        case: 'VEGETARIAN' break;
-        case: 'VEGAN' break;
-        case: 'GLUTEN FREE' break;
-        case: 'MEAT' break;
-        case: 'SOUP' break;
-        case: 'SUSPICIOUS' break;
-        case: 'LACTOSE FREE' break;
+        case 'VEGETARIAN': break;
+        case 'VEGAN': break;
+        case 'GLUTEN FREE': break;  //only show certain cards 
+        case 'MEAT': break;
+        case 'SOUP': break;
+        case 'SUSPICIOUS': break;
+        case 'LACTOSE FREE': break;
         }
             // onSearch needs to be a callback function if you want to have a search bar in the title bar
-    // onSearch will be fired once there is any change in the search bar input field
-    // onSearch will be passed one argument that contains current value of the input
     }
 
     hideHamburger() {
