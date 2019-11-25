@@ -54,21 +54,24 @@ class SingleTablePage {
         $('.table-display').css('background', 'url(' + this.table.img + ') no-repeat center center');
         $('.table-display').css('background-size', '30%');
         */
+        var tableDisplayAndGuests = $(`<div class="table-and-guests"></div>`);
+
         var tableDisplay = $(`<div class="table-display" align="center" style="position:relative"></div>`);
         $(tableDisplay).css('width', '100%');
         $(tableDisplay).css('height', '100%');
         // $(tableDisplay.find('img')).css('width', '100%');
-        // $(tableDisplay.find('img')).css('max-width', '100px');
-        tableDisplay.appendTo($(el.find('.cool-content-pane')));
-        
+        // $(tableDisplay.find('img')).css('max-width', '100px');     
+        tableDisplay.appendTo(tableDisplayAndGuests);
+
         this.tableTopMargin = 55;
         var tableImgWrapper = $(`<div class="table-img-wrapper"></div>`)
-        tableImgWrapper.appendTo($(el.find('.table-display')));
+        tableImgWrapper.appendTo($(tableDisplayAndGuests.find('.table-display')));
         var tableImg = $(`<img src="` + this.table.img + `" </img style="width:25%">`);
         tableImg.appendTo(tableImgWrapper);
         tableImg.css('margin-top', this.tableTopMargin + '%');
         tableImg.css('margin-bottom', '30%');
 
+        var guestsEl = $(`<div class="guest-icons"></div>`);
         // Add the guests
         this.guests = [];
         this.guestIcons = [];   // guestIcons represents the icons for the guests seated around the tables, while 
@@ -79,8 +82,11 @@ class SingleTablePage {
             var icon = window.DB.getIconByName("customer" + iconIndex);
 
             this.guests.push(new GuestOrder(icon, []));
-            this.guestIcons.push(new GuestIcon($(`.table-display`), this.guests[this.guests.length - 1]));
+            this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
         }
+        guestsEl.appendTo(tableDisplayAndGuests.find('.table-display'));
+
+        tableDisplayAndGuests.appendTo($(this.ref.find('.cool-content-pane')));
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
@@ -123,7 +129,7 @@ class SingleTablePage {
     removeGuest() {
         // If the guest has an (non-empty) order, ask for confirmation before removing them
         //uhhh that's a TODO
-
+        console.log('yea');
         this.guestIcons[this.guestCounter.count].hide();
 
         // this.tableTopMargin += GuestIcon.getIconWidth();
