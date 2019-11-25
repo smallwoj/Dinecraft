@@ -64,7 +64,11 @@ class TitleBar {
         this.title=newText;
         this.ref.find('.hamburger-btn').click(this.toggleNav.bind(this));
         $(this.ref.find('.page-name')).html(`<h4>${this.title}</h4>`);
+        
+            // onSearch needs to be a callback function if you want to have a search bar in the title bar
     }
+    
+    
 
     hideHamburger() {
         this.showingHamburger = false;

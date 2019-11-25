@@ -830,19 +830,6 @@ input:focus::placeholder {
     color:white;
 }
 
-/*
-//.orderingpage 
-//ordering page
-//has sidebar, navbar
-
-
-//navbar shows table number, category selection (same as sidebar), search icon button
-//if search icon is clicked let user type and press enter for search 
-//depending on what is selected in sidebar/what is searched
-//display food cards in symmetrical rows from db 
-//if food card selected, display detailed food card as popup
-//have foodcard go away when 
-*/
 .popup-enter {
     widows: 50%;
     width: 100%;
@@ -941,4 +928,16 @@ input:focus::placeholder {
 .cash-error-message
 {
     transform: translate(0, -25%);
+}
+
+.food-card-row
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: auto;
 }

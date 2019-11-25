@@ -13,10 +13,11 @@ class FoodCard {
                 <div class="img-wrapper" style="position: relative; margin-left:auto; margin-right:auto; left:0; right:0; width:80%; height:40%;"></div>
             </div>
         `);
+        $(el.find('h3')).css("margin-bottom","auto");
         this.ref = el.appendTo($(insideElem));
 
         // Aw geez please work
-        this.quantityCounter = new ItemCounter('.quantity-counter', 0, 0, MAX_QUANTITY, 'x');
-        $('.img-wrapper').css('background', 'url(' + window.DB.getIconByName('expand-this').getSource() + ') no-repeat center center');
+        this.quantityCounter = new ItemCounter($(el.find('.quantity-counter')), 0, 0, MAX_QUANTITY, 'x');
+        $(this.ref.find('.img-wrapper')).css('background', 'url(' + window.DB.getIconByName('expand-this').getSource() + ') no-repeat center center');
     }
 }
