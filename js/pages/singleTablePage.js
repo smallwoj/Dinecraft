@@ -11,7 +11,8 @@ class SingleTablePage {
             <div class="single-table-page">
                 <div class="content-pane">
                     <div class="cool-content-pane">
-                        
+                        <div class="back-btn-wrapjjgejrhgjureh-sd"></div>
+                        <div class="send-kitchen-btn"></div>
                     </div>
                 </div>
             </div>
@@ -20,6 +21,16 @@ class SingleTablePage {
         // Append it to body and set the proper panorama image (none in this case)
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
+
+        this.backBtn = new Fab(this.ref.find('.back-btn-wrapjjgejrhgjureh-sd'), (function() {
+            this.destroy();
+            window.createTableMapPage();
+        }).bind(this));
+
+        this.sendKitchenBtn = new Fab(this.ref.find('.send-kitchen-btn'), (function() {
+            // TODO:
+            alert("TODO: THIS. Sending the order to kitchen staff.");
+        }).bind(this));
 
         // Add the navbar with all the options/account info
         this.navbar = new NavBar(this.ref, [{
@@ -77,6 +88,12 @@ class SingleTablePage {
             this.guests.push(new GuestOrder(icon, []));
             this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
             this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+
+            this.guestIcons[i].ref.click(cbc(this, i, function(p, i) {
+                window.appPage.destroy();
+                window.currOrder = p.guests[i];
+                window.createorderingPage();
+            }));
         }
 
         guestsEl.appendTo(tableDisplayAndGuests.find('.table-display'));

@@ -7,13 +7,19 @@ class orderingPage {
             <div class="ordering-page">
             <div class="dark-overlay"></div>
                 <div class="content-pane">
-                    <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:2;">
+                    <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;z-index:2;">
                         <div class="foodcard-wrap" style="height:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
+                    <div class="back-btn-wrapjjgejrhgjureh-sd"></div>
+                    <div class="apply-order-btn"></div>
+
+
                     </div>
                 </div>
             </div>
         `);
+
+        //
        // $(el.find('.popup-overlay')).css('z-index', '0');
         
         //define other elements (titleBar, navBar, icons)
@@ -21,6 +27,19 @@ class orderingPage {
         // Append it to body and set the proper panorama image (none in this case)
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
+
+        this.backBtn = new Fab(this.ref.find('.back-btn-wrapjjgejrhgjureh-sd'), (function() {
+            this.destroy();
+            window.createSingleTablePage();
+        }).bind(this));
+
+        this.applyOrderBtn = new Fab(this.ref.find('.apply-order-btn'), (function() {
+            alert("TODO: THIS. Adding the temporary order to the correct guest.");
+            this.destroy();
+            window.createSingleTablePage();
+        }).bind(this));
+
+
         
         // Add the navbar with all the options/account info
         var navbarOpts = [{
@@ -228,6 +247,10 @@ class orderingPage {
                 this.titleBar.hideSidebar();
             this.ref.find('.content-pane').css('width', '100%');
             this.titleBar.showHamburger();
+        }
+
+        for (var i = 0; i < this.foodCards.length; i++) {
+            this.foodCards[i].resize();
         }
     }
 }     
