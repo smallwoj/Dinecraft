@@ -1,7 +1,9 @@
 class TitleBar {
 
-
-    constructor(insideElem, text, onSearch, onBack, setText) {
+    // onSearch needs to be a callback function if you want to have a search bar in the title bar
+    // onSearch will be fired once there is any change in the search bar input field
+    // onSearch will be passed one argument that contains current value of the input
+    constructor(insideElem, text, onSearch, onBack) {
         this.showingHamburger = false;
         this.showSidebar = false;
 
@@ -17,7 +19,7 @@ class TitleBar {
                 </div>
                 <div class="tb-right">
                     <div class="search-wrap">
-                         <input class="search-input" type="text" name="username" placeholder="Search..." size=30>
+                             <input class="search-input" type="text" name="username" placeholder="Search..." size=30>
                     </div>
                 </div>
             </div>
@@ -26,9 +28,8 @@ class TitleBar {
         this.ref = el.prependTo($(insideElem));
         this.title=text;
         this.onBack=onBack;
-        this.onSearch=onSearch;
-        //this.setText=setText;
-        
+        this.onSearch = onSearch; 
+
         if(onBack!=undefined)
         {
             var titlebar=this.ref.find('title-bar');
@@ -38,7 +39,7 @@ class TitleBar {
             backArrow.click(onBack);
         }
         
-        if(onSearch!=undefined)
+        if(this.onSearch)
         {
             var titlebar=this.ref.find('title-bar');
             var searchIcon=$(`
@@ -46,43 +47,28 @@ class TitleBar {
             `);
             searchIcon.click(onSearch);
         }
-        
-    }
-    setText(newText)
-    {
-        this.title=newText;
 
-        this.ref.find('.hamburger-btn').click(this.toggleNav.bind(this));
-        
-        $(this.ref.find('.page-name')).html(`<h4>${this.title}</h4>`);
-        
-        if (this.onSearch!=undefined) {
+        // If onSearch is provided, then make the search inout visible and functional
+        if (this.onSearch) {
             this.ref.find('.search-wrap').css('visibility', 'visible');
-            this.ref.find('.search-input').on('input', function(e) {
-                onSearch($(e.target).val());
-            });
+            this.ref.find('.search-input').on('input', (function(e) {
+                this.onSearch($(e.target).val());
+            }).bind(this));
         } else {
             this.ref.find('.search-wrap').css('visibility', 'hidden');
         }
     }
-    
-    onSearch(searchText)
+
+    setText(newText)
     {
-        searchText=searchText.toUpperCase()
-        switch(searchText)
-        {
-        case 'VEGETARIAN': break;
-        case 'VEGAN': break;
-        case 'GLUTEN FREE': break;
-        case 'MEAT': break;
-        case 'SOUP': break;
-        case 'SUSPICIOUS': break;
-        case 'LACTOSE FREE': break;
-        }
+        this.title=newText;
+        this.ref.find('.hamburger-btn').click(this.toggleNav.bind(this));
+        $(this.ref.find('.page-name')).html(`<h4>${this.title}</h4>`);
+        
             // onSearch needs to be a callback function if you want to have a search bar in the title bar
-    // onSearch will be fired once there is any change in the search bar input field
-    // onSearch will be passed one argument that contains current value of the input
     }
+    
+    
 
     hideHamburger() {
         this.showingHamburger = false;

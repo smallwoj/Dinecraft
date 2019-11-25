@@ -45,11 +45,11 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('soupBowl', './img/food/soup-bowl.png'));
     window.DB.icons.push(new Icon('bread', './img/food/bread.png'));
     window.DB.icons.push(new Icon('driedKelp', './img/food/dried-kelp.png'));
-    window.DB.icons.push(new Icon('rawSalmon', './img/food/fish2.png'));
-    window.DB.icons.push(new Icon('potato', './img/food/potato.png'));
-    window.DB.icons.push(new Icon('meat', './img/food/meat.png'));
-    window.DB.icons.push(new Icon('chicken', './img/food/chicken.png'));
-    window.DB.icons.push(new Icon('cookedSalmon', './img/food/fish4.png'));
+    window.DB.icons.push(new Icon('rawSalmon', './img/food/fish2.png')); //
+    window.DB.icons.push(new Icon('potato', './img/food/potato.png')); //
+    window.DB.icons.push(new Icon('meat', './img/food/meat.png')); //
+    window.DB.icons.push(new Icon('chicken', './img/food/chicken.png')); //
+    window.DB.icons.push(new Icon('cookedSalmon', './img/food/fish4.png')); //
     window.DB.icons.push(new Icon('pie', './img/food/pie.png'));
     window.DB.icons.push(new Icon('sweetBerries', './img/food/sweet-berries.png'));
     window.DB.icons.push(new Icon('honeyBottle', './img/food/honey-bottle.png'));
@@ -90,7 +90,7 @@ window.DB.createFakeData = function() {
     window.DB.menuItems.push(new MenuItem('Porkchop', 'Entrées', 'meat', 'Sourced from 30-50 feral hogs that run into my 3x5 foot yard within 3-5 minutes while my small 3-5 year old kids play', ['Meat'], 350, 35));
     window.DB.menuItems.push(new MenuItem('Steak', 'Entrées', 'meat', '"her\'es your steank with NO VEGETAL as you ordered sir"', ['Meat'], 271, 25));
     window.DB.menuItems.push(new MenuItem('Cooked Mutton', 'Entrées', 'meat', 'Only a REAL man can eat this', ['Meat'], 294, 22));
-    window.DB.menuItems.push(new MenuItem('Cooked Salmon', 'Entrées', 'meat', 'Swam upstream right onto your plate', ['Meat'], 178, 22));
+    window.DB.menuItems.push(new MenuItem('Cooked Salmon', 'Entrées', 'cookedSalmon', 'Swam upstream right onto your plate', ['Meat'], 178, 22));
     window.DB.menuItems.push(new MenuItem('Cooked Chicken', 'Entrées', 'chicken', 'Tastes like chicken...', ['Meat'], 239, 18));
     window.DB.menuItems.push(new MenuItem('Baked Potato', 'Entrées', 'potato', 'Vegetarians in minecraft be like...', ['Vegetarian', 'Vegan', 'Gluten free'], 70, 5));
     // Deserts 🏜

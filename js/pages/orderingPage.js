@@ -1,4 +1,5 @@
 // Controls the behaviour of the ordering page
+var length;
 class orderingPage {
     constructor() {
         // Main data of the element
@@ -33,47 +34,35 @@ class orderingPage {
             'onClick' : this.onMenuSelectOption2.bind(this)
             },
         {
-            'text' : 'Specials',
+            'text' : 'Entrées',
             'onClick' : this.onMenuSelectOption3.bind(this)
             },
         {
-            'text' : 'Entrées',
-            'onClick' : this.onMenuSelectOption4.bind(this)
-            },
-        {
             'text' : 'Desserts',
-            'onClick' : this.onMenuSelectOption5.bind(this)
+            'onClick' : this.onMenuSelectOption4.bind(this)
             }];
 
         this.navbar = new NavBar(this.ref, navbarOpts);
         
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onSearchSelect.bind(this));
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onSearchInputChange.bind(this));
+         
+                
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
         
-        var options = [];
-        for (var i = 0; i < window.DB.menuItems.length; i++) {
-            options.push({
-                'name' : window.DB.menuItems[i].name,
-                'category' : window.DB.menuItems[i].category,
-                'icon' : window.DB.menuItems[i].icon,
-                'tags' : window.DB.menuItems[i].tags,
-            });
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 9; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
         }
-        /*
-        //Foodcards
-        //defining the foodcards
-        this.foodcards = new Foodcards(this.ref.find('.foodcards-wrap'), this.onFoodCardSelect.bind(this), {
-            'options': options,
-        });
-        
-        var options = [];
-        for (var i = 0; i < window.DB.foodCards.length; i++) {
-            options.push({
-                'icon' : window.DB.foodcards[i].icon,
-                'text' : window.DB.foodcards[i].name,
-                //plus, minus, bar in middle that displays 1 on default then reacts to onPlusSelect etc. 
-            });
-        }
-    */
+
+        foodCardWrap.append(row);
+        length=9;
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
     }
@@ -93,25 +82,26 @@ class orderingPage {
         window.createSingleTablePage();
     }
     
-    onSearchSelect()
+    onSearchInputChange(searchText)
     {
-        
+        searchText=searchText.toUpperCase()
+        switch(searchText)
+        {
+        case 'VEGETARIAN': break;
+        case 'VEGAN': break;
+        case 'GLUTEN FREE': break;
+        case 'MEAT': break;
+        case 'SOUP': break;
+        case 'SUSPICIOUS': break;
+        case 'LACTOSE FREE': break;
+        }
     }
-    onKeyPadSelect()
-    {
-    }
+
     /////////////////////////////
     onFoodCardSelect()
     {
     }
-    onPlusSelect()
-    {
-        //add text 1
-    }
-    onMinusSelect()
-    {
-        //minus text 1 
-    }
+
     onDetailedFoodCardDeselect()
     {
         this.detailedFoodCard=undefined;
@@ -122,31 +112,106 @@ class orderingPage {
     {
         this.titleBar.setText('Drinks'); 
         this.navbar.unselectAll();
-        this.navbar.selectOption(1); 
+        this.navbar.selectOption(1);
+        
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 9; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+        }
+
+        foodCardWrap.append(row);  
+        length=9;        
     }
     onMenuSelectOption2()
     {
         this.titleBar.setText('Appetizers');
         this.navbar.unselectAll();
         this.navbar.selectOption(2);
+        
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 9; i < 15; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+        }
+
+        foodCardWrap.append(row);  
+        length=6;
     }
+
     onMenuSelectOption3()
-    {
-        this.titleBar.setText('Specials');
-        this.navbar.unselectAll();
-        this.navbar.selectOption(3);
-    }
-    onMenuSelectOption4()
     {
         this.titleBar.setText('Entrées');
         this.navbar.unselectAll();
-        this.navbar.selectOption(4);
+        this.navbar.selectOption(3);
+        
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 15; i < 21; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+        }
+
+        foodCardWrap.append(row);  
+        length=6;
     }
-    onMenuSelectOption5()
+    onMenuSelectOption4()
     {
         this.titleBar.setText('Desserts');
         this.navbar.unselectAll();
-        this.navbar.selectOption(5);
+        this.navbar.selectOption(4);
+        
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 21; i < 26; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+        }
+
+        foodCardWrap.append(row);  
+        length=5;
     }
     
         // Dynamic sizes yeah

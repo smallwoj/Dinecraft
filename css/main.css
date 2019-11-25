@@ -770,7 +770,9 @@ input:focus::placeholder {
 
 .popup-top {
     display:flex;
-    width:100%;
+    width:90%;
+    padding-left:5%;
+    padding-right:5%;
     align-items:center;
     justify-content: center;
     height:23vmin;
@@ -828,19 +830,6 @@ input:focus::placeholder {
     color:white;
 }
 
-/*
-//.orderingpage 
-//ordering page
-//has sidebar, navbar
-
-
-//navbar shows table number, category selection (same as sidebar), search icon button
-//if search icon is clicked let user type and press enter for search 
-//depending on what is selected in sidebar/what is searched
-//display food cards in symmetrical rows from db 
-//if food card selected, display detailed food card as popup
-//have foodcard go away when 
-*/
 .popup-enter {
     widows: 50%;
     width: 100%;
@@ -910,6 +899,9 @@ input:focus::placeholder {
     z-index:15;
 }
 
+.popup-cancel h4, .popup-cash h4, .popup-debit h4, .popup-credit h4, .popup-ok h4, .popup-yes h4, .popup-no h4 {
+    color:black;
+}
 .popup-cancel:active, .popup-cash:active, .popup-debit:active, .popup-credit:active, .popup-ok:active
 {
     background-color: #218306;
@@ -922,6 +914,11 @@ input:focus::placeholder {
     color:white;
 }
 
+.error-message {
+    margin-bottom: 5%;
+    visibility:hidden;
+}
+
 .error-message, .cash-error-message
 {
     font-size: 2.4rem;
@@ -931,4 +928,16 @@ input:focus::placeholder {
 .cash-error-message
 {
     transform: translate(0, -25%);
+}
+
+.food-card-row
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: auto;
 }

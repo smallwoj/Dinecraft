@@ -11,7 +11,7 @@ class NewAccountPage {
                 <div class="content-pane">
                     <div class="account-creation-wrap">
                         <div class="account-creation">
-                            <div class="error-message"></div>
+                            <div class="error-message">E</div>
                             <input class="acc-input" type="text" name="username" placeholder="Name" size=30 required>
                             <input class="acc-input" type="password" name="pin" placeholder="PIN" size=30 maxlength=6 required>
                             <div class="icon-select"></div>
@@ -111,7 +111,6 @@ class NewAccountPage {
     }
 
     onSubmit() {
-        // Somebody please did error checking here
         var valid = true;
         
         if(this.iconDropdown.selected === -1) valid = "Please select an icon.";
@@ -127,7 +126,10 @@ class NewAccountPage {
         if(valid!=true)
         {
             $('.error-message').html(`${valid}`);
+            $('.error-message').css('visibility', 'visible');
             return;
+        } else {
+            $('.error-message').css('visibility', 'hidden');
         }
         this.destroy(); // we are moving from the page
 
