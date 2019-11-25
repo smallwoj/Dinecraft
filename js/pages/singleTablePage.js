@@ -102,7 +102,7 @@ class SingleTablePage {
             // guestCounter.appendTo($(el.find('.table-order')));
 
             // What does this do????
-            this.guestCounter = new ItemCounter('.table-order', 0, 0, MAX_GUESTS, '🪑');  // i need  emogies
+            this.guestCounter = new ItemCounter('.guest-icons', 0, 0, MAX_GUESTS, '🪑');  // i need  emogies
             this.guestCounter.incrBtn.click(this.addGuest.bind(this));
             this.guestCounter.decrBtn.click(this.removeGuest.bind(this));
             this.ref.find('item-counter').css('width', '100%');

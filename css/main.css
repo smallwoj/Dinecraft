@@ -932,3 +932,20 @@ input:focus::placeholder {
 {
     transform: translate(0, -25%);
 }
+
+.table-display .item-counter{
+    left:50%;
+    position:absolute;
+    transform:translate(-50%,-325%);
+}
+
+.guest-icons{
+    position:relative;
+}
+
+.table-display{
+    position:absolute;
+    top:50%;
+    transform:translate(0,-50%)
+}
+
