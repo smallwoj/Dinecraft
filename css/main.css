@@ -334,7 +334,7 @@ white-space: nowrap;
 }
 
 /*Table map things*/
-.table-map-page, .new-account-page, .accounts-list-page, .single-table-page, .ordering-page {
+.table-map-page, .new-account-page, .accounts-list-page, .single-table-page, .ordering-page, .payment-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -511,6 +511,7 @@ white-space: nowrap;
 }
 
 .table-order {
+    display:flex;
     margin: 1%;
     justify-content: end;
     width: 40%;
@@ -519,6 +520,19 @@ white-space: nowrap;
 /*    background-color: #585659;*/
     /*min-width: 375px;
     */
+    border: 3px solid #585659;
+}
+
+.food-card {
+    margin: 1%;
+    justify-content: center;
+    text-align: center;
+    background-color: #c6c6c6;
+    
+    height: 30%;
+    width: 30%;
+    min-height: 240px;
+
     border: 3px solid #585659;
 }
 
@@ -734,6 +748,16 @@ input:focus::placeholder {
     color: black;
 }
 
+.bills-wrap
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
 .popup {
     z-index:12;
     position: absolute;
@@ -759,6 +783,31 @@ input:focus::placeholder {
     justify-content: space-between;
 }
 
+.popup-top-third {
+    height:7vmin;
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content: center;
+}
+
+.popup-middle-third {
+    display:flex;
+    width:100%;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    height:16vmin;
+}
+
+.popup-bottom-third {
+    height:7vmin;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    outline: 3px solid black;
+}
+
 .popup-yes, .popup-no {
     transition: 0.1s;
     width:50%;
@@ -779,7 +828,8 @@ input:focus::placeholder {
     color:white;
 }
 
-.orderingpage 
+/*
+//.orderingpage 
 //ordering page
 //has sidebar, navbar
 
@@ -790,3 +840,95 @@ input:focus::placeholder {
 //display food cards in symmetrical rows from db 
 //if food card selected, display detailed food card as popup
 //have foodcard go away when 
+*/
+.popup-enter {
+    widows: 50%;
+    width: 100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:15;
+}
+
+.popup-enter:active {
+    background-color: #218306;
+    outline: 3px solid white;
+    z-index:20;
+}
+
+.bill
+{
+    flex-basis: 100%;
+    display:flex;
+    flex-direction: column;
+}
+
+.bill-top
+{
+    margin-bottom: auto;
+}
+
+.item-name, .price
+{
+    font-size: 1.8rem; /*take from h5*/
+}
+
+.item-name
+{
+    color: #5F5F5F;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.price
+{
+    margin-left: 5%;
+    margin-right: 5%;
+    color: #218306;
+}
+
+.payment-button
+{
+    transition: 0.1s;
+}
+
+.payment-button:not(.disabled):active
+{
+    background-color: #218306;
+    outline: 3px solid white;
+}
+
+.popup-cancel, .popup-cash, .popup-debit, .popup-credit, .popup-ok
+{
+    transition: 0.1s;
+    width:25%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:15;
+}
+
+.popup-cancel:active, .popup-cash:active, .popup-debit:active, .popup-credit:active, .popup-ok:active
+{
+    background-color: #218306;
+    outline: 3px solid white;
+    z-index:20;
+}
+
+.popup-cancel:active h4, .popup-cash:active h4, .popup-debit:active h4, .popup-credit:active h4, .popup-ok:active h4
+{
+    color:white;
+}
+
+.error-message, .cash-error-message
+{
+    font-size: 2.4rem;
+    color: maroon;
+}
+
+.cash-error-message
+{
+    transform: translate(0, -25%);
+}

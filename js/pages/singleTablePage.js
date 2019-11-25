@@ -1,7 +1,8 @@
 // The "single table page" is very similar to the table map page. 
 // Once the table map page is more developed, we should consider merging the two, in order to facilitate a smooth transition between them
+// SIKE! Late project vibes. These are staying separate 😤
 
-const MAX_GUESTS = 5;
+const MAX_GUESTS = 4;
 
 class SingleTablePage {
     constructor() {
@@ -10,8 +11,8 @@ class SingleTablePage {
             <div class="single-table-page">
                 <div class="content-pane">
                     <div class="cool-content-pane">
-                        <div class="table-display"></div>
-                        
+                        <div class="table-display">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,11 +48,11 @@ class SingleTablePage {
             },
         }]);
 
-        // Add the sample text
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Sample Text');
-
-        // Add the table (you get one)
-        //this.table = new // Imma let Josh do his thing with the table overview first
+        // Add the table text
+        this.table = window.currTable;
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), "Table " + this.table.number);
+        $('.table-display').css('background', 'url(' + this.table.img + ') no-repeat center center');
+        $('.table-display').css('background-size', '30%');
 
         // Add the guests
         this.guests = [];
@@ -61,12 +62,25 @@ class SingleTablePage {
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
+        this.onResize();
+
+        if (this.table.state == 'available') {
+            // What does this do????
+            this.guestCounter = new ItemCounter('.table-display', 0, 0, MAX_GUESTS, '🪑');
+            $(`.item-counter`).css('margin-top', `130%`);
+            // TODO: Draw the guests
+        }
+
+        // Add a food card, for testing purposes
+        //this.foodCard = new FoodCard(this.ref.find('.table-order'), window.DB.menuItems[0]);  // whatev*r I didn't care about table-order anyway >:( ,>o<, 
+        this.epicFoodCard = new FoodCard(this.ref.find('.cool-content-pane'), window.DB.menuItems[0]);
+
     }
 
     // Removes the contents on the page and resets variables in window
     destroy() {
         this.ref.remove();
-        window.appPage = undefined;
+        window.singleTablePage = undefined;
         window.onResize = undefined;
     }
 
@@ -82,6 +96,7 @@ class SingleTablePage {
 
     // Dynamic sizes yeah
     onResize() {
+        //navbar stuff
         if (window.isLandscape()) {
             this.navbar.ref.show();
             this.ref.find('.content-pane').css('width', '80%');

@@ -20,8 +20,23 @@ window.DB.createFakeData = function() {
     window.DB.icons.push(new Icon('back-s', './img/back-selected.png'));
     window.DB.icons.push(new Icon('hamburger-n', './img/hamburgermenu-standard.png'));
     window.DB.icons.push(new Icon('hamburger-s', './img/hamburgermenu-selected.png'));
-
-
+    window.DB.icons.push(new Icon('expand-this', './img/expandthis.png'));
+    window.DB.icons.push(new Icon('customer0', '.img/icons/icon0.png'));
+    window.DB.icons.push(new Icon('customer1', '.img/icons/icon1.png'));
+    window.DB.icons.push(new Icon('customer2', '.img/icons/icon2.png'));
+    window.DB.icons.push(new Icon('customer3', '.img/icons/icon3.png'));
+    window.DB.icons.push(new Icon('customer4', '.img/icons/icon4.png'));
+    window.DB.icons.push(new Icon('customer5', '.img/icons/icon5.png'));
+    window.DB.icons.push(new Icon('customer6', '.img/icons/icon6.png'));
+    window.DB.icons.push(new Icon('customer7', '.img/icons/icon7.png'));
+    window.DB.icons.push(new Icon('customer8', '.img/icons/icon8.png'));
+    window.DB.icons.push(new Icon('customer9', '.img/icons/icon9.png'));
+    window.DB.icons.push(new Icon('customer10', '.img/icons/icon10.png'));
+    window.DB.icons.push(new Icon('customer11', '.img/icons/icon11.png'));
+    window.DB.icons.push(new Icon('customer12', '.img/icons/icon12.png'));
+    window.DB.icons.push(new Icon('customer13', '.img/icons/icon13.png'));
+    window.DB.icons.push(new Icon('customer14', '.img/icons/icon14.png'));
+    window.DB.icons.push(new Icon('customer15', '.img/icons/icon15.png'));
     // Food
     window.DB.icons.push(new Icon('waterBottle', './img/food/Water_Bottle.png'));
     window.DB.icons.push(new Icon('potionOfPoison', './img/food/Potion_of_Poison.png'));
@@ -52,11 +67,6 @@ window.DB.createFakeData = function() {
     window.DB.accounts.push(new Account('Pickaxe Guy', '481516', 'server', window.DB.getIconByName('userAcc3')));
     window.DB.accounts.push(new Account('Joe mama', '696969', 'server', window.DB.getIconByName('userAcc4')));
  
-    // Tables
-    window.DB.tables.push(new Table(1, 'available', [], {'x': -0.5, 'y':-0.5}));
-    window.DB.tables.push(new Table(2, 'available', [], {'x': 0.5, 'y':-0.5}));
-    window.DB.tables.push(new Table(3, 'available', [], {'x': 0.5, 'y':0.5}));
-    window.DB.tables.push(new Table(4, 'cleaning', [], {'x': -0.5, 'y':0.5}));
     
     // Menu items
     // Drinks
@@ -83,13 +93,32 @@ window.DB.createFakeData = function() {
     window.DB.menuItems.push(new MenuItem('Cooked Salmon', 'Entrées', 'meat', 'Swam upstream right onto your plate', ['Meat'], 178, 22));
     window.DB.menuItems.push(new MenuItem('Cooked Chicken', 'Entrées', 'chicken', 'Tastes like chicken...', ['Meat'], 239, 18));
     window.DB.menuItems.push(new MenuItem('Baked Potato', 'Entrées', 'potato', 'Vegetarians in minecraft be like...', ['Vegetarian', 'Vegan', 'Gluten free'], 70, 5));
-    // Deserts
+    // Deserts 🏜
     window.DB.menuItems.push(new MenuItem('Pumpkin Pie', 'Desserts', 'pie', 'Pumpkin pie just like mom used to make... an award winning dessert', ['Vegetarian'], 243, 5));
     window.DB.menuItems.push(new MenuItem('Sweet Berries', 'Desserts', 'sweetBerries', 'Verified non-poisonous by our expert team of taste-testers', ['Vegetarian', 'Vegan', 'Gluten free'], 74, 5));
     window.DB.menuItems.push(new MenuItem('Honey Bottle', 'Desserts', 'honeyBottle', 'Please for the love of everything save the bees', ['Vegetarian', 'Gluten free'], 304, 8));
     window.DB.menuItems.push(new MenuItem('Cookie', 'Desserts', 'cookie', 'A classic cookie! You\'ll want to wipe the pixelated crumbs off your shirt before you get up', ['Vegetarian'], 40, 3));
     window.DB.menuItems.push(new MenuItem('Cake', 'Desserts', 'cake', 'The cake is a lie! (JOKE: Portal (2007))', ['Vegetarian'], 371, 5));
     // Specials would go here, but I'm hesitant to include them because their prices and calorie counts aren't numbers, and that will require coding special cases in the bill-splitting part
+    
+    // Tables
+    window.DB.tables.push(new Table(1, 'available', [], {'x': -0.5, 'y':-0.5}));
+    window.DB.tables.push(new Table(2, 'available', [], {'x': 0.5, 'y':-0.5}));
+    window.DB.tables.push(new Table(3, 'cleaning', [], {'x': 0.5, 'y':0.5}));
+    // Create a bunch of fake guest orders
+    var numGuests = Math.ceil(Math.random()*4);
+    var guestOrders = [];
+    for(var i = 0; i < numGuests; i++)
+    {
+        var items = []
+        var numItems = Math.ceil(Math.random()*6);
+        for(var j = 0; j < numItems; j++)
+        {
+            items.push(new OrderItem(Math.ceil(Math.random()*3), window.DB.menuItems[Math.floor(Math.random()*window.DB.menuItems.length)], 'make it blocky', 'delivered'));
+        }
+        guestOrders.push(new GuestOrder(new Icon('guest'+(i+1), './img/icons/icon'+Math.floor(Math.random()*16)), items));
+    }
+    window.DB.tables.push(new Table(4, 'taken', guestOrders, {'x': -0.5, 'y':0.5}));
 };
 
 // Returns: Icon, does a lookup on a database to return Icon with the provided name

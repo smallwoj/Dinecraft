@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     // DEBUG: start with a table map page haha just kidding I mean new account page
     //window.auth = window.DB.accounts[1];
-   // window.createTableMapPage();
+    //window.createTableMapPage();
 //    window.createNewAccountPage();
 
     // Fire on resize to scale the generated page
@@ -51,16 +51,15 @@ window.createNewAccountPage = function() {
     window.appPage = new NewAccountPage();
 }
 
+// Creates a new payment page
+window.createPaymentPage = function()
+{
+    window.appPage = new PaymentPage();
+}
+
 // Do stuff on window resize
 $(window).resize(function() {
     onResize();
 });
 
 window.onResize = function() {}
-
-//function to map a value from one range to another
-function map(value, start1, stop1, start2, stop2)
-{
-    var slope = 1.0 * (stop2 - start2) / (stop1 - start1);
-    return start2 + slope * (value - start1);
-}
