@@ -29,26 +29,6 @@ class SingleTablePage {
                 this.destroy();
                 window.createTableMapPage();
             }).bind(this)
-        }, {
-            'text' : 'and maybe these the people',
-            'selected' : true,
-            'suboption' : true,
-        }, {
-            'text' : '😂',
-            'suboption' : true,
-            'onClick' : function () {
-                alert('clicked suboption 2');
-            },
-        }, {
-            'text' : 'once we have a table database',
-            'onClick' : function() {
-                alert('clicked 2');
-            },
-        }, {
-            'text' : '😎',
-            'onClick' : function() {
-                alert('clicked 3');
-            },
         }]);
 
         // Add the table text

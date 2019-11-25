@@ -19,16 +19,6 @@ class TableMapPage {
         var navbarOpts = [{
             'text' : 'Table Map',
             'selected' : true,
-        }, {
-            'text' : 'Menu option 2',
-            'onClick' : function() {
-                alert('clicked 2');
-            },
-        }, {
-            'text' : 'Menu option 3',
-            'onClick' : function() {
-                alert('clicked 3');
-            },
         }];
 
         if (window.auth.role === 'manager') {
