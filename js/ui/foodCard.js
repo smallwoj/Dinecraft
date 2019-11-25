@@ -13,16 +13,17 @@ class FoodCard {
             </div>
             <div class="food-card-bottom">
                 <div class="quantity-counter" style="width: 100%; margin-bottom:5%;"></div>
+                <div class="additional-details"></div>
                 <div class="img-wrapper" style="position: relative; margin-left:auto; margin-right:auto; width:100%;"><img src="./img/expandthis.png" width=100%></div>
             </div>
             </div>
         `);
 
-        //$(el.find('.quantity-counter')).css("margin-top","auto");
         this.ref = el.appendTo($(insideElem));
 
         // Aw geez please work
         this.quantityCounter = new ItemCounter($(el.find('.quantity-counter')), 0, 0, MAX_QUANTITY, 'x');
         $(el.find('.item-counter')).css('width', '75%');
+        $(el.find('.img-wrapper')).click();
     }
 }

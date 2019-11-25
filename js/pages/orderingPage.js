@@ -7,8 +7,8 @@ class orderingPage {
             <div class="ordering-page">
             <div class="dark-overlay"></div>
                 <div class="content-pane">
-                    <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
-                        <div class="foodcard-wrap"></div>
+                    <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
+                        <div class="foodcard-wrap" style="height:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
                     </div>
                 </div>
