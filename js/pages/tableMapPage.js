@@ -49,7 +49,7 @@ class TableMapPage {
             this.tables.push(new TableSelector(this.ref.find(".tables-wrap"), this.onTableSelect.bind(this), window.DB.tables[i]));
         }
 
-        // Add the sample text
+        // Add title
         this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Table Map');
 
         // Bind what this page should do on resize
@@ -107,6 +107,7 @@ class TableMapPage {
         //store which table we are at and go to the next page
         window.currTable = table;
         window.createSingleTablePage();
+//        window.createPaymentPage();
     }
 }
 

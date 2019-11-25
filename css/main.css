@@ -770,7 +770,9 @@ input:focus::placeholder {
 
 .popup-top {
     display:flex;
-    width:100%;
+    width:90%;
+    padding-left:5%;
+    padding-right:5%;
     align-items:center;
     justify-content: center;
     height:23vmin;
@@ -910,6 +912,9 @@ input:focus::placeholder {
     z-index:15;
 }
 
+.popup-cancel h4, .popup-cash h4, .popup-debit h4, .popup-credit h4, .popup-ok h4, .popup-yes h4, .popup-no h4 {
+    color:black;
+}
 .popup-cancel:active, .popup-cash:active, .popup-debit:active, .popup-credit:active, .popup-ok:active
 {
     background-color: #218306;

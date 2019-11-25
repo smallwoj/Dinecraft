@@ -47,7 +47,7 @@ class orderingPage {
 
         this.navbar = new NavBar(this.ref, navbarOpts);
         
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onSearchSelect.bind(this));
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onSearchInputChange.bind(this));
         
         var options = [];
         for (var i = 0; i < window.DB.menuItems.length; i++) {
@@ -93,10 +93,21 @@ class orderingPage {
         window.createSingleTablePage();
     }
     
-    onSearchSelect()
+    onSearchInputChange(searchText)
     {
-        
+        searchText=searchText.toUpperCase()
+        switch(searchText)
+        {
+        case 'VEGETARIAN': break;
+        case 'VEGAN': break;
+        case 'GLUTEN FREE': break;
+        case 'MEAT': break;
+        case 'SOUP': break;
+        case 'SUSPICIOUS': break;
+        case 'LACTOSE FREE': break;
+        }
     }
+
     onKeyPadSelect()
     {
     }
