@@ -48,7 +48,7 @@ window.createNewAccountPage = function() {
 // Creates a new payment page
 window.createPaymentPage = function()
 {
-    window.paymentPage = new PaymentPage();
+    window.appPage = new PaymentPage();
 }
 
 // Do stuff on window resize

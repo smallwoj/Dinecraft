@@ -148,7 +148,7 @@ class Bill
         {
             $('.popup-top').html(`<h4>Finished paying!</h4>`)
         }
-        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); window.paymentPage.checkAllPaid(); });
-        $('.popup-ok').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); window.paymentPage.checkAllPaid(); });
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); window.appPage.checkAllPaid(); });
+        $('.popup-ok').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); window.appPage.checkAllPaid(); });
     }
 }
