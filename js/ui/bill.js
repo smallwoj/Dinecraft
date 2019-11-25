@@ -45,18 +45,42 @@ class Bill
         bottom.appendTo(el);
         el.appendTo($(insideElem));
     }
+    
+    
+    onCash()
+    {
+        $('.popup-overlay').remove(); $('.popup').remove();
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+        <div class="popup ui-style-1">
+            <div class="popup-top"><h4>Total is <font color="#218306">$${this.totalPrice}</font></h4><br>
+            </div>
+            <div class="popup-middle">                <h4>$</h4><input class="acc-input" type="number" name="username" placeholder="Cash" size=30 required></div>
+            <div class="popup-bottom">
+                <div class="popup-enter"><h4>Enter</h4></div>
+            </div>
+        </div>
+        `);
+        $($("body").find('.popup').find('img')).css('width', '24px');
+        $($("body").find('.popup').find('img')).css('image-rendering', 'pixelated');
+        
+    }
+    
+    onCreditOrDebit(option)
+    {
+        
+    }
 
     askPayment()
     {
-        console.log(this);
         $('body').prepend(`<div class="popup-overlay"></div>`);
         $('body').prepend(`
             <div class="popup ui-style-1">
                 <div class="popup-top"><h4>How will customer <img src="${this.guestOrder.icon.source}.png"> be paying?</h4></div>
                 <div class="popup-bottom">
-                    <div class="popup-cash ui-style-1"><h4>No</h4></div>
-                    <div class="popup-credit ui-style-1"><h4>Yes</h4></div>
-                    <div class="popup-debit ui-style-1"><h4>seirullkjfd</h4></div>
+                    <div class="popup-cash ui-style-1"><h4>Cash</h4></div>
+                    <div class="popup-credit ui-style-1"><h4>Credit</h4></div>
+                    <div class="popup-debit ui-style-1"><h4>Debit</h4></div>
                     <div class="popup-cancel ui-style-1"><h4>Cancel</h4></div>
                 </div>
             </div>
@@ -64,8 +88,8 @@ class Bill
         $($("body").find('.popup').find('img')).css('width', '24px');
         $($("body").find('.popup').find('img')).css('image-rendering', 'pixelated');
     
-        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
-        $('.popup-no').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-cash').click(this.onCash.bind(this));
         $('.popup-yes').click(function(e) { onAgree(); $('.popup-overlay').remove(); $('.popup').remove();});
+        $('.popup-cancel').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
     }
 } 

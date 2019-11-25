@@ -845,3 +845,26 @@ input:focus::placeholder {
     background-color: #218306;
     outline: 3px solid white;
 }
+
+.popup-cancel, .popup-cash, .popup-debit, .popup-credit, .popup-ok
+{
+    transition: 0.1s;
+    width:25%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:15;
+}
+
+.popup-cancel:active, .popup-cash:active, .popup-debit:active, .popup-credit:active, .popup-ok:active
+{
+    background-color: #218306;
+    outline: 3px solid white;
+    z-index:20;
+}
+
+.popup-cancel:active h4, .popup-cash:active h4, .popup-debit:active h4, .popup-credit:active h4, .popup-ok:active h4
+{
+    color:white;
+}
