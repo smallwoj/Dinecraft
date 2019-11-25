@@ -14,7 +14,7 @@ class FoodCard {
             <div class="food-card-bottom">
                 <div class="quantity-counter" style="width: 100%; margin-bottom:5%;"></div>
                 <div class="additional-details"></div>
-                <div class="img-wrapper" style="position: relative; margin-left:auto; margin-right:auto; width:100%;"><img src="./img/expandthis.png" width=100%></div>
+                <!--<div class="img-wrapper" style="position: relative; margin-left:auto; margin-right:auto; width:100%;"><img src="./img/expandthis.png" width=100%></div>-->
             </div>
             </div>
         `);
