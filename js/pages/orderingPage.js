@@ -1,15 +1,13 @@
 // Controls the behaviour of the ordering page
-class OrderingPage {
+class orderingPage {
     constructor() {
         // Main data of the element
         var el = $(`
             <div class="ordering-page">
-                <div class="main-container">
+                <div class="content-pane">
                     <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
-                        <div class="content-pane"></div> //navbar, titlebar
                         <div class="foodcard-wrap"></div>
                         <div class="detailedfoodcard-wrap"></div>
-                        <div class="quantity-wrap"></div>
                     </div>
                 </div>
             </div>
@@ -25,34 +23,31 @@ class OrderingPage {
         window.onResize = this.onResize.bind(this);
 
         // Add the navbar with all the options/account info
-        this.navbar = new NavBar(this.ref, [{
+        var navbarOpts = [{
             'text' : 'Drinks',
             'selected' : true,
-            'onClick' : onMenuSelectOption1();
+            'onClick' : this.onMenuSelectOption1.bind(this)
         }, 
         {
             'text' : 'Appetizers',
-            'onClick' : onMenuSelectOption2();
+            'onClick' : this.onMenuSelectOption2.bind(this)
             },
         {
             'text' : 'Specials',
-            'onClick' : onMenuSelectOption3();
+            'onClick' : this.onMenuSelectOption3.bind(this)
             },
         {
             'text' : 'Entrées',
-            'onClick' : onMenuSelectOption4();
+            'onClick' : this.onMenuSelectOption4.bind(this)
             },
         {
             'text' : 'Desserts',
-            'onClick' : onMenuSelectOption5();
-            }]);
+            'onClick' : this.onMenuSelectOption5.bind(this)
+            }];
 
-
-        //implement display search icon/button that actually searches 
-            //(brings up keypad, finds certain items)
-        //TITILEBAR
-        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onBackSelect.bind(this), this.onSearchSelect.bind(this));
+        this.navbar = new NavBar(this.ref, navbarOpts);
         
+        this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onSearchSelect.bind(this));
         
         var options = [];
         for (var i = 0; i < window.DB.menuItems.length; i++) {
@@ -63,7 +58,7 @@ class OrderingPage {
                 'tags' : window.DB.menuItems[i].tags,
             });
         }
-        
+        /*
         //Foodcards
         //defining the foodcards
         this.foodcards = new Foodcards(this.ref.find('.foodcards-wrap'), this.onFoodCardSelect.bind(this), {
@@ -78,7 +73,7 @@ class OrderingPage {
                 //plus, minus, bar in middle that displays 1 on default then reacts to onPlusSelect etc. 
             });
         }
-        
+    */
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
     }
@@ -105,47 +100,51 @@ class OrderingPage {
     onKeyPadSelect()
     {
     }
-    
+    /////////////////////////////
     onFoodCardSelect()
     {
     }
     onPlusSelect()
     {
+        //add text 1
     }
     onMinusSelect()
     {
+        //minus text 1 
     }
     onDetailedFoodCardDeselect()
     {
+        this.detailedFoodCard=undefined;
     }
     
-    onMenuSelectOption1()
+   
+   onMenuSelectOption1()
     {
-        this.titlebar.setText('Drinks'); 
+        this.titleBar.setText('Drinks'); 
         this.navbar.unselectAll();
         this.navbar.selectOption(1); 
     }
     onMenuSelectOption2()
     {
-        this.titlebar.setText('Appetizers');
+        this.titleBar.setText('Appetizers');
         this.navbar.unselectAll();
         this.navbar.selectOption(2);
     }
     onMenuSelectOption3()
     {
-        this.titlebar.setText('Specials');
+        this.titleBar.setText('Specials');
         this.navbar.unselectAll();
         this.navbar.selectOption(3);
     }
     onMenuSelectOption4()
     {
-        this.titlebar.setText('Entrées');
+        this.titleBar.setText('Entrées');
         this.navbar.unselectAll();
         this.navbar.selectOption(4);
     }
     onMenuSelectOption5()
     {
-        this.titlebar.setText('Desserts');
+        this.titleBar.setText('Desserts');
         this.navbar.unselectAll();
         this.navbar.selectOption(5);
     }

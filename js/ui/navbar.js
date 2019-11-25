@@ -66,8 +66,8 @@ class NavBar {
     }
 
     selectOption(i) {
-        if (!this.opts[i].hasClass('selected')) {
-            this.opts[i].addClass('selected');
+        if (!this.opts[i-1].hasClass('selected')) {
+            this.opts[i-1].addClass('selected');
         }
     }
 

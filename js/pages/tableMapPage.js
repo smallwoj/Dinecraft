@@ -95,7 +95,8 @@ class TableMapPage {
         this.destroy();
         //store which table we are at and go to the next page
         window.currTable = table;
-        window.createSingleTablePage();
+       // window.createSingleTablePage();
+       window.createorderingPage();
     }
 }
 

@@ -334,7 +334,7 @@ white-space: nowrap;
 }
 
 /*Table map things*/
-.table-map-page, .new-account-page, .accounts-list-page, .single-table-page {
+.table-map-page, .new-account-page, .accounts-list-page, .single-table-page, .ordering-page {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -563,7 +563,6 @@ white-space: nowrap;
     background-color: #218306;
 }
 
-/* This is a workaround for displaying a placeholder on a date field, copy-pasted from Stack Overflow */
 input[type="date"]:before {
     content: attr(placeholder) !important;
     color: #aaa;
@@ -779,3 +778,15 @@ input:focus::placeholder {
 .popup-yes:active h4, .popup-no:active h4 {
     color:white;
 }
+
+.orderingpage 
+//ordering page
+//has sidebar, navbar
+
+
+//navbar shows table number, category selection (same as sidebar), search icon button
+//if search icon is clicked let user type and press enter for search 
+//depending on what is selected in sidebar/what is searched
+//display food cards in symmetrical rows from db 
+//if food card selected, display detailed food card as popup
+//have foodcard go away when 

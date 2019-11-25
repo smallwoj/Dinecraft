@@ -42,8 +42,9 @@ window.createSingleTablePage = function() {
 
 
 // Creates an ordering page
-window.createOrderingPage = function() {
-    window.orderingPage = new OrderingPage();
+window.createorderingPage = function() {
+    window.appPage = new orderingPage();
+}
 
 // Creates a new account page
 window.createNewAccountPage = function() {
