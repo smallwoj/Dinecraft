@@ -11,6 +11,7 @@ class NewAccountPage {
                 <div class="content-pane">
                     <div class="account-creation-wrap">
                         <div class="account-creation">
+                            <div class="error-message"></div>
                             <input class="acc-input" type="text" name="username" placeholder="Name" size=30 required>
                             <input class="acc-input" type="password" name="pin" placeholder="PIN" size=30 maxlength=6 required>
                             <div class="icon-select"></div>
@@ -110,7 +111,24 @@ class NewAccountPage {
     }
 
     onSubmit() {
-        // Somebody please do error checking here
+        // Somebody please did error checking here
+        var valid = true;
+        
+        if(this.iconDropdown.selected === -1) valid = "Please select an icon.";
+        
+        if(this.roleDropdown.selected === -1) valid = "Please select a role.";
+
+        if(isNaN(this.ref.find('.acc-input[name="pin"]').val())) valid = "PINs consist of numbers.";
+
+        if(this.ref.find('.acc-input[name="pin"]').val().length != 6) valid = "PINs have to have 6 numbers.";
+        
+        if(this.ref.find('.acc-input[name="username"]').val() === '') valid = "You can't have an empty username!";
+
+        if(valid!=true)
+        {
+            $('.error-message').html(`${valid}`);
+            return;
+        }
         this.destroy(); // we are moving from the page
 
         // Add new account to database and go back to the account list

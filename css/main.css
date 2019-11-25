@@ -908,3 +908,9 @@ input:focus::placeholder {
 {
     color:white;
 }
+
+.error-message
+{
+    font-size: 2.4rem;
+    color: maroon;
+}
