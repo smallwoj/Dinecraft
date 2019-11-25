@@ -33,6 +33,22 @@ class TableSelector //class for a button that selects a table to go to the next 
             var elohel = $('<div class="clean-wrap"><div class="clean"><img src="./img/spraybottle-standard-2.png" style="height:150%;"></div></div>');
             elohel.appendTo($(el));
         }
+        else if(this.data.state === 'taken')
+        {//if there are people whose order has been taken, draw them
+            var guests = $('<div class="guests-wrap" align="center"></div>')
+            for(var i = 0; i < this.data.guestOrders.length; i++)
+            {
+                var guest = $(`<div class="guest${i+1}"><img src="${this.data.guestOrders[i].icon.source}.png"></div>`);
+                $(guest.find('img')).css('width', '28px');
+                $(guest).css('position', 'absolute');
+                guest.appendTo(guests);
+            }
+            $(guests.find(`.guest1`)).css('transform', 'translate(35%, -300%)');
+            $(guests.find(`.guest2`)).css('transform', 'translate(200%, -135%)');
+            $(guests.find(`.guest3`)).css('transform', 'translate(30%, 30%)');
+            $(guests.find(`.guest4`)).css('transform', 'translate(-135%, -135%)');
+            guests.appendTo(el);
+        }
         //insert the html elemnt
         this.ref = el.appendTo($(insideElem));
 

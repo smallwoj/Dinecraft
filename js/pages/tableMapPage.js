@@ -90,8 +90,19 @@ class TableMapPage {
         window.createAccountsListPage();
     }
 
+    clean(table)
+    {
+        $('.clean-wrap').remove();
+        table.state = 'available';
+    }
+
     onTableSelect(table)
     {
+        if(table.state === 'cleaning')
+        {
+            window.makePopup("Are you sure that the table has been sufficiently cleaned?", this.clean.bind(this, table));
+            return;
+        }
         this.destroy();
         //store which table we are at and go to the next page
         window.currTable = table;
