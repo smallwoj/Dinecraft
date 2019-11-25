@@ -5,9 +5,9 @@ class NotBill
     constructor(insideElem, guestOrder)
     {
         this.guestOrder = guestOrder;
-        var el = $('<div class="bill ui-style-1"><div class="bill-top"></div><div class="bill-bottom"></div></div>');
-        var top = el.find('.bill-top');
-        var bottom = el.find('.bill-bottom');
+        this.el = $('<div class="not-bill ui-style-1"><div class="bill-top"></div><div class="bill-bottom"></div></div>');
+        var top = this.el.find('.bill-top');
+        var bottom = this.el.find('.bill-bottom');
         this.totalPrice = 0;
         //create image
         var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.source + '"></div>');
@@ -15,7 +15,7 @@ class NotBill
         $(guestIcon).css('height', 'auto');
         $(guestIcon.find('img')).css('width', '30%');
         $(guestIcon.find('img')).css('max-width', '64px');
-        guestIcon.appendTo($(el));
+        guestIcon.appendTo($(this.el));
 
         var items = $('<div class="items"></div>');
         //for each item in the order, add it to the list
@@ -39,15 +39,30 @@ class NotBill
         total.html('<h4>TOTAL: <font color="#218306">$'+this.totalPrice+'</font>');
         total.appendTo(bottom);
 
-        var paymentButton = $(`<div class="payment-button ui-style-1" align="center"><h4>Pay</h4></div>`);
-        paymentButton.appendTo(bottom);
-        $(bottom.find('.payment-button')).click(this.askPayment.bind(this));
+        var addButton = $(`<div class="add-button ui-style-1" align="center"><h4>➕</h4></div>`);
+        addButton.appendTo(bottom);
+        $(bottom.find('.add-button')).click(this.onAdd.bind(this));
 
-        top.appendTo(el);
-        bottom.appendTo(el);
-        this.ref = el.appendTo($(insideElem));
+        top.appendTo(this.el);
+        bottom.appendTo(this.el);
+        this.ref = this.el.appendTo($(insideElem));
+
+        this.hide();
+    }
+
+    show() {
+        $(this.el).css('visibility', 'visible');
+    }
+
+    hide() {
+        console.log(this.el.find('.bill'))
+        $(this.el).css('visibility', 'hidden');
     }
     
+    onAdd() {
+        window.currOrder = this.guestOrder;
+        window.createorderingPage();
+    }
     
     onCash()
     {

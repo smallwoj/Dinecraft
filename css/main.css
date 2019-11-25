@@ -869,6 +869,13 @@ input:focus::placeholder {
     margin-bottom: auto;
 }
 
+.not-bill
+{
+    /* flex-basis: 100%; */
+    display:flex;
+    flex-direction: column;
+}
+
 .item-name, .price
 {
     font-size: 1.8rem; /*take from h5*/
