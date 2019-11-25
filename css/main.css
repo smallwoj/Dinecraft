@@ -784,6 +784,30 @@ input:focus::placeholder {
     justify-content: space-between;
 }
 
+.popup-top-third {
+    height:7vmin;
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content: center;
+}
+
+.popup-middle-third {
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content: center;
+    height:16vmin;
+}
+
+.popup-bottom-third {
+    height:7vmin;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    outline: 3px solid black;
+}
+
 .popup-yes, .popup-no {
     transition: 0.1s;
     width:50%;
@@ -802,6 +826,22 @@ input:focus::placeholder {
 
 .popup-yes:active h4, .popup-no:active h4 {
     color:white;
+}
+
+.popup-enter {
+    widows: 50%;
+    width: 100%;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:15;
+}
+
+.popup-enter:active {
+    background-color: #218306;
+    outline: 3px solid white;
+    z-index:20;
 }
 
 .bill

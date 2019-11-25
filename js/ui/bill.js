@@ -53,10 +53,12 @@ class Bill
         $('body').prepend(`<div class="popup-overlay"></div>`);
         $('body').prepend(`
         <div class="popup ui-style-1">
-            <div class="popup-top"><h4>Total is <font color="#218306">$${this.totalPrice}</font></h4><br>
+            <div class="popup-top-third">
+                <h4>Total is <font color="#218306">$${this.totalPrice}</font></h4><br>
             </div>
-            <div class="popup-middle">                <h4>$</h4><input class="acc-input" type="number" name="username" placeholder="Cash" size=30 required></div>
-            <div class="popup-bottom">
+            <div class="popup-middle-third">                
+                <input class="acc-input" type="number" name="username" placeholder="$ amount of cash given" size=30 required></div>
+            <div class="popup-bottom-third">
                 <div class="popup-enter"><h4>Enter</h4></div>
             </div>
         </div>
@@ -92,4 +94,4 @@ class Bill
         $('.popup-yes').click(function(e) { onAgree(); $('.popup-overlay').remove(); $('.popup').remove();});
         $('.popup-cancel').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
     }
-} 
+}
