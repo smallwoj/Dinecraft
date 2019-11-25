@@ -112,6 +112,8 @@ class SingleTablePage {
                 this.guestCounter.count = MAX_GUESTS;
                 for (var i = 0; i < this.guestIcons.length; i++) {
                     this.guestIcons[i].show();
+                    // 😭
+                    this.stupidNotBill = new NotBill(this.ref.find('.table-order'), this.guests[i]);
                 }
             }
         }
