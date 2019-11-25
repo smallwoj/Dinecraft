@@ -54,25 +54,31 @@ class Bill
         $('body').prepend(`
         <div class="popup ui-style-1">
             <div class="popup-top-third">
-                <h4>Total is <font color="#218306">$${this.totalPrice}</font></h4><br>
+                <h4>Total is <font color="#218306">$${this.totalPrice}</font></h4>
             </div>
             <div class="popup-middle-third">                
-                <input class="acc-input" type="number" id="cash" name="username" placeholder="$ amount of cash given" size=30 required></div>
+                <input class="acc-input" type="number" id="cash" name="username" placeholder="$ amount of cash given" size=30 required>
+                
+                <div class="cash-error-message"></div>
+            </div>
             <div class="popup-bottom-third">
                 <div class="popup-enter"><h4>Enter</h4></div>
             </div>
         </div>
         `);
         $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
-        $('.popup-enter').click(this.enterCash.bind(this, document.getElementById("cash").value));
+        $('.popup-enter').click(this.enterCash.bind(this));
     }
 
-    enterCash(amount)
+    enterCash()
     {
         //error handling please
-        console.log(document.getElementById("cash"));
-        console.log(amount);
-        this.finishPayment('cash', amount - this.totalPrice);
+        if($('.acc-input').val() >= this.totalPrice)
+            this.finishPayment('cash',  $('.acc-input').val() - this.totalPrice);
+        else if($('.acc-input').val() == '')
+            $('.cash-error-message').html("Please enter a number.");
+        else
+            $('.cash-error-message').html("Not enough money!");
     }
     
     onCreditOrDebit(option)
@@ -141,8 +147,7 @@ class Bill
         $(this.ref.find('.payment-button')).addClass('disabled');
         if(option === 'cash')
         {
-            console.log(option);
-            $('.popup-top').html(`<h4>The change is <font color="#218306">$${change}</font></h4>`)
+            $('.popup-top').html(`<h4>The total change is <font color="#218306">$${change}</font></h4>`)
         }
         else
         {
