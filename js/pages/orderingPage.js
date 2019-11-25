@@ -10,7 +10,7 @@ class orderingPage {
                     <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;z-index:2;">
                         <div class="foodcard-wrap" style="height:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
-                    <div class="back-btn-wrapjjgejrhgjureh-sd"></div>
+                    <div class="back-btn-cox"></div>
                     <div class="apply-order-btn"></div>
 
 
@@ -28,7 +28,7 @@ class orderingPage {
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
 
-        this.backBtn = new Fab(this.ref.find('.back-btn-wrapjjgejrhgjureh-sd'), (function() {
+        this.backBtn = new Fab(this.ref.find('.back-btn-cox'), (function() {
             this.destroy();
             window.createSingleTablePage();
         }).bind(this));

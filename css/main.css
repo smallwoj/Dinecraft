@@ -1090,5 +1090,22 @@ input:focus::placeholder {
     height:8vmin;
 }
 
+.back-btn-cox div {
+    image-rendering:pixelated;
+    background-image: url('../img/backfab.png');
+    transition: 0.1s;
+}
+
+.back-btn-cox div:active {
+    background-image: url('../img/backfab-highlighted.png');
+}
+
+.back-btn-cox {
+    position:absolute;
+    bottom: 2vmin;
+    right: 12vmin;
+    width:8vmin;
+    height:8vmin;
+}
 
 
