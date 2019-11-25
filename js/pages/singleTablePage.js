@@ -39,14 +39,14 @@ class SingleTablePage {
         }).bind(this));
 
         // Add the navbar with all the options/account info
-        this.navbar = new NavBar(this.ref, [{
+        this.navbar = new NavBar(this.ref, [/*{
             'text' : '< Back to table map',
             'selected' : false,
             'onClick' : (function () {
                 this.destroy();
                 window.createTableMapPage();
             }).bind(this)
-        }]);
+        }*/]);
 
         // Add the table text
         this.table = window.currTable;

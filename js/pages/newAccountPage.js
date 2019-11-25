@@ -9,6 +9,8 @@ class NewAccountPage {
         var el = $(`
             <div class="new-account-page">
                 <div class="content-pane">
+
+                        <div class="back-btn-shrek"></div>
                     <div class="account-creation-wrap">
                         <div class="account-creation">
                             <div class="error-message">E</div>
@@ -25,8 +27,15 @@ class NewAccountPage {
             </div>
         `);
 
+
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
+
+        this.backBtn = new Fab(this.ref.find('.back-btn-shrek'), (function() {
+            this.destroy();
+            window.createAccountsListPage();
+        }).bind(this));
+
 
         this.navbar = new NavBar(this.ref, [{
             'text' : 'Table Map',
