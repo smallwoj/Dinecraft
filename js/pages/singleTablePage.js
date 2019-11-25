@@ -11,8 +11,7 @@ class SingleTablePage {
             <div class="single-table-page">
                 <div class="content-pane">
                     <div class="cool-content-pane">
-                        <div class="table-display">
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -51,30 +50,56 @@ class SingleTablePage {
         // Add the table text
         this.table = window.currTable;
         this.titleBar = new TitleBar(this.ref.find('.content-pane'), "Table " + this.table.number);
+        /*
         $('.table-display').css('background', 'url(' + this.table.img + ') no-repeat center center');
         $('.table-display').css('background-size', '30%');
+        */
+        var tableDisplay = $(`<div class="table-display" align="center" style="position:relative"></div>`);
+        $(tableDisplay).css('width', '100%');
+        $(tableDisplay).css('height', '100%');
+        // $(tableDisplay.find('img')).css('width', '100%');
+        // $(tableDisplay.find('img')).css('max-width', '100px');
+        tableDisplay.appendTo($(el.find('.cool-content-pane')));
+        
+        this.tableTopMargin = 55;
+        var tableImgWrapper = $(`<div class="table-img-wrapper"></div>`)
+        tableImgWrapper.appendTo($(el.find('.table-display')));
+        var tableImg = $(`<img src="` + this.table.img + `" </img style="width:25%">`);
+        tableImg.appendTo(tableImgWrapper);
+        tableImg.css('margin-top', this.tableTopMargin + '%');
+        tableImg.css('margin-bottom', '30%');
 
         // Add the guests
         this.guests = [];
+        this.guestIcons = [];   // guestIcons represents the icons for the guests seated around the tables, while 
+                                // guests represents their orders
+        for (var i = 0; i < 4; i++) {
+            // Randomly get an icon, and add a guest with that icon
+            var iconIndex = Math.floor(Math.random() * 16);
+            var icon = window.DB.getIconByName("customer" + iconIndex);
 
-        // Add the table order card
-        this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), this.guests);
+            this.guests.push(new GuestOrder(icon, []));
+            this.guestIcons.push(new GuestIcon($(`.table-display`), this.guests[this.guests.length - 1]));
+        }
 
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
         this.onResize();
 
+        // Add the table order card
+        this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), this.guests);
+
+        // Conditional formatting, based on the table's state
         if (this.table.state == 'available') {
+            // var guestCounter = $(`<div class="guest-counter" align="bottom" style="width:100%">`);
+            // guestCounter.appendTo($(el.find('.table-order')));
+
             // What does this do????
-            this.guestCounter = new ItemCounter('.table-display', 0, 0, MAX_GUESTS, '🪑');
-            $(`.item-counter`).css('margin-top', `130%`);
-            // TODO: Draw the guests
+            this.guestCounter = new ItemCounter('.table-order', 0, 0, MAX_GUESTS, '🪑');  // i need  emogies
+            this.guestCounter.incrBtn.click(this.addGuest.bind(this));
+            this.guestCounter.decrBtn.click(this.removeGuest.bind(this));
+            this.ref.find('item-counter').css('width', '100%');
         }
-
-        // Add a food card, for testing purposes
-        //this.foodCard = new FoodCard(this.ref.find('.table-order'), window.DB.menuItems[0]);  // whatev*r I didn't care about table-order anyway >:( ,>o<, 
-        this.epicFoodCard = new FoodCard(this.ref.find('.cool-content-pane'), window.DB.menuItems[0]);
-
     }
 
     // Removes the contents on the page and resets variables in window
@@ -86,12 +111,26 @@ class SingleTablePage {
 
     // Adds a guest to the table 
     addGuest() {
+        // Well, reveals a guest. Same thing
+        this.guestIcons[this.guestCounter.count - 1].show();
 
+        // this.tableTopMargin -= GuestIcon.getIconWidth();
+        // this.tableImg.css('margin-top', this.tableTopMargin + '%');
+        
     }
 
     // Removes a guest from the table 
     removeGuest() {
         // If the guest has an (non-empty) order, ask for confirmation before removing them
+        //uhhh that's a TODO
+
+        this.guestIcons[this.guestCounter.count].hide();
+
+        // this.tableTopMargin += GuestIcon.getIconWidth();
+        // this.tableImg.css('margin-top', this.tableTopMargin + '%');
+        // this.guests.pop();
+        // this.guestIcons[this.guestIcons.length - 1].remove();
+        // this.guestIcons.pop();
     }
 
     // Dynamic sizes yeah
