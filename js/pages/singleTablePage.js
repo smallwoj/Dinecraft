@@ -89,10 +89,6 @@ class SingleTablePage {
 
         tableDisplayAndGuests.appendTo($(this.ref.find('.cool-content-pane')));
 
-        // Bind what this page should do on resize
-        window.onResize = this.onResize.bind(this);
-        this.onResize();
-
         // Add the table order card
         this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), this.guests);
 
@@ -107,6 +103,10 @@ class SingleTablePage {
             this.guestCounter.decrBtn.click(this.removeGuest.bind(this));
             this.ref.find('item-counter').css('width', '100%');
         }
+
+        // Bind what this page should do on resize
+        window.onResize = this.onResize.bind(this);
+        this.onResize();
     }
 
     // Removes the contents on the page and resets variables in window
