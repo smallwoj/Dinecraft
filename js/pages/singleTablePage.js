@@ -97,7 +97,7 @@ class SingleTablePage {
         this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), this.guests);
 
         // Conditional formatting, based on the table's state
-        if (this.table.state == 'available') {
+        if (this.table.state == 'available' || this.table.state == 'taken') {
             // var guestCounter = $(`<div class="guest-counter" align="bottom" style="width:100%">`);
             // guestCounter.appendTo($(el.find('.table-order')));
 
@@ -106,6 +106,12 @@ class SingleTablePage {
             this.guestCounter.incrBtn.click(this.addGuest.bind(this));
             this.guestCounter.decrBtn.click(this.removeGuest.bind(this));
             this.ref.find('item-counter').css('width', '100%');
+            if (this.table.state == 'taken') {
+                this.guestCounter.count = MAX_GUESTS;
+                for (var i = 0; i < this.guestIcons.length; i++) {
+                    this.guestIcons[i].show();
+                }
+            }
         }
     }
 
