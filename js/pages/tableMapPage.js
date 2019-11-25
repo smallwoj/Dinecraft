@@ -92,8 +92,12 @@ class TableMapPage {
 
     clean(table)
     {
-        $('.clean-wrap').remove();
+        $(this.ref.find('.clean-wrap')).remove();
         table.state = 'available';
+        for(var i =0; i < this.tables.length; i++)
+        {
+            this.tables[i].checkClean();
+        }
     }
 
     onTableSelect(table)
@@ -106,8 +110,9 @@ class TableMapPage {
         this.destroy();
         //store which table we are at and go to the next page
         window.currTable = table;
-        window.createSingleTablePage();
-//        window.createPaymentPage();
+        // window.createSingleTablePage();
+        // window.createPaymentPage();
+        window.createorderingPage();
     }
 }
 

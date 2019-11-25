@@ -5,14 +5,16 @@ class orderingPage {
         // Main data of the element
         var el = $(`
             <div class="ordering-page">
+            <div class="dark-overlay"></div>
                 <div class="content-pane">
-                    <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
-                        <div class="foodcard-wrap"></div>
+                    <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
+                        <div class="foodcard-wrap" style="height:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
                     </div>
                 </div>
             </div>
         `);
+       // $(el.find('.popup-overlay')).css('z-index', '0');
         
         //define other elements (titleBar, navBar, icons)
         
@@ -46,6 +48,8 @@ class orderingPage {
         
         this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Drinks', this.onSearchInputChange.bind(this));
          
+        $(this.ref.find('.title-bar')).css('position', 'relative');
+        $(this.ref.find('.title-bar')).css('z-index', '5');
                 
         this.foodCards=[];
         //create all the food cards 

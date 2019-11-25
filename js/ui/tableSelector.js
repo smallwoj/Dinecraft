@@ -28,12 +28,7 @@ class TableSelector //class for a button that selects a table to go to the next 
         //set what happens when you click on the table
         el.click(cbc(this, 0, function(p){p.onClick()}));
         //if this table needs cleaning, show the icon
-        if(this.data.state === 'cleaning')
-        {
-            var elohel = $('<div class="clean-wrap"><div class="clean"><img src="./img/spraybottle-standard-2.png" style="height:150%;"></div></div>');
-            elohel.appendTo($(el));
-        }
-        else if(this.data.state === 'taken')
+        if(this.data.state === 'taken')
         {//if there are people whose order has been taken, draw them
             var guests = $('<div class="guests-wrap" align="center"></div>')
             for(var i = 0; i < this.data.guestOrders.length; i++)
@@ -52,8 +47,19 @@ class TableSelector //class for a button that selects a table to go to the next 
         //insert the html elemnt
         this.ref = el.appendTo($(insideElem));
 
+        this.checkClean();
+
         //call the resize method to correctly position the table
         this.onResize();
+    }
+
+    checkClean()
+    {
+        if(this.tableData.state === 'cleaning')
+        {
+            var elohel = $('<div class="clean-wrap"><div class="clean"><img src="./img/spraybottle-standard-2.png" style="height:150%;"></div></div>');
+            elohel.appendTo($(this.ref));
+        }
     }
     
     /**
