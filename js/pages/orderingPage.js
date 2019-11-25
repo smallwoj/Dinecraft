@@ -8,7 +8,7 @@ class orderingPage {
             <div class="dark-overlay"></div>
                 <div class="content-pane">
                     <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
-                        <div class="foodcard-wrap" style="height:100%;"></div>
+                        <div class="foodcard-wrap" style="height:100%;width:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
                     </div>
                 </div>
@@ -118,8 +118,7 @@ class orderingPage {
         this.navbar.unselectAll();
         this.navbar.selectOption(1);
         
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -144,8 +143,7 @@ class orderingPage {
         this.navbar.unselectAll();
         this.navbar.selectOption(2);
         
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -171,8 +169,7 @@ class orderingPage {
         this.navbar.unselectAll();
         this.navbar.selectOption(3);
         
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -181,14 +178,14 @@ class orderingPage {
         var row = $(`<div class="food-card-row"></div>`);
         for (var i = 15; i < 21; i++) {
             if (i % 5 == 0 && i != 0) {
-                foodCardWrap.append(row);
+                if(!($(row).html()===''))
+                    foodCardWrap.append(row);
                 row = $(`<div class="food-card-row"></div>`);
             }
-
-            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+                this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
         }
-
-        foodCardWrap.append(row);  
+        if(!($(row).html()===''))
+            foodCardWrap.append(row);  
         length=6;
     }
     onMenuSelectOption4()
@@ -197,8 +194,7 @@ class orderingPage {
         this.navbar.unselectAll();
         this.navbar.selectOption(4);
         
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
