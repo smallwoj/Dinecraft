@@ -10,10 +10,16 @@ class orderingPage {
                     <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
                         <div class="foodcard-wrap" style="height:100%;width:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
+                    <div class="back-btn-wrapjjgejrhgjureh-sd"></div>
+                    <div class="apply-order-btn"></div>
+
+
                     </div>
                 </div>
             </div>
         `);
+
+        //
        // $(el.find('.popup-overlay')).css('z-index', '0');
         
         //define other elements (titleBar, navBar, icons)
@@ -21,10 +27,20 @@ class orderingPage {
         // Append it to body and set the proper panorama image (none in this case)
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
-        
-        // Bind what this page should do on resize
-        window.onResize = this.onResize.bind(this);
 
+        this.backBtn = new Fab(this.ref.find('.back-btn-wrapjjgejrhgjureh-sd'), (function() {
+            this.destroy();
+            window.createSingleTablePage();
+        }).bind(this));
+
+        this.applyOrderBtn = new Fab(this.ref.find('.apply-order-btn'), (function() {
+            alert("TODO: THIS. Adding the temporary order to the correct guest.");
+            this.destroy();
+            window.createSingleTablePage();
+        }).bind(this));
+
+
+        
         // Add the navbar with all the options/account info
         var navbarOpts = [{
             'text' : 'Drinks',
@@ -67,8 +83,10 @@ class orderingPage {
 
         foodCardWrap.append(row);
         length=9;
+
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
+        this.onResize();
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -217,15 +235,18 @@ class orderingPage {
         // Dynamic sizes yeah
     onResize() {
         if (window.isLandscape()) {
-            if (this.navbar.ref.is(':hidden')) {
-                this.navbar.ref.show();
-                this.ref.find('.content-pane').css('width', '80%');
-            }
+            this.navbar.ref.show();
+            this.ref.find('.content-pane').css('width', '80%');
+            this.titleBar.hideHamburger();
         } else {
-            if (this.navbar.ref.is(':visible')) {
-                this.navbar.ref.hide();
-                this.ref.find('.content-pane').css('width', '100%');
-            }
+            if (!this.titleBar.showSidebar)
+                this.titleBar.hideSidebar();
+            this.ref.find('.content-pane').css('width', '100%');
+            this.titleBar.showHamburger();
+        }
+
+        for (var i = 0; i < this.foodCards.length; i++) {
+            this.foodCards[i].resize();
         }
     }
 }     

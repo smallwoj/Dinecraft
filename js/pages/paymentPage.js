@@ -44,9 +44,6 @@ class PaymentPage
         // Add the sample text
         this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Payment for Table '+window.currTable.number);
 
-        // Bind what this page should do on resize
-        window.onResize = this.onResize.bind(this);
-
         this.bills = [];
 
         // Append it to body and set the proper panorama image (none in this case)
@@ -58,6 +55,8 @@ class PaymentPage
             this.bills.push(new Bill(this.ref.find('.bills-wrap'), window.currTable.guestOrders[i]));
         }
 
+        // Bind what this page should do on resize
+        window.onResize = this.onResize.bind(this);
         this.onResize();
     }
 
@@ -70,13 +69,13 @@ class PaymentPage
 
     // Dynamic sizes yeah
     onResize() {
-        //navbar stuff
         if (window.isLandscape()) {
             this.navbar.ref.show();
             this.ref.find('.content-pane').css('width', '80%');
             this.titleBar.hideHamburger();
         } else {
-            this.navbar.ref.hide();
+            if (!this.titleBar.showSidebar)
+                this.titleBar.hideSidebar();
             this.ref.find('.content-pane').css('width', '100%');
             this.titleBar.showHamburger();
         }

@@ -26,4 +26,9 @@ class FoodCard {
         $(el.find('.item-counter')).css('width', '75%');
         $(el.find('.img-wrapper')).click();
     }
+
+
+    resize() {
+        this.quantityCounter.resize();
+    }
 }

@@ -30,6 +30,8 @@ class TitleBar {
         this.onBack=onBack;
         this.onSearch = onSearch; 
 
+        this.ref.find('.hamburger-btn').click(this.toggleNav.bind(this));
+
         if(onBack!=undefined)
         {
             var titlebar=this.ref.find('title-bar');
@@ -62,10 +64,7 @@ class TitleBar {
     setText(newText)
     {
         this.title=newText;
-        this.ref.find('.hamburger-btn').click(this.toggleNav.bind(this));
         $(this.ref.find('.page-name')).html(`<h4>${this.title}</h4>`);
-        
-            // onSearch needs to be a callback function if you want to have a search bar in the title bar
     }
     
     

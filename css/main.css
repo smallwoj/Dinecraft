@@ -344,9 +344,22 @@ white-space: nowrap;
     flex-direction : row;
 }
 
-.table-style
-{
+.table-style {
+    transition: 0.1s;
     position: absolute;
+}
+
+.table-style img {
+    transition: 0.1s;
+}
+
+.table-style:active {
+    outline: 3px solid white;
+    background-color: #218306;
+}
+
+.table-style img:active {
+    opacity: 0.5;
 }
 
 .clean-wrap
@@ -513,9 +526,9 @@ white-space: nowrap;
 .table-order {
     display:flex;
     margin: 1%;
-    justify-content: end;
+    justify-content:flex-end;
     width: 40%;
-    height: 87.5%;
+    height: 75vh;
     background-color: #c6c6c6;
 /*    background-color: #585659;*/
     /*min-width: 375px;
@@ -859,6 +872,13 @@ input:focus::placeholder {
     margin-bottom: auto;
 }
 
+.not-bill
+{
+    /* flex-basis: 100%; */
+    display:flex;
+    flex-direction: column;
+}
+
 .item-name, .price
 {
     font-size: 1.8rem; /*take from h5*/
@@ -948,3 +968,93 @@ input:focus::placeholder {
 {
     margin-bottom: auto;
 }
+.table-display .item-counter{
+    left:50%;
+    position:absolute;
+    transform:translate(-50%,-325%);
+}
+
+.guest-icons{
+    position:relative;
+}
+
+.guest-icons img {
+    outline: 3px solid black;
+    transition: 0.1s;
+}
+
+.guest-icons img:active {
+    outline: 3px solid white;
+}
+
+
+.table-display{
+    position:absolute;
+    top:50%;
+    transform:translate(0,-50%)
+}
+
+.fab {
+    background-size:100% 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.back-btn-wrapjjgejrhgjureh-sd div {
+    image-rendering:pixelated;
+    background-image: url('../img/backfab.png');
+    transition: 0.1s;
+}
+
+.back-btn-wrapjjgejrhgjureh-sd div:active {
+    background-image: url('../img/backfab-highlighted.png');
+}
+
+.back-btn-wrapjjgejrhgjureh-sd {
+    position:absolute;
+    bottom: 2vmin;
+    right: 12vmin;
+    width:8vmin;
+    height:8vmin;
+}
+
+.send-kitchen-btn div {
+    image-rendering:pixelated;
+    background-image: url('../img/send-standard.png');
+    transition: 0.1s;
+}
+
+.send-kitchen-btn div:active {
+    background-image: url('../img/send-highlighted.png');
+}
+
+.send-kitchen-btn {
+ position:absolute;
+    bottom: 2vmin;
+    right: 2vmin;
+    width:8vmin;
+    height:8vmin;
+}
+
+.apply-order-btn div {
+    image-rendering:pixelated;
+    background-image: url('../img/confirm-standard.png');
+    transition: 0.1s;
+}
+
+.apply-order-btn div:active {
+    background-image: url('../img/confirm-highlighted.png');
+}
+
+.apply-order-btn {
+ position:absolute;
+    bottom: 2vmin;
+    right: 2vmin;
+    width:8vmin;
+    height:8vmin;
+}
+
+
+
+
+

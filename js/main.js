@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     // DEBUG: skip log in 
 //    window.auth = window.DB.accounts[1];
-  //  window.createTableMapPage();
+//    window.createTableMapPage();
 //    window.createNewAccountPage();
 
     // Fire on resize to scale the generated page
