@@ -77,6 +77,8 @@ class SingleTablePage {
         this.guests = [];
         this.guestIcons = [];   // guestIcons represents the icons for the guests seated around the tables, while 
                                 // guests represents their orders
+
+        // TODO: match the number of guests at the table to the number of guests displayed in the table map
         for (var i = 0; i < 4; i++) {
             // Randomly get an icon, and add a guest with that icon
             var iconIndex = Math.floor(Math.random() * 16);
@@ -158,6 +160,10 @@ class SingleTablePage {
                 this.titleBar.hideSidebar();
             this.ref.find('.content-pane').css('width', '100%');
             this.titleBar.showHamburger();
+       }
+
+        if(this.guestCounter) {
+            this.guestCounter.resize();
         }
     }
 }

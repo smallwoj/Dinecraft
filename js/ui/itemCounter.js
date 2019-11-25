@@ -45,6 +45,8 @@ class ItemCounter {
 
         if (this._count == this.max) {
             this.incrBtn.addClass('disabled');
+        } else {
+            this.incrBtn.removeClass('disabled');
         }
 
         if (this._count == this.max - 1) {
@@ -53,6 +55,8 @@ class ItemCounter {
 
         if (this._count == this.min) {
             this.decrBtn.addClass('disabled');
+        } else {
+            this.decrBtn.removeClass('disabled');
         }
     }
 
