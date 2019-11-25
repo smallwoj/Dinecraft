@@ -73,6 +73,7 @@ class SingleTablePage {
 
         var guestsEl = $(`<div class="guest-icons"></div>`);
         // Add the guests
+        GuestIcon.num = 0;
         this.guests = [];
         this.guestIcons = [];   // guestIcons represents the icons for the guests seated around the tables, while 
                                 // guests represents their orders
