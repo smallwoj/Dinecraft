@@ -511,6 +511,7 @@ white-space: nowrap;
 }
 
 .table-order {
+    display:flex;
     margin: 1%;
     justify-content: end;
     width: 40%;
@@ -519,6 +520,19 @@ white-space: nowrap;
 /*    background-color: #585659;*/
     /*min-width: 375px;
     */
+    border: 3px solid #585659;
+}
+
+.food-card {
+    margin: 1%;
+    justify-content: center;
+    text-align: center;
+    background-color: #c6c6c6;
+    
+    height: 30%;
+    width: 30%;
+    min-height: 240px;
+
     border: 3px solid #585659;
 }
 
@@ -779,14 +793,14 @@ input:focus::placeholder {
     color:white;
 }
 
-.orderingpage 
-//ordering page
-//has sidebar, navbar
-
-
-//navbar shows table number, category selection (same as sidebar), search icon button
-//if search icon is clicked let user type and press enter for search 
-//depending on what is selected in sidebar/what is searched
-//display food cards in symmetrical rows from db 
-//if food card selected, display detailed food card as popup
-//have foodcard go away when 
+.food-card-row
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: auto;
+}

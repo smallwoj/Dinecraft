@@ -1,5 +1,5 @@
 class ItemCounter {
-    constructor(insideElem, min, start, max) {
+    constructor(insideElem, min, start, max, suffix = '') {
         var el = $(`
             <div class="item-counter">
                 <div class="counter-btn decr-item-btn ui-style-1"><h4>-</h4></div>
@@ -14,6 +14,9 @@ class ItemCounter {
         this.ref = el.appendTo($(insideElem));
         this.incrBtn = this.ref.find('.incr-item-btn');
         this.decrBtn = this.ref.find('.decr-item-btn');
+        
+        // hey :)
+        this.suffix = suffix;
     
         this.count = start;
         this.incrBtn.click(this.onIncrease.bind(this));
@@ -34,7 +37,7 @@ class ItemCounter {
 
     set count(val) {
         this._count = val;
-        this.ref.find('.item-count h4').text(this._count);
+        this.ref.find('.item-count h4').text(this._count + "" + this.suffix);
 
         if (this._count == this.min + 1) {
             this.decrBtn.removeClass('disabled');
