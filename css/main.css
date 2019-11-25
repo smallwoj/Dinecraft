@@ -1013,7 +1013,7 @@ input:focus::placeholder {
 .back-btn-wrapjjgejrhgjureh-sd {
     position:absolute;
     bottom: 2vmin;
-    right: 12vmin;
+    right: 22vmin;
     width:8vmin;
     height:8vmin;
 }
@@ -1054,7 +1054,41 @@ input:focus::placeholder {
     height:8vmin;
 }
 
+.pay-table-btn div {
+    image-rendering:pixelated;
+    background-image: url('../img/pay-standard.png');
+    transition: 0.1s;
+}
 
+.pay-table-btn div:active {
+    background-image: url('../img/pay-highlighted.png');
+}
+
+.pay-table-btn {
+ position:absolute;
+    bottom: 2vmin;
+    right: 12vmin;
+    width:8vmin;
+    height:8vmin;
+}
+
+.back-btn-shrek div {
+    image-rendering:pixelated;
+    background-image: url('../img/backfab.png');
+    transition: 0.1s;
+}
+
+.back-btn-shrek div:active {
+    background-image: url('../img/backfab-highlighted.png');
+}
+
+.back-btn-shrek {
+    position:absolute;
+    bottom: 2vmin;
+    right: 2vmin;
+    width:8vmin;
+    height:8vmin;
+}
 
 
 

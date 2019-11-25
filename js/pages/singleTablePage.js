@@ -12,6 +12,7 @@ class SingleTablePage {
                 <div class="content-pane">
                     <div class="cool-content-pane">
                         <div class="back-btn-wrapjjgejrhgjureh-sd"></div>
+                        <div class="pay-table-btn"></div>
                         <div class="send-kitchen-btn"></div>
                     </div>
                 </div>
@@ -25,6 +26,11 @@ class SingleTablePage {
         this.backBtn = new Fab(this.ref.find('.back-btn-wrapjjgejrhgjureh-sd'), (function() {
             this.destroy();
             window.createTableMapPage();
+        }).bind(this));
+
+        this.payBtn = new Fab(this.ref.find('.pay-table-btn'), (function() {
+            this.destroy();
+            window.createPaymentPage();
         }).bind(this));
 
         this.sendKitchenBtn = new Fab(this.ref.find('.send-kitchen-btn'), (function() {
