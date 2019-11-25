@@ -42,6 +42,16 @@ class Dropdown {
                 </div>
             `);
         }
+
+
+        $(document).click((function(event) {
+              var t = $(event.target);
+                console.log(t.closest(this.pane))
+              if(!t.closest(this.pane).length
+                  && !t.closest(this.field).length && this.pane.is(":visible")) {
+                      this.pane.hide();
+              }
+        }).bind(this));
     }
 
     get selected() {
