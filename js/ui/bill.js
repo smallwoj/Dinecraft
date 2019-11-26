@@ -3,7 +3,7 @@ class Bill
     constructor(insideElem, guestOrder)
     {
         this.guestOrder = guestOrder;
-        var el = $('<div class="bill ui-style-1"><div class="bill-top" style="overflow:auto;"></div><div class="bill-bottom"></div></div>');
+        var el = $('<div class="bill ui-style-1"><div class="bill-top"></div><div class="bill-bottom"></div></div>');
         var top = el.find('.bill-top');
         var bottom = el.find('.bill-bottom');
         this.totalPrice = 0;

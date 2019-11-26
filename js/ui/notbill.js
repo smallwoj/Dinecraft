@@ -6,7 +6,7 @@ class NotBill
     {
         this.onAdd = onAdd;
         this.guestOrder = guestOrder;
-        this.el = $('<div class="not-bill ui-style-1"><div class="bill-top" style="overflow:auto;"></div><div class="bill-bottom"></div></div>');
+        this.el = $('<div class="not-bill ui-style-1"><div class="bill-top"></div><div class="bill-bottom"></div></div>');
         var top = this.el.find('.bill-top');
         var bottom = this.el.find('.bill-bottom');
         this.totalPrice = 0;

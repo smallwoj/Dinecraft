@@ -871,6 +871,7 @@ input:focus::placeholder {
 .bill-top
 {
     margin-bottom: auto;
+overflow-y:auto;overflow-x:hidden;
 }
 
 .not-bill
@@ -881,6 +882,17 @@ input:focus::placeholder {
     max-width:25%;
 }
 
+.add-button {
+    transition:0.1s;
+}
+
+.add-button:active h4 {
+    color:white;
+}
+
+.add-button:active {
+    background-color: #218306;
+}
 .item-name, .price
 {
     font-size: 1.8rem; /*take from h5*/
