@@ -696,7 +696,7 @@ input:focus::placeholder {
     position:relative;
     margin:auto;
     height: calc(100% - 9vmin);
-    width: 50%;
+    width: 60%;
     display:flex;
     flex-direction:column;
     justify-content: space-around;
@@ -824,7 +824,7 @@ input:focus::placeholder {
     outline: 3px solid black;
 }
 
-.popup-yes, .popup-no {
+.popup-yes, .popup-no, .popup-send, .popup-okay, .popup-😎 {
     transition: 0.1s;
     width:50%;
     height:100%;
@@ -834,17 +834,17 @@ input:focus::placeholder {
     z-index:15;
 }
 
-.popup-yes:active, .popup-no:active {
+.popup-yes:active, .popup-no:active, .popup-send:active, .popup-😎:active {
     background-color: #218306;
     outline: 3px solid white;
     z-index:20;
 }
 
-.popup-yes:active h4, .popup-no:active h4 {
+.popup-yes:active h4, .popup-no:active h4, .popup-send:active h4, .popup-😎:active h4 {
     color:white;
 }
 
-.popup-enter {
+.popup-enter, .popup-okay {
     widows: 50%;
     width: 100%;
     height:100%;
@@ -854,7 +854,7 @@ input:focus::placeholder {
     z-index:15;
 }
 
-.popup-enter:active {
+.popup-enter:active, .popup-okay:active {
     background-color: #218306;
     outline: 3px solid white;
     z-index:20;
@@ -920,7 +920,7 @@ input:focus::placeholder {
     z-index:15;
 }
 
-.popup-cancel h4, .popup-cash h4, .popup-debit h4, .popup-credit h4, .popup-ok h4, .popup-yes h4, .popup-no h4 {
+.popup-cancel h4, .popup-cash h4, .popup-debit h4, .popup-credit h4, .popup-ok h4, .popup-yes h4, .popup-no h4,  .popup-send h4, .popup-okay h4, .popup-😎 h4 {
     color:black;
 }
 .popup-cancel:active, .popup-cash:active, .popup-debit:active, .popup-credit:active, .popup-ok:active

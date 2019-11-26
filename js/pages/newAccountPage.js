@@ -108,15 +108,13 @@ class NewAccountPage {
     onSubmit() {
         var valid = true;
         
-        if(this.iconDropdown.selected === -1) valid = "Please select an icon.";
-        
         if(this.roleDropdown.selected === -1) valid = "Please select a role.";
-
-        if(isNaN(this.ref.find('.acc-input[name="pin"]').val())) valid = "PINs consist of numbers.";
-
-        if(this.ref.find('.acc-input[name="pin"]').val().length != 6) valid = "PINs have to have 6 numbers.";
         
-        if(this.ref.find('.acc-input[name="username"]').val() === '') valid = "You can't have an empty username!";
+        if(this.iconDropdown.selected === -1) valid = "Please select an icon.";
+
+        if(this.ref.find('.acc-input[name="pin"]').val().length != 6 || isNaN(this.ref.find('.acc-input[name="pin"]').val())) valid = "Make sure your PIN contains 6 numbers.";
+        
+        if(this.ref.find('.acc-input[name="username"]').val() === '') valid = "Please enter your name first.";
 
         if(valid!=true)
         {

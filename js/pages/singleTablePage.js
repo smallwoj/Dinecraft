@@ -34,8 +34,7 @@ class SingleTablePage {
         }).bind(this));
 
         this.sendKitchenBtn = new Fab(this.ref.find('.send-kitchen-btn'), (function() {
-            // TODO:
-            alert("TODO: THIS. Sending the order to kitchen staff.");
+            this.funnyPopup();
         }).bind(this));
 
         // Add the navbar with all the options/account info
@@ -190,6 +189,43 @@ class SingleTablePage {
         // this.guests.pop();
         // this.guestIcons[this.guestIcons.length - 1].remove();
         // this.guestIcons.pop();
+    }
+
+    funnyPopup() {
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+            <div class="popup ui-style-1">
+                <div class="popup-top" align="center"><h4>Send order to kitchen staff?</h4></div>
+                <div class="popup-bottom">
+                    <div class="popup-😎 ui-style-1"><h4>Cancel</h4></div>
+                    <div class="popup-send ui-style-1"><h4>Send</h4></div>
+                </div>
+            </div>
+        `);
+        $($("body").find('.popup-top')).css('margin', '2%');
+
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-send').click(this.evenFunnierPopup.bind(this));
+        $('.popup-😎').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+    }
+
+    evenFunnierPopup() {
+        $('.popup-overlay').remove(); 
+        $('.popup').remove();
+
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+            <div class="popup ui-style-1">
+                <div class="popup-top" align="center"><h4>Order sent!</h4></div>
+                <div class="popup-bottom">
+                    <div class="popup-okay ui-style-1"><h4>Okay</h4></div>
+                </div>
+            </div>
+        `);
+        $($("body").find('.popup-top')).css('margin', '2%');
+
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-okay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
     }
 
     // Dynamic sizes yeah
