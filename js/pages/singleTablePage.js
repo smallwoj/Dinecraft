@@ -67,7 +67,7 @@ class SingleTablePage {
         this.tableTopMargin = 55;
         var tableImgWrapper = $(`<div class="table-img-wrapper"></div>`)
         tableImgWrapper.appendTo($(tableDisplayAndGuests.find('.table-display')));
-        var tableImg = $(`<img src="` + this.table.img + `" </img style="width:25%">`);
+        var tableImg = $(`<img src="` + this.table.img + `" </img style="width:25%; outline: 5px solid black;">`);
         tableImg.appendTo(tableImgWrapper);
         tableImg.css('margin-top', this.tableTopMargin + '%');
         tableImg.css('margin-bottom', '30%');
