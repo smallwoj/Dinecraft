@@ -1047,6 +1047,7 @@ input:focus::placeholder {
 }
 
 .apply-order-btn {
+z-index:2;
  position:absolute;
     bottom: 2vmin;
     right: 2vmin;
@@ -1090,5 +1091,23 @@ input:focus::placeholder {
     height:8vmin;
 }
 
+.back-btn-cox div {
+    image-rendering:pixelated;
+    background-image: url('../img/backfab.png');
+    transition: 0.1s;
+}
+
+.back-btn-cox div:active {
+    background-image: url('../img/backfab-highlighted.png');
+}
+
+.back-btn-cox {
+    z-index:3;
+    position:absolute;
+    bottom: 2vmin;
+    right: 12vmin;
+    width:8vmin;
+    height:8vmin;
+}
 
 

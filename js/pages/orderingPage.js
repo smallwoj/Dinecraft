@@ -7,12 +7,14 @@ class orderingPage {
             <div class="ordering-page">
             <div class="dark-overlay"></div>
                 <div class="content-pane">
-                    <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
+                    <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:1;">
                         <div class="foodcard-wrap" style="height:100%;width:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
-                    <div class="back-btn-wrapjjgejrhgjureh-sd" style="transform:translate(0,-98%);"></div>
-                    <div class="apply-order-btn" style="transform:translate(0,-98%);"></div>
+
                     </div>
+                    <div class="back-btn-cox"></div>
+                    <div class="apply-order-btn"></div>
+
                 </div>
             </div>
         `);
@@ -23,7 +25,7 @@ class orderingPage {
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
 
-        this.backBtn = new Fab(this.ref.find('.back-btn-wrapjjgejrhgjureh-sd'), (function() {
+        this.backBtn = new Fab(this.ref.find('.back-btn-cox'), (function() {
             this.destroy();
             window.createSingleTablePage();
         }).bind(this));
