@@ -45,7 +45,7 @@ If you're viewing this README file you are also viewing this project's repositor
 * [Joshua Smallwood ](https://github.com/smallwoj) :walking:
 
 **Other Acknowledgements:**     
-* Minecrafter font by Madpixel under [Creative Commons License](http://creativecommons.org/licenses/) with credits to [Mojang] (https://www.mojang.com/) for the original font design.
+* Minecrafter font by Madpixel under [Creative Commons License](http://creativecommons.org/licenses/) with credits to [Mojang](https://www.mojang.com/) for the original font design.
 * Many assets also designed by Mojang used in their commercial videogame [Minecraft.](https://www.minecraft.net/en-us/) 
-* Project hosted on [GitHub] (https://github.com/)
+* Project hosted on [GitHub](https://github.com/)
 * Interface created as a class project for the course: Human-Computer Interaction I at the [University of Manitoba](http://hci.cs.umanitoba.ca/)
