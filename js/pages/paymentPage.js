@@ -5,9 +5,9 @@ class PaymentPage
         var el = $(`
             <div class="payment-page">
                 <div class="content-pane">
-                    <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
+                    <div style="width: 100%; height: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
                         <div class="back-btn-shrek"></div>
-                        <div class="bills-wrap"></div>
+                        <div class="bills-wrap" style="margin-bottom:2%;height:100%;"></div>
                     </div>
                 </div>
             </div>

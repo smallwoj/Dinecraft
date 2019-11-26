@@ -3,7 +3,7 @@ class Bill
     constructor(insideElem, guestOrder)
     {
         this.guestOrder = guestOrder;
-        var el = $('<div class="bill ui-style-1"><div class="bill-top"></div><div class="bill-bottom"></div></div>');
+        var el = $('<div class="bill ui-style-1"><div class="bill-top" style="overflow:auto;"></div><div class="bill-bottom"></div></div>');
         var top = el.find('.bill-top');
         var bottom = el.find('.bill-bottom');
         this.totalPrice = 0;
@@ -108,7 +108,7 @@ class Bill
         $('body').prepend(`<div class="popup-overlay"></div>`);
         $('body').prepend(`
             <div class="popup ui-style-1">
-                <div class="popup-top" align="center"><h4>How will customer <img src="${this.guestOrder.icon.source}.png"> be paying?</h4></div>
+                <div class="popup-top" align="center"><h4>How will customer <img src="${this.guestOrder.icon.source}"> be paying?</h4></div>
                 <div class="popup-bottom">
                     <div class="popup-cancel ui-style-1"><h4>Cancel</h4></div>
                     <div class="popup-cash ui-style-1"><h4>Cash</h4></div>
