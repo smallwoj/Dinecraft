@@ -19,6 +19,15 @@ class orderingPage {
             </div>
         `);
       
+        this.tempOrderState = {
+            // represented like: 'food_name': amount,
+        };
+
+        // Fill out existing order
+        for (var i = 0; i < window.currTable.guestOrders[window.currOrder].items.length; i++) {
+            this.tempOrderState[window.currTable.guestOrders[window.currOrder].items[i].item.name] = window.currTable.guestOrders[window.currOrder].items[i].quantity;
+        }
+
         //define other elements (titleBar, navBar, icons)
         
         // Append it to body and set the proper panorama image (none in this case)
@@ -31,13 +40,33 @@ class orderingPage {
         }).bind(this));
 
         this.applyOrderBtn = new Fab(this.ref.find('.apply-order-btn'), (function() {
-            alert("TODO: THIS. Adding the temporary order to the correct guest.");
+            // O(n^2) baby yea
+            for (var i = 0; i < Object.keys(this.tempOrderState).length; i++) {
+                var found = false;
+                for (var j = 0; j < window.currTable.guestOrders[window.currOrder].items.length; j++) {
+                    if (window.currTable.guestOrders[window.currOrder].items[j].item.name === Object.keys(this.tempOrderState)[i]) {
+                        found = true;
+                        window.currTable.guestOrders[window.currOrder].items[j].quantity = Object.values(this.tempOrderState)[i];
+                        break;
+                    }
+                }
+
+                if (found) {
+                    continue;
+                } else {
+                    window.currTable.guestOrders[window.currOrder].items.push(new OrderItem(
+                        Object.values(this.tempOrderState)[i],
+                        window.DB.getMenuItemByName(Object.keys(this.tempOrderState)[i]),
+                        null,
+                        null
+                    ));
+                }
+            }
             this.destroy();
             window.createSingleTablePage();
+
         }).bind(this));
 
-
-        
         // Add the navbar with all the options/account info
         var navbarOpts = [{
             'text' : 'Drinks',
@@ -65,22 +94,7 @@ class orderingPage {
         $(this.ref.find('.title-bar')).css('z-index', '5');
                 
         this.foodCards=[];
-        //create all the food cards 
-        var foodCardWrap = this.ref.find(".foodcard-wrap");
-        
-        var row = $(`<div class="food-card-row"></div>`);
-        for (var i = 0; i < 9; i++) {
-            if (i % 5 == 0 && i != 0) {
-                foodCardWrap.append(row);
-                row = $(`<div class="food-card-row"></div>`);
-            }
-
-            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
-        }
-
-        foodCardWrap.append(row);
-        length=9;
-
+        this.onMenuSelectOption1()
         // Bind what this page should do on resize
         window.onResize = this.onResize.bind(this);
         this.onResize();
@@ -121,6 +135,14 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+            if (this.tempOrderState[window.DB.menuItems[values[i]].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[values[i]].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, [i, values[i]], function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n[1]].name] = p.foodCards[n[0]].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
@@ -142,6 +164,14 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+            if (this.tempOrderState[window.DB.menuItems[values[i]].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[values[i]].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, [i, values[i]], function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n[1]].name] = p.foodCards[n[0]].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
@@ -162,6 +192,14 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+            if (this.tempOrderState[window.DB.menuItems[values[i]].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[values[i]].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, [i, values[i]], function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n[1]].name] = p.foodCards[n[0]].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
@@ -183,6 +221,14 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+            if (this.tempOrderState[window.DB.menuItems[values[i]].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[values[i]].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, [i, values[i]], function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n[1]].name] = p.foodCards[n[0]].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
@@ -203,6 +249,14 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+            if (this.tempOrderState[window.DB.menuItems[values[i]].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[values[i]].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, [i, values[i]], function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n[1]].name] = p.foodCards[n[0]].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
@@ -223,13 +277,22 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+            if (this.tempOrderState[window.DB.menuItems[values[i]].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[values[i]].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, [i, values[i]], function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n[1]].name] = p.foodCards[n[0]].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
         length=9;
         default: //no results found shit 
-        }
+        }        this.onResize();
     }
+
 
     /////////////////////////////
     onFoodCardSelect()
@@ -262,10 +325,18 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+            if (this.tempOrderState[window.DB.menuItems[i].name] !== undefined) {
+                this.foodCards[i].quantityCounter.count = this.tempOrderState[window.DB.menuItems[i].name];
+            }
+
+            this.foodCards[i].quantityCounter.onValChange = (cbc(this, i, function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n].name] = p.foodCards[n].quantityCounter.count;
+            }));
         }
 
         foodCardWrap.append(row);  
         length=9;        
+        this.onResize();
     }
     onMenuSelectOption2()
     {
@@ -287,10 +358,20 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+
+            if (this.tempOrderState[window.DB.menuItems[i].name] !== undefined) {
+                this.foodCards[i-9].quantityCounter.count = this.tempOrderState[window.DB.menuItems[i].name];
+            }
+
+            this.foodCards[i-9].quantityCounter.onValChange = (cbc(this, i, function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n].name] = p.foodCards[n-9].quantityCounter.count;
+            }));
+
         }
 
         foodCardWrap.append(row);  
         length=6;
+        this.onResize();
     }
 
     onMenuSelectOption3()
@@ -312,11 +393,22 @@ class orderingPage {
                     foodCardWrap.append(row);
                 row = $(`<div class="food-card-row"></div>`);
             }
-                this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+            if (this.tempOrderState[window.DB.menuItems[i].name] !== undefined) {
+                this.foodCards[i-15].quantityCounter.count = this.tempOrderState[window.DB.menuItems[i].name];
+            }
+
+            this.foodCards[i-15].quantityCounter.onValChange = (cbc(this, i, function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n].name] = p.foodCards[n-15].quantityCounter.count;
+            }));
+
+
         }
         if(!($(row).html()===''))
             foodCardWrap.append(row);  
         length=6;
+        this.onResize();
     }
     onMenuSelectOption4()
     {
@@ -338,10 +430,18 @@ class orderingPage {
             }
 
             this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+            if (this.tempOrderState[window.DB.menuItems[i].name] !== undefined) {
+                this.foodCards[i-21].quantityCounter.count = this.tempOrderState[window.DB.menuItems[i].name];
+            }
+
+            this.foodCards[i-21].quantityCounter.onValChange = (cbc(this, i, function(p, n) {
+                p.tempOrderState[window.DB.menuItems[n].name] = p.foodCards[n-21].quantityCounter.count;
+            }));
         }
 
         foodCardWrap.append(row);  
         length=5;
+        this.onResize();
     }
     
         // Dynamic sizes yeah

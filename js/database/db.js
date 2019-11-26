@@ -116,7 +116,7 @@ window.DB.createFakeData = function() {
         {
             items.push(new OrderItem(Math.ceil(Math.random()*3), window.DB.menuItems[Math.floor(Math.random()*window.DB.menuItems.length)], 'make it blocky', 'delivered'));
         }
-        guestOrders.push(new GuestOrder(new Icon('guest'+(i+1), './img/icons/icon'+Math.floor(Math.random()*16)), items));
+        guestOrders.push(new GuestOrder(window.DB.getIconByName('customer' + Math.floor(Math.random()*16)), items));
     }
     window.DB.tables.push(new Table(4, 'taken', guestOrders, {'x': -0.5, 'y':0.5}));
 };
@@ -139,4 +139,11 @@ window.DB.getTableByNumber = function(number) {
     }
 }
 
-
+// aaaaaaaaaaaaaaaaaa
+window.DB.getMenuItemByName = function(name) {
+    for (var i = 0; i < window.DB.menuItems.length; i++) {
+        if (window.DB.menuItems[i].name === name) {
+            return window.DB.menuItems[i];
+        }
+    }
+}

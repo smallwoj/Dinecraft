@@ -75,29 +75,26 @@ class SingleTablePage {
         tableDisplayAndGuests.appendTo($(this.ref.find('.cool-content-pane')));
 
         // Add the table order card
-        this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), this.guests);
+        this.tableOrder = new TableOrder(this.ref.find('.cool-content-pane'), window.currTable.guestOrders);
 
         var guestsEl = $(`<div class="guest-icons"></div>`);
         // Add the guests
         GuestIcon.num = 0;
-        this.guests = [];
         this.guestIcons = [];   // guestIcons represents the icons for the guests seated around the tables, while 
                                 // guests represents their orders
         this.guestOrders = [];  // I can't wait for 11:59PM
 
-        // TODO: match the number of guests at the table to the number of guests displayed in the table map
-        for (var i = 0; i < MAX_GUESTS; i++) {
-            // Randomly get an icon, and add a guest with that icon
-            var iconIndex = Math.floor(Math.random() * 16);
-            var icon = window.DB.getIconByName("customer" + iconIndex);
-
-            this.guests.push(new GuestOrder(icon, []));
-            this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
-            this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+        for (var i = 0; i < window.currTable.guestOrders.length; i++) {
+            this.guestIcons.push(new GuestIcon($(guestsEl), window.currTable.guestOrders[i]));
+            this.guestOrders.push(new NotBill(this.ref.find('.table-order'), window.currTable.guestOrders[i], cbc(this, i, function(p, i) {
+                window.appPage.destroy();
+                window.currOrder = i;
+                window.createorderingPage();
+            })));
 
             this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
                 window.appPage.destroy();
-                window.currOrder = p.guests[i];
+                window.currOrder = i;
                 window.createorderingPage();
             }));
         }
@@ -110,7 +107,7 @@ class SingleTablePage {
             // guestCounter.appendTo($(el.find('.table-order')));
 
             // What does this do????
-            this.guestCounter = new ItemCounter('.guest-icons', 0, 0, MAX_GUESTS, '🪑');  // i need  emogies
+            this.guestCounter = new ItemCounter('.guest-icons', 0, window.currTable.guestOrders.length, MAX_GUESTS, '🪑');  // i need  emogies
             this.guestCounter.incrBtn.click(this.addGuest.bind(this));
             this.guestCounter.decrBtn.click(this.removeGuest.bind(this));
             this.ref.find('item-counter').css('width', '100%');
@@ -139,22 +136,47 @@ class SingleTablePage {
 
     // Adds a guest to the table 
     addGuest() {
-        // Well, reveals a guest. Same thing
-        this.guestIcons[this.guestCounter.count - 1].show();
-        this.guestOrders[this.guestCounter.count - 1].show();
+        var l = this.guestCounter.count;
+        if (l === window.currTable.guestOrders.length) {
+            return;
+        }
 
+        window.currTable.guestOrders.push(new GuestOrder(window.DB.getIconByName('customer' + Math.floor(Math.random()*16)), []));
+        this.guestIcons.push(new GuestIcon(this.ref.find('.guest-icons'), window.currTable.guestOrders[l-1]));
+        this.guestOrders.push(new NotBill(this.ref.find('.table-order'), window.currTable.guestOrders[l-1], cbc(this, l-1, function(p, i) {
+            window.appPage.destroy();
+            window.currOrder = i;
+            window.createorderingPage();
+        })));
+
+        this.guestIcons[l-1].ref.find('img').click(cbc(this, l-1, function(p, i) {
+            window.appPage.destroy();
+            window.currOrder = i;
+            window.createorderingPage();
+        }));
+
+
+        window.currTable.status ='taken';
         // this.tableTopMargin -= GuestIcon.getIconWidth();
         // this.tableImg.css('margin-top', this.tableTopMargin + '%');
         
     }
 
+
     // Removes a guest from the table 
     removeGuest() {
+        if (GuestIcon.num === 0) {
+            return;
+        }
         // If the guest has an (non-empty) order, ask for confirmation before removing them
         //uhhh that's a TODO
-        this.guestIcons[this.guestCounter.count].hide();
-        this.guestOrders[this.guestCounter.count].hide();
+        this.guestIcons[this.guestCounter.count].ref.remove();
+        this.guestOrders[this.guestCounter.count].ref.remove();
 
+        window.currTable.guestOrders.pop();
+        this.guestIcons.pop();
+        this.guestOrders.pop();
+        GuestIcon.num--;
         // this.tableTopMargin += GuestIcon.getIconWidth();
         // this.tableImg.css('margin-top', this.tableTopMargin + '%');
         // this.guests.pop();

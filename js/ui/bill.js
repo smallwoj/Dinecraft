@@ -8,7 +8,7 @@ class Bill
         var bottom = el.find('.bill-bottom');
         this.totalPrice = 0;
         //create image
-        var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.source + '.png"></div>');
+        var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.source + '"></div>');
         $(guestIcon).css('width', '100%');
         $(guestIcon).css('height', 'auto');
         $(guestIcon.find('img')).css('width', '30%');
