@@ -13,16 +13,7 @@ class NotBill
         
         console.log(this.guestOrder.icon.getSource());
 
-        // The chance of the universe collapsing on itself is very low, but never zero
-        var png;
-        if (this.guestOrder.icon.getSource().endsWith(".png")) {
-            png = "";
-        }
-        else {
-            png = ".png";
-        }
-
-        var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.getSource() + png + '"></div>');
+        var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.getSource()+'"></div>');
         $(guestIcon).css('width', '100%');
         $(guestIcon).css('height', 'auto');
         $(guestIcon.find('img')).css('width', '30%');

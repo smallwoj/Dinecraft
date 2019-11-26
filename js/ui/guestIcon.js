@@ -13,20 +13,10 @@ class GuestIcon {
         else if(GuestIcon.num === 4)
             translate = 'transform: translate(0, -100%);'
 
-
-        // The chance of the universe collapsing on itself is very low, but never zero
-        var png;
-        if (this.guest.icon.source.endsWith(".png")) {
-            png = "";
-        }
-        else {
-            png = ".png";
-        }
-
         // Main data of the element
         this.el = $(`
         <div class="guest-icon${GuestIcon.num}" style="position: absolute; left:${this.iconWidth}%; right:${this.iconWidth}%; ${translate}">
-            <img src=${this.guest.icon.source}` + png +` style="width:${this.iconWidth}%"></img>
+            <img src=${this.guest.icon.source} style="width:${this.iconWidth}%"></img>
         </div>
         `);
         this.ref = this.el.prependTo($(insideElem));

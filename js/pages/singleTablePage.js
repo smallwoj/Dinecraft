@@ -39,14 +39,7 @@ class SingleTablePage {
         }).bind(this));
 
         // Add the navbar with all the options/account info
-        this.navbar = new NavBar(this.ref, [{
-            'text' : '< Back to table map',
-            'selected' : false,
-            'onClick' : (function () {
-                this.destroy();
-                window.createTableMapPage();
-            }).bind(this)
-        }]);
+        this.navbar = new NavBar(this.ref, []);
 
         // Add the table text
         this.table = window.currTable;
@@ -153,6 +146,7 @@ class SingleTablePage {
             if (this.table.state == 'taken') {
                 var numGuests = window.currTable.guestOrders.length;
                 this.guestCounter.count = numGuests;
+                console.long(numGuests);
                 for (var i = 0; i < numGuests; i++) {
                     this.guestIcons[i].show();
                     // 😭
