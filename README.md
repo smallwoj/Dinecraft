@@ -16,17 +16,17 @@ What you will need:
 
 ### Installing
 
-If you're viewing this README file you are also viewing the projects repository.    
+If you're viewing this README file you are also viewing this project's repository.    
 1. Ensure that you have the `<>Code` tab selected.
-2. Click the green button that says `Clone or download` above the list of files.
-3. Select the `Download ZIP` option.
+2. Click the green button that says `<Clone or download>` above the list of files.
+3. Select the `<Download ZIP>` option.
 4. You should see a file icon appear in the bottom lefthand corner of your screen.
 5. Wait for the file to finish downloading.
 6. Right click on the file.
-7. Select `Show in folder`.
+7. Select `<Show in folder>`.
 8. This should open up your file explorer which shows the zip file in your downloads section.
 9. Extract the file's contents to where you want to save the project so you can easily find it later.
-10. Open the folder if not already opened and double click on `index.html`.
+10. Open the folder if not already opened and double click on `<index.html>`.
 11. This should open up a tab in your internet browser that shows the interface.
 12. Open the contents of all other files using your preferred text editor if you want to view/modify the code.
 
@@ -38,11 +38,12 @@ If you're viewing this README file you are also viewing the projects repository.
 * [JQuery](https://api.jquery.com/)
 
 ## Authors and Acknowledgements 
+Contributors/Developers:    
+* [Skyla Dudek - ](https://github.com/skyladudek)
+* [Alex Kitt - ](https://github.com/drkitt)
+* [Yaroslav Mikhaylik - ](https://github.com/HaselLoyance)
+* [Joshua Smallwood - ](https://github.com/smallwoj)
 
-* [**Skyla Dudek - **](https://github.com/skyladudek)
-* [**Alex Kitt - **](https://github.com/drkitt)
-* [**Yaroslav Mikhaylik - **](https://github.com/HaselLoyance)
-* [**Joshua Smallwood - **](https://github.com/smallwoj)
 * Minecrafter font by Madpixel under [Creative Commons License](http://creativecommons.org/licenses/) with credits to [Mojang] (https://www.mojang.com/) for the original font design.
 * Many assets also designed by Mojang used in their commercial videogame [Minecraft.](https://www.minecraft.net/en-us/) 
 * Project hosted on [GitHub] (https://github.com/)
