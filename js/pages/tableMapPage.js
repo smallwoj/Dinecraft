@@ -102,7 +102,6 @@ class TableMapPage {
         window.currTable = table;
          window.createSingleTablePage();
         // window.createPaymentPage();
-        //window.createorderingPage();
     }
 }
 
