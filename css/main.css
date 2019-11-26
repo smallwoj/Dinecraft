@@ -544,7 +544,7 @@ white-space: nowrap;
     display: flex;
     flex-direction: column;
     
-    height: 60%;
+    min-height: 70%;
     width: 30%;
 
     border: 3px solid #585659;
@@ -958,7 +958,7 @@ input:focus::placeholder {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    height: 50%;
+    height: 40%;
     display:flex;
     flex-direction: row;
     justify-content: space-around;
