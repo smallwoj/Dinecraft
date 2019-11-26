@@ -16,12 +16,12 @@ class GuestIcon {
         // Main data of the element
         this.el = $(`
         <div class="guest-icon${GuestIcon.num}" style="position: absolute; left:${this.iconWidth}%; right:${this.iconWidth}%; ${translate}">
-            <img src=${this.guest.icon.source} style="width:${this.iconWidth}%"></img>
+            <img src=${this.guest.icon.getSource()} style="width:${this.iconWidth}%"></img>
         </div>
         `);
         this.ref = this.el.prependTo($(insideElem));
         
-        this.hide();
+//        this.hide();
     }
 
     remove() {
@@ -30,8 +30,8 @@ class GuestIcon {
     }
 
     hide() {
-        this.hidden = true;
-        $(this.el.find('img')).css('visibility', 'hidden');
+ //       this.hidden = true;
+   //     $(this.el.find('img')).css('visibility', 'hidden');
     }
 
     show() {

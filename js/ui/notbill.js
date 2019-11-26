@@ -2,8 +2,9 @@
 
 class NotBill
 {
-    constructor(insideElem, guestOrder)
+    constructor(insideElem, guestOrder, onAdd)
     {
+        this.onAdd = onAdd;
         this.guestOrder = guestOrder;
         this.el = $('<div class="not-bill ui-style-1"><div class="bill-top"></div><div class="bill-bottom"></div></div>');
         var top = this.el.find('.bill-top');
@@ -47,7 +48,7 @@ class NotBill
         bottom.appendTo(this.el);
         this.ref = this.el.appendTo($(insideElem));
 
-        this.hide();
+        //this.hide();
     }
 
     show() {
@@ -55,13 +56,6 @@ class NotBill
     }
 
     hide() {
-        console.log(this.el.find('.bill'))
-        $(this.el).css('visibility', 'hidden');
-    }
-    
-    onAdd() {
-        window.appPage.destroy();
-        window.currOrder = this.guestOrder;
-        window.createorderingPage();
+        //$(this.el).css('visibility', 'hidden');
     }
 }

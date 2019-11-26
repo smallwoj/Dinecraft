@@ -12,7 +12,6 @@ class TableSelector //class for a button that selects a table to go to the next 
         this.onSelect = onSelect;
         this.data = tableData;
         this.tableData = tableData;
-        
         //create the html element
         var el = $('<div class="table'+this.tableData.number+' ui-style-1 table-style"><img src="'+this.tableData.img+'"></div>');
         //set what happens when you click on the table
@@ -23,7 +22,7 @@ class TableSelector //class for a button that selects a table to go to the next 
             var guests = $('<div class="guests-wrap" align="center"></div>')
             for(var i = 0; i < this.data.guestOrders.length; i++)
             {
-                var guest = $(`<div class="guest${i+1}"><img src="${this.data.guestOrders[i].icon.source}.png"></div>`);
+                var guest = $(`<div class="guest${i+1}"><img src="${this.data.guestOrders[i].icon.source}"></div>`);
                 $(guest.find('img')).css('width', '28px');
                 $(guest).css('position', 'absolute');
                 guest.appendTo(guests);
