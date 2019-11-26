@@ -6,6 +6,7 @@ class PaymentPage
             <div class="payment-page">
                 <div class="content-pane">
                     <div style="width: 100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center">
+                        <div class="back-btn-shrek"></div>
                         <div class="bills-wrap"></div>
                     </div>
                 </div>
@@ -16,9 +17,17 @@ class PaymentPage
         this.ref = el.appendTo($('body'));
         $('body').css('background-image', '');
 
+        this.backBtn = new Fab(this.ref.find('.back-btn-shrek'), (function() {
+            this.destroy();
+            window.createSingleTablePage();
+        }).bind(this));
+
+
         var navbarOpts = [{
             'text' : 'Table Map',
-            'selected' : true,
+            'onClick' : function() {
+                alert('clicked 1');
+            },
         }, {
             'text' : 'Menu option 2',
             'onClick' : function() {

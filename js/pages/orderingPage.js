@@ -104,13 +104,134 @@ class orderingPage {
         searchText=searchText.toUpperCase()
         switch(searchText)
         {
-        case 'VEGETARIAN': break;
-        case 'VEGAN': break;
-        case 'GLUTEN FREE': break;
-        case 'MEAT': break;
-        case 'SOUP': break;
-        case 'SUSPICIOUS': break;
-        case 'LACTOSE FREE': break;
+        case 'VEGETARIAN': 
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        var values=[10, 11, 12, 14, 20, 21, 22, 23, 24, 25]; 
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 10; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+        }
+
+        foodCardWrap.append(row);  
+        length=10;
+        break;
+        case 'VEGAN': 
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        var values=[10, 11, 12, 14, 20, 22, 23];
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 7; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+        }
+
+        foodCardWrap.append(row);  
+        length=7; break;
+        case 'GLUTEN FREE': 
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        var values=[10, 14, 20, 23];
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 4; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+        }
+
+        foodCardWrap.append(row);  
+        length=4; 
+        break;
+        case 'MEAT': 
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        var values=[9, 13, 15, 16, 17, 18, 19];
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 7; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+        }
+
+        foodCardWrap.append(row);  
+        length=7; break;
+        case 'SOUP': 
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        var values=[9, 10];
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 2; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[values[i]]));
+        }
+
+        foodCardWrap.append(row);  
+        length=2; break;
+        break;
+        case '':
+        for (var i = 0; i < length; i++)
+            this.foodCards[i].ref.remove();
+         
+        this.foodCards=[];
+        //create all the food cards 
+        var foodCardWrap = this.ref.find(".foodcard-wrap");
+        
+        var row = $(`<div class="food-card-row"></div>`);
+        for (var i = 0; i < 9; i++) {
+            if (i % 5 == 0 && i != 0) {
+                foodCardWrap.append(row);
+                row = $(`<div class="food-card-row"></div>`);
+            }
+
+            this.foodCards.push(new FoodCard(row, window.DB.menuItems[i]));
+        }
+
+        foodCardWrap.append(row);  
+        length=9;
+        default: //no results found shit 
         }
     }
 
