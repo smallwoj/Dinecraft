@@ -1,6 +1,14 @@
 # Dinecraft
 
-Dinecraft is a horizontal prototype with vertical elements of a restaurant interface that has implemented UCD principles, UX goals, and user research into each part of the system. Dinecraft is meant to replace the traditional pen and paper method of taking orders in order to increase efficiency and aid servers with their tasks. The interface begins with a login page to which you must select an account and enter in the correct pin for that account to access the rest of the interface. From there there is a map of tables in the restaurant each with a status indicated by icons. The tables can have their status updated, including adding guests to the table. As well, those guests at the table can have an order taken/edited for them. Finally, the bill(s) for the table can also be viewed and have a payment "taken" for them. Since this is a prototype, all data has been hardcoded and many assets have not been locally created so that all focus would go into HCI design rather than highly functional back-end systems and art. 
+Dinecraft is a horizontal prototype with vertical elements of a restaurant interface that has implemented UCD principles, UX goals, and user research into each part of the system. Dinecraft is meant to replace the traditional pen and paper method of taking orders in order to increase efficiency and aid servers with their tasks. The interface begins with a login page to which you must select an account and enter in the correct PIN for that account to access the rest of the interface. 
+
+For demonstration purposes, the app's preloaded accounts and PINs are as follows: 
+- Mega Karen (PIN: 420420)
+- Mr. Krabs (PIN: 333333)
+- Pickaxe Guy (PIN: 481516)
+- Joe mama (PIN: 696969)
+
+From there there is a map of tables in the restaurant each with a status indicated by icons. The tables can have their status updated, including adding guests to the table. As well, those guests at the table can have an order taken/edited for them. Finally, the bill(s) for the table can also be viewed and have a payment "taken" for them. Since this is a prototype, all data has been hardcoded and many assets have not been locally created so that all focus would go into HCI design rather than highly functional back-end systems and art. 
 
 This project is intended to be viewed mainly by employers as a showcase of our code development and collaboration skills. 
 
