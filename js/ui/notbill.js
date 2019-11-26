@@ -11,7 +11,10 @@ class NotBill
         var bottom = this.el.find('.bill-bottom');
         this.totalPrice = 0;
         //create image
-        var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.source + '"></div>');
+        
+        console.log(this.guestOrder.icon.getSource());
+
+        var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.getSource()+'"></div>');
         $(guestIcon).css('width', '100%');
         $(guestIcon).css('height', 'auto');
         $(guestIcon.find('img')).css('width', '30%');
