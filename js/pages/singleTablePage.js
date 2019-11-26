@@ -34,8 +34,7 @@ class SingleTablePage {
         }).bind(this));
 
         this.sendKitchenBtn = new Fab(this.ref.find('.send-kitchen-btn'), (function() {
-            // TODO:
-            alert("TODO: THIS. Sending the order to kitchen staff.");
+            this.funnyPopup();
         }).bind(this));
 
         // Add the navbar with all the options/account info
@@ -67,7 +66,7 @@ class SingleTablePage {
         this.tableTopMargin = 55;
         var tableImgWrapper = $(`<div class="table-img-wrapper"></div>`)
         tableImgWrapper.appendTo($(tableDisplayAndGuests.find('.table-display')));
-        var tableImg = $(`<img src="` + this.table.img + `" </img style="width:25%">`);
+        var tableImg = $(`<img src="` + this.table.img + `" </img style="width:25%; outline: 5px solid black;">`);
         tableImg.appendTo(tableImgWrapper);
         tableImg.css('margin-top', this.tableTopMargin + '%');
         tableImg.css('margin-bottom', '30%');
@@ -98,6 +97,40 @@ class SingleTablePage {
                 window.createorderingPage();
             }));
         }
+        /*
+        else if(this.table.state === 'taken')
+        {   
+            var i = 0;
+            for(i = 0; i < this.table.guestOrders.length; i++)
+            {
+                this.guests.push(this.table.guestOrders[i]);
+                this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
+                this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+                this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
+                    window.appPage.destroy();
+                    window.currOrder = p.guests[i];
+                    window.createorderingPage();
+                }));
+            }
+            for (i = i; i < MAX_GUESTS; i++) {
+                // Randomly get an icon, and add a guest with that icon
+                var iconIndex = Math.floor(Math.random() * 16);
+                var icon = window.DB.getIconByName("customer" + iconIndex);
+                
+                this.guests.push(new GuestOrder(icon, []));
+                this.table.guestOrders.push(this.guests[this.guests.length - 1]);
+                this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
+                this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+                
+                this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
+                    window.appPage.destroy();
+                    window.currOrder = p.guests[i];
+                    window.createorderingPage();
+                }));
+            }
+        }
+
+        */
 
         guestsEl.appendTo(tableDisplayAndGuests.find('.table-display'));
 
@@ -182,6 +215,43 @@ class SingleTablePage {
         // this.guests.pop();
         // this.guestIcons[this.guestIcons.length - 1].remove();
         // this.guestIcons.pop();
+    }
+
+    funnyPopup() {
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+            <div class="popup ui-style-1">
+                <div class="popup-top" align="center"><h4>Send order to kitchen staff?</h4></div>
+                <div class="popup-bottom">
+                    <div class="popup-😎 ui-style-1"><h4>Cancel</h4></div>
+                    <div class="popup-send ui-style-1"><h4>Send</h4></div>
+                </div>
+            </div>
+        `);
+        $($("body").find('.popup-top')).css('margin', '2%');
+
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-send').click(this.evenFunnierPopup.bind(this));
+        $('.popup-😎').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+    }
+
+    evenFunnierPopup() {
+        $('.popup-overlay').remove(); 
+        $('.popup').remove();
+
+        $('body').prepend(`<div class="popup-overlay"></div>`);
+        $('body').prepend(`
+            <div class="popup ui-style-1">
+                <div class="popup-top" align="center"><h4>Order sent!</h4></div>
+                <div class="popup-bottom">
+                    <div class="popup-okay ui-style-1"><h4>Okay</h4></div>
+                </div>
+            </div>
+        `);
+        $($("body").find('.popup-top')).css('margin', '2%');
+
+        $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
+        $('.popup-okay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
     }
 
     // Dynamic sizes yeah

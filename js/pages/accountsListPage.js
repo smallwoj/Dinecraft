@@ -18,12 +18,7 @@ class AccountsListPage {
         this.navbar = new NavBar(this.ref, [{
             'text' : 'Table Map',
             'onClick' : this.goToTableMap.bind(this),
-        }, {
-            'text' : 'Menu option 2',
-            'onClick' : function() {
-                alert('clicked 2');
-            },
-        }, {
+        },  {
             'text' : 'Accounts List',
             'selected' : true,
         }]);
