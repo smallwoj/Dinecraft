@@ -34,16 +34,17 @@ If you're viewing this README file you are also viewing this project's repositor
 
 * [HTML](https://devdocs.io/html/) 
 * [CSS](https://devdocs.io/css/) 
-* [JavaScript](https://devdocs.io/javascript/) 
+* [JavaScript](https://devdocs.io/javascript/)
 * [JQuery](https://api.jquery.com/)
 
 ## Authors and Acknowledgements 
 Contributors/Developers:    
-* [Skyla Dudek](https://github.com/skyladudek)
-* [Alex Kitt](https://github.com/drkitt)
-* [Yaroslav Mikhaylik](https://github.com/HaselLoyance)
-* [Joshua Smallwood ](https://github.com/smallwoj)
+* [Skyla Dudek](https://github.com/skyladudek) :cake:
+* [Alex Kitt](https://github.com/drkitt) :rage4:
+* [Yaroslav Mikhaylik](https://github.com/HaselLoyance) :carousel_horse:
+* [Joshua Smallwood ](https://github.com/smallwoj) :walking:
 
+Other Acknowledgements: 
 * Minecrafter font by Madpixel under [Creative Commons License](http://creativecommons.org/licenses/) with credits to [Mojang] (https://www.mojang.com/) for the original font design.
 * Many assets also designed by Mojang used in their commercial videogame [Minecraft.](https://www.minecraft.net/en-us/) 
 * Project hosted on [GitHub] (https://github.com/)
