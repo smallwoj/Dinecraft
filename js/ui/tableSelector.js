@@ -28,9 +28,9 @@ class TableSelector //class for a button that selects a table to go to the next 
                 guest.appendTo(guests);
             }
             $(guests.find(`.guest1`)).css('transform', 'translate(35%, -300%)');
-            $(guests.find(`.guest2`)).css('transform', 'translate(200%, -135%)');
-            $(guests.find(`.guest3`)).css('transform', 'translate(30%, 30%)');
-            $(guests.find(`.guest4`)).css('transform', 'translate(-135%, -135%)');
+            $(guests.find(`.guest2`)).css('transform', 'translate(-135%, -135%)');
+            $(guests.find(`.guest3`)).css('transform', 'translate(200%, -135%)');
+            $(guests.find(`.guest4`)).css('transform', 'translate(30%, 30%)');
             guests.appendTo(el);
         }
         //insert the html elemnt
