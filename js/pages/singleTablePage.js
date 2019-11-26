@@ -86,21 +86,57 @@ class SingleTablePage {
         this.guestOrders = [];  // I can't wait for 11:59PM
 
         // TODO: match the number of guests at the table to the number of guests displayed in the table map
-        for (var i = 0; i < MAX_GUESTS; i++) {
-            // Randomly get an icon, and add a guest with that icon
-            var iconIndex = Math.floor(Math.random() * 16);
-            var icon = window.DB.getIconByName("customer" + iconIndex);
-
-            this.guests.push(new GuestOrder(icon, []));
-            this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
-            this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
-
-            this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
-                window.appPage.destroy();
-                window.currOrder = p.guests[i];
-                window.createorderingPage();
-            }));
+        if(this.table.state === 'available')
+        {
+            for (var i = 0; i < MAX_GUESTS; i++) {
+                // Randomly get an icon, and add a guest with that icon
+                var iconIndex = Math.floor(Math.random() * 16);
+                var icon = window.DB.getIconByName("customer" + iconIndex);
+                
+                this.guests.push(new GuestOrder(icon, []));
+                this.table.guestOrders.push(this.guests[this.guests.length - 1]);
+                this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
+                this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+                
+                this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
+                    window.appPage.destroy();
+                    window.currOrder = p.guests[i];
+                    window.createorderingPage();
+                }));
+            }
         }
+        else if(this.table.state === 'taken')
+        {   
+            var i = 0;
+            for(i = 0; i < this.table.guestOrders.length; i++)
+            {
+                this.guests.push(this.table.guestOrders[i]);
+                this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
+                this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+                this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
+                    window.appPage.destroy();
+                    window.currOrder = p.guests[i];
+                    window.createorderingPage();
+                }));
+            }
+            for (i = i; i < MAX_GUESTS; i++) {
+                // Randomly get an icon, and add a guest with that icon
+                var iconIndex = Math.floor(Math.random() * 16);
+                var icon = window.DB.getIconByName("customer" + iconIndex);
+                
+                this.guests.push(new GuestOrder(icon, []));
+                this.table.guestOrders.push(this.guests[this.guests.length - 1]);
+                this.guestIcons.push(new GuestIcon($(guestsEl), this.guests[this.guests.length - 1]));
+                this.guestOrders.push(new NotBill(this.ref.find('.table-order'), this.guests[i]));
+                
+                this.guestIcons[i].ref.find('img').click(cbc(this, i, function(p, i) {
+                    window.appPage.destroy();
+                    window.currOrder = p.guests[i];
+                    window.createorderingPage();
+                }));
+            }
+        }
+
 
         guestsEl.appendTo(tableDisplayAndGuests.find('.table-display'));
 
