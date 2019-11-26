@@ -105,8 +105,7 @@ class orderingPage {
         switch(searchText)
         {
         case 'VEGETARIAN': 
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -126,8 +125,7 @@ class orderingPage {
         length=10;
         break;
         case 'VEGAN': 
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -147,8 +145,7 @@ class orderingPage {
         foodCardWrap.append(row);  
         length=7; break;
         case 'GLUTEN FREE': 
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -169,8 +166,7 @@ class orderingPage {
         length=4; 
         break;
         case 'MEAT': 
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -190,8 +186,7 @@ class orderingPage {
         foodCardWrap.append(row);  
         length=7; break;
         case 'SOUP': 
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
@@ -212,8 +207,7 @@ class orderingPage {
         length=2; break;
         break;
         case '':
-        for (var i = 0; i < length; i++)
-            this.foodCards[i].ref.remove();
+        $('.food-card-row').remove();
          
         this.foodCards=[];
         //create all the food cards 
