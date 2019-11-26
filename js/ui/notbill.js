@@ -12,7 +12,7 @@ class NotBill
         this.totalPrice = 0;
         //create image
         
-        console.log(this.guestOrder.icon.getSource());
+        //console.log(this.guestOrder.icon.getSource());
 
         var guestIcon = $('<div class="guest-icon" align="center"><img src="'+this.guestOrder.icon.getSource()+'"></div>');
         $(guestIcon).css('width', '100%');

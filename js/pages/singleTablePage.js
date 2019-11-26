@@ -189,7 +189,7 @@ class SingleTablePage {
         }));
 
 
-        window.currTable.status ='taken';
+        window.currTable.state ='taken';
         // this.tableTopMargin -= GuestIcon.getIconWidth();
         // this.tableImg.css('margin-top', this.tableTopMargin + '%');
         
@@ -249,6 +249,7 @@ class SingleTablePage {
             </div>
         `);
         $($("body").find('.popup-top')).css('margin', '2%');
+        window.currTable.state = 'taken';
 
         $('.popup-overlay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
         $('.popup-okay').click(function(e) { $('.popup-overlay').remove(); $('.popup').remove(); });
