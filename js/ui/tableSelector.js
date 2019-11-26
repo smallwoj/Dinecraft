@@ -12,16 +12,6 @@ class TableSelector //class for a button that selects a table to go to the next 
         this.onSelect = onSelect;
         this.data = tableData;
         this.tableData = tableData;
-
-        //randomly select the image to use for this table
-        if(Math.floor(Math.random() * 2) === 1)
-        {
-            this.tableData.img = './img/table.png';
-        }
-        else
-        {
-            this.tableData.img = './img/table2.png';
-        }
         
         //create the html element
         var el = $('<div class="table'+this.tableData.number+' ui-style-1 table-style"><img src="'+this.tableData.img+'"></div>');

@@ -10,18 +10,13 @@ class orderingPage {
                     <div style="width: 100%; height:100%; display: flex; justify-content: space-between; flex-direction:column; align-items:center;position:relative;z-index:5;">
                         <div class="foodcard-wrap" style="height:100%;width:100%;"></div>
                         <div class="detailedfoodcard-wrap"></div>
-                    <div class="back-btn-wrapjjgejrhgjureh-sd"></div>
-                    <div class="apply-order-btn"></div>
-
-
+                    <div class="back-btn-wrapjjgejrhgjureh-sd" style="transform:translate(0,-98%);"></div>
+                    <div class="apply-order-btn" style="transform:translate(0,-98%);"></div>
                     </div>
                 </div>
             </div>
         `);
-
-        //
-       // $(el.find('.popup-overlay')).css('z-index', '0');
-        
+      
         //define other elements (titleBar, navBar, icons)
         
         // Append it to body and set the proper panorama image (none in this case)

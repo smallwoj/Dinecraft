@@ -7,6 +7,16 @@ class Table {
         this.pos = pos;                     // Position in the table map
         this.img = '';                      // Image used to represent the table
 
+        //randomly select the image to use for this table
+        if(Math.floor(Math.random() * 2) === 1)
+        {
+            this.img = './img/table.png';
+        }
+        else
+        {
+            this.img = './img/table2.png';
+        }
+
         if (this.state == 'taken') {
             this.guestOrders = guestOrders;
         }
