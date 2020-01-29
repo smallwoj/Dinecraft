@@ -23,23 +23,8 @@ class PaymentPage
         }).bind(this));
 
 
-        var navbarOpts = [{
-            'text' : 'Table Map',
-            'onClick' : function() {
-                alert('clicked 1');
-            },
-        }
-        ];
-
-        if (window.auth.role === 'manager') {
-            navbarOpts.push({
-                'text' : 'Accounts List',
-                'onClick' : this.goToAccList.bind(this),
-            });
-        }
-
         // Add the navbar with all the options/account info
-        this.navbar = new NavBar(this.ref, navbarOpts);
+        this.navbar = new NavBar(this.ref, []);
 
         // Add the sample text
         this.titleBar = new TitleBar(this.ref.find('.content-pane'), 'Payment for Table '+window.currTable.number);

@@ -526,7 +526,7 @@ white-space: nowrap;
 .table-order {
     display:flex;
     margin: 1%;
-    justify-content:flex-end;
+    justify-content: center;
     width: 60%;
     height: 75vh;
     background-color: #c6c6c6;
@@ -534,6 +534,7 @@ white-space: nowrap;
     /*min-width: 375px;
     */
     border: 3px solid #585659;
+    visibility: hidden;
 }
 
 .food-card {
@@ -880,6 +881,7 @@ overflow-y:auto;overflow-x:hidden;
     display:flex;
     flex-direction: column;
     max-width:25%;
+    visibility: visible;
 }
 
 .add-button {
