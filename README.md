@@ -1,4 +1,4 @@
-# Dinecraft
+![Dinecraft logo](img/dinecraft_logo.png?raw=true)
 
 Dinecraft is a horizontal prototype with vertical elements of a restaurant interface that has implemented UCD principles, UX goals, and user research into each part of the system. Dinecraft is meant to replace the traditional pen and paper method of taking orders in order to increase efficiency and aid servers with their tasks. The interface begins with a login page to which you must select an account and enter in the correct PIN for that account to access the rest of the interface. 
 
@@ -37,6 +37,11 @@ If you're viewing this README file you are also viewing this project's repositor
 10. Open the folder if not already opened and double click on `<index.html>`.
 11. This should open up a tab in your internet browser that shows the interface.
 12. Open the contents of all other files using your preferred text editor if you want to view/modify the code.
+
+## Screenshots
+![Title/login screen](img/Internal%20use/Screenshots/Login.png?raw=true)
+![Account list](img/Internal%20use/Screenshots/Account%20list.png?raw=true)
+![Payment](img/Internal%20use/Screenshots/Payment.png?raw=true)
 
 ## Built With
 
